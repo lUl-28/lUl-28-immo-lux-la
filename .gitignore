@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+
+# Garder les données générées (nécessaires au dashboard)
+!data/rapport_dvf.json
+!data/rapport_dvf.md

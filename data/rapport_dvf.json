@@ -1,0 +1,119 @@
+[
+  {
+    "ring": "Ring 1 (0-15 km)",
+    "codePostal": "54440",
+    "commune": "Herserange",
+    "nbVentes": 70,
+    "prixM2_min": 556,
+    "prixM2_max": 6258,
+    "prixM2_median": 2073
+  },
+  {
+    "ring": "Ring 1 (0-15 km)",
+    "codePostal": "54590",
+    "commune": "Hussigny-Godbrange",
+    "nbVentes": 55,
+    "prixM2_min": 547,
+    "prixM2_max": 4643,
+    "prixM2_median": 2967
+  },
+  {
+    "ring": "Ring 1 (0-15 km)",
+    "codePostal": "54400",
+    "commune": "Longwy",
+    "nbVentes": 267,
+    "prixM2_min": 269,
+    "prixM2_max": 9833,
+    "prixM2_median": 2131
+  },
+  {
+    "ring": "Ring 1 (0-15 km)",
+    "codePostal": "54350",
+    "commune": "Mont-Saint-Martin",
+    "nbVentes": 59,
+    "prixM2_min": 609,
+    "prixM2_max": 3767,
+    "prixM2_median": 2543
+  },
+  {
+    "ring": "Ring 1 (0-15 km)",
+    "codePostal": "54430",
+    "commune": "Réhon",
+    "nbVentes": 64,
+    "prixM2_min": 234,
+    "prixM2_max": 7674,
+    "prixM2_median": 2039
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "54150",
+    "commune": "Avril",
+    "nbVentes": 211,
+    "prixM2_min": 293,
+    "prixM2_max": 9592,
+    "prixM2_median": 1966
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "54310",
+    "commune": "Homécourt",
+    "nbVentes": 105,
+    "prixM2_min": 209,
+    "prixM2_max": 5885,
+    "prixM2_median": 1643
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "54240",
+    "commune": "Jœuf",
+    "nbVentes": 134,
+    "prixM2_min": 212,
+    "prixM2_max": 5859,
+    "prixM2_median": 1174
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "54490",
+    "commune": "Joudreville",
+    "nbVentes": 90,
+    "prixM2_min": 258,
+    "prixM2_max": 5849,
+    "prixM2_median": 1269
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "55600",
+    "commune": "Montmédy",
+    "nbVentes": 120,
+    "prixM2_min": 337,
+    "prixM2_max": 9500,
+    "prixM2_median": 1265
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "55700",
+    "commune": "Stenay",
+    "nbVentes": 87,
+    "prixM2_min": 200,
+    "prixM2_max": 5571,
+    "prixM2_median": 694
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "54750",
+    "commune": "Trieux",
+    "nbVentes": 36,
+    "prixM2_min": 746,
+    "prixM2_max": 3068,
+    "prixM2_median": 2253
+  },
+  {
+    "ring": "Ring 2 (15-30 km)",
+    "codePostal": "54190",
+    "commune": "Villerupt",
+    "nbVentes": 157,
+    "prixM2_min": 385,
+    "prixM2_max": 8821,
+    "prixM2_median": 2549
+  }
+]

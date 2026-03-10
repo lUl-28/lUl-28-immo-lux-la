@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport Marché Immobilier — Ring 1 & Ring 2 — Frontière Luxembourg</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f4f6f9;
+      color: #1a2332;
+      padding: 40px 24px;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a2332 0%, #2d4a6b 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+    }
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    header h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    header p { font-size: 14px; opacity: 0.75; }
+    header .meta { margin-top: 20px; display: flex; gap: 24px; flex-wrap: wrap; }
+    header .meta-item { font-size: 13px; opacity: 0.85; }
+    header .meta-item strong { display: block; font-size: 18px; opacity: 1; }
+
+    /* ── Note Moselle ── */
+    .alert {
+      background: #fff8e1;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 13.5px;
+      color: #7c5a00;
+    }
+    .alert strong { display: block; margin-bottom: 4px; }
+
+    /* ── Section ring ── */
+    .ring-section { margin-bottom: 36px; }
+    .ring-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .ring-badge {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .ring1 .ring-badge { background: #dbeafe; color: #1d4ed8; }
+    .ring2 .ring-badge { background: #e0f2fe; color: #0369a1; }
+    .ring-desc { font-size: 13px; color: #64748b; }
+
+    /* ── Table ── */
+    .table-wrap { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: #f8fafc; }
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #64748b;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    thead th.right { text-align: right; }
+    tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+    tbody td { padding: 13px 16px; vertical-align: middle; }
+    tbody td.right { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .commune-name { font-weight: 600; color: #1a2332; }
+    .cp { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+    .price-median {
+      font-weight: 700;
+      font-size: 15px;
+      color: #1d4ed8;
+    }
+    .price-range { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+    .nb-ventes { color: #475569; }
+
+    /* ── Bar de position prix ── */
+    .bar-wrap { display: flex; align-items: center; gap: 8px; min-width: 160px; }
+    .bar-bg {
+      flex: 1;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .bar-fill { height: 100%; border-radius: 3px; }
+    .bar-label { font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+    /* couleurs par niveau médiane */
+    .niveau-1 .bar-fill { background: #10b981; }
+    .niveau-1 .bar-label { color: #065f46; }
+    .niveau-2 .bar-fill { background: #84cc16; }
+    .niveau-2 .bar-label { color: #3a5c00; }
+    .niveau-3 .bar-fill { background: #f59e0b; }
+    .niveau-3 .bar-label { color: #7c5a00; }
+    .niveau-4 .bar-fill { background: #ef4444; }
+    .niveau-4 .bar-label { color: #991b1b; }
+
+    /* ── Résumé par ring ── */
+    .ring-summary {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .summary-card {
+      background: white;
+      border-radius: 10px;
+      padding: 14px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      flex: 1;
+      min-width: 140px;
+    }
+    .summary-card .label { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 600; letter-spacing: 0.4px; }
+    .summary-card .value { font-size: 22px; font-weight: 700; color: #1a2332; margin-top: 4px; }
+    .summary-card .unit { font-size: 12px; color: #64748b; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+    }
+    footer strong { color: #64748b; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="badge">SCI L&A — Confidentiel</div>
+    <h1>Marché Immobilier — Frontière Luxembourg</h1>
+    <p>Prix de vente au m² par commune · Source : DVF 2024 (data.gouv.fr) · Transactions réelles</p>
+    <div class="meta">
+      <div class="meta-item"><strong>1 455</strong>transactions analysées</div>
+      <div class="meta-item"><strong>13</strong>communes couvertes</div>
+      <div class="meta-item"><strong>2024</strong>données</div>
+      <div class="meta-item"><strong>54 + 55</strong>Meurthe-et-Moselle & Meuse</div>
+    </div>
+  </header>
+
+  <!-- Avertissement Moselle -->
+  <div class="alert">
+    <strong>⚠️ Moselle (57) non disponible dans cette source</strong>
+    Les communes de Thionville, Yutz, Florange, Hayange, Fameck et Uckange relèvent du droit local Alsace-Moselle — leurs transactions ne figurent pas dans les DVF nationaux.
+    Source alternative recommandée : <strong>DVF+ (dvf.etalab.gouv.fr)</strong> ou <strong>Meilleurs Agents</strong>.
+  </div>
+
+  <!-- ══ RING 1 ══ -->
+  <div class="ring-section ring1">
+    <div class="ring-header">
+      <span class="ring-badge">Ring 1 · 0–15 km</span>
+      <span class="ring-desc">Communes à moins de 15 km de la frontière luxembourgeoise — forte attractivité frontaliers</span>
+    </div>
+
+    <div class="ring-summary">
+      <div class="summary-card">
+        <div class="label">Médiane ring</div>
+        <div class="value">2 131 <span class="unit">€/m²</span></div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Ventes totales</div>
+        <div class="value">515</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Communes</div>
+        <div class="value">5</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Fourchette</div>
+        <div class="value" style="font-size:16px">234 – 9 833 <span class="unit">€/m²</span></div>
+      </div>
+    </div>
+
+    <br>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Commune</th>
+            <th class="right">Ventes 2024</th>
+            <th class="right">Min €/m²</th>
+            <th class="right">Médiane €/m²</th>
+            <th class="right">Max €/m²</th>
+            <th>Niveau de marché</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="commune-name">Herserange</div><div class="cp">54440</div></td>
+            <td class="right nb-ventes">70</td>
+            <td class="right">556</td>
+            <td class="right"><span class="price-median">2 073</span></td>
+            <td class="right">6 258</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Hussigny-Godbrange</div><div class="cp">54590</div></td>
+            <td class="right nb-ventes">55</td>
+            <td class="right">547</td>
+            <td class="right"><span class="price-median">2 967</span></td>
+            <td class="right">4 643</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Longwy</div><div class="cp">54400</div></td>
+            <td class="right nb-ventes">267</td>
+            <td class="right">269</td>
+            <td class="right"><span class="price-median">2 131</span></td>
+            <td class="right">9 833</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:67%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Mont-Saint-Martin</div><div class="cp">54350</div></td>
+            <td class="right nb-ventes">59</td>
+            <td class="right">609</td>
+            <td class="right"><span class="price-median">2 543</span></td>
+            <td class="right">3 767</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Réhon</div><div class="cp">54430</div></td>
+            <td class="right nb-ventes">64</td>
+            <td class="right">234</td>
+            <td class="right"><span class="price-median">2 039</span></td>
+            <td class="right">7 674</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ RING 2 ══ -->
+  <div class="ring-section ring2">
+    <div class="ring-header">
+      <span class="ring-badge">Ring 2 · 15–30 km</span>
+      <span class="ring-desc">Communes à 15–30 km de la frontière — accessibles, fort potentiel locatif frontalier</span>
+    </div>
+
+    <div class="ring-summary">
+      <div class="summary-card">
+        <div class="label">Médiane ring</div>
+        <div class="value">1 643 <span class="unit">€/m²</span></div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Ventes totales</div>
+        <div class="value">940</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Communes</div>
+        <div class="value">8</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Fourchette</div>
+        <div class="value" style="font-size:16px">200 – 9 592 <span class="unit">€/m²</span></div>
+      </div>
+    </div>
+
+    <br>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Commune</th>
+            <th class="right">Ventes 2024</th>
+            <th class="right">Min €/m²</th>
+            <th class="right">Médiane €/m²</th>
+            <th class="right">Max €/m²</th>
+            <th>Niveau de marché</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="commune-name">Avril / Briey</div><div class="cp">54150</div></td>
+            <td class="right nb-ventes">211</td>
+            <td class="right">293</td>
+            <td class="right"><span class="price-median">1 966</span></td>
+            <td class="right">9 592</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:62%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Homécourt</div><div class="cp">54310</div></td>
+            <td class="right nb-ventes">105</td>
+            <td class="right">209</td>
+            <td class="right"><span class="price-median">1 643</span></td>
+            <td class="right">5 885</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:52%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Jœuf</div><div class="cp">54240</div></td>
+            <td class="right nb-ventes">134</td>
+            <td class="right">212</td>
+            <td class="right"><span class="price-median">1 174</span></td>
+            <td class="right">5 859</td>
+            <td>
+              <div class="bar-wrap niveau-2">
+                <div class="bar-bg"><div class="bar-fill" style="width:37%"></div></div>
+                <span class="bar-label">Accessible</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Joudreville</div><div class="cp">54490</div></td>
+            <td class="right nb-ventes">90</td>
+            <td class="right">258</td>
+            <td class="right"><span class="price-median">1 269</span></td>
+            <td class="right">5 849</td>
+            <td>
+              <div class="bar-wrap niveau-3">
+                <div class="bar-bg"><div class="bar-fill" style="width:40%"></div></div>
+                <span class="bar-label">Moyen</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Montmédy</div><div class="cp">55600</div></td>
+            <td class="right nb-ventes">120</td>
+            <td class="right">337</td>
+            <td class="right"><span class="price-median">1 265</span></td>
+            <td class="right">9 500</td>
+            <td>
+              <div class="bar-wrap niveau-3">
+                <div class="bar-bg"><div class="bar-fill" style="width:40%"></div></div>
+                <span class="bar-label">Moyen</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Stenay</div><div class="cp">55700</div></td>
+            <td class="right nb-ventes">87</td>
+            <td class="right">200</td>
+            <td class="right"><span class="price-median">694</span></td>
+            <td class="right">5 571</td>
+            <td>
+              <div class="bar-wrap niveau-1">
+                <div class="bar-bg"><div class="bar-fill" style="width:22%"></div></div>
+                <span class="bar-label">Très accessible</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Trieux</div><div class="cp">54750</div></td>
+            <td class="right nb-ventes">36</td>
+            <td class="right">746</td>
+            <td class="right"><span class="price-median">2 253</span></td>
+            <td class="right">3 068</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:71%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="commune-name">Villerupt</div><div class="cp">54190</div></td>
+            <td class="right nb-ventes">157</td>
+            <td class="right">385</td>
+            <td class="right"><span class="price-median">2 549</span></td>
+            <td class="right">8 821</td>
+            <td>
+              <div class="bar-wrap niveau-4">
+                <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
+                <span class="bar-label">Élevé</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Source :</strong> Demandes de Valeurs Foncières (DVF) 2024 — data.gouv.fr / Ministère des Finances · Biens : maisons & appartements · Ventes uniquement · Valeurs aberrantes exclues (&lt;200 et &gt;10 000 €/m²)</p>
+    <p style="margin-top:6px">Rapport généré pour <strong>SCI L&A</strong> · Usage interne — confidentiel</p>
+  </footer>
+
+</div>
+</body>
+</html>

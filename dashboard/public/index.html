@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Immo Lux L&A — Recherche</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f1f5f9; }
+    .btn-site {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+      color: white; text-decoration: none; white-space: nowrap;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-site:hover { opacity: 0.85; transform: translateY(-1px); }
+    tr:hover td { background: #f8fafc; }
+    .ring-header { background: linear-gradient(90deg, #1e293b, #334155); }
+  </style>
+</head>
+<body class="p-6">
+
+  <!-- En-tête -->
+  <div class="max-w-screen-xl mx-auto mb-6 flex items-center justify-between flex-wrap gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">🏠 Immo Lux <span class="text-blue-600">L&A</span></h1>
+      <p class="text-sm text-gray-500">Liens de recherche filtrés — Rayon 60 km frontière Luxembourg</p>
+    </div>
+    <div id="criteres" class="flex flex-wrap gap-2"></div>
+  </div>
+
+  <!-- Tableau principal -->
+  <div id="contenu" class="max-w-screen-xl mx-auto space-y-8"></div>
+
+  <!-- Annonces scraper -->
+  <div class="max-w-screen-xl mx-auto mt-10">
+    <h2 class="text-lg font-semibold text-gray-700 mb-3">📋 Annonces détectées automatiquement</h2>
+    <div id="annonces" class="text-gray-400 text-sm italic">Chargement...</div>
+  </div>
+
+<script>
+async function charger() {
+  const [liens, criteres, annonces] = await Promise.all([
+    fetch('/api/liens').then(r => r.json()),
+    fetch('/api/criteres').then(r => r.json()),
+    fetch('/api/annonces').then(r => r.json()),
+  ]);
+  afficherCriteres(criteres);
+  afficherTableau(liens);
+  afficherAnnonces(annonces);
+}
+
+function afficherCriteres(c) {
+  document.getElementById('criteres').innerHTML = [
+    { icon: '💶', val: c.prixMax.toLocaleString('fr-FR') + ' € max' },
+    { icon: '📐', val: c.surfaceMin + ' m² min' },
+    { icon: '🏢', val: c.nbLotsVisés + ' lots visés' },
+    { icon: '🔧', val: 'À rénover' },
+    { icon: '🅿️', val: 'Parking requis' },
+  ].map(i => `
+    <span class="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1 text-xs font-medium text-gray-700 shadow-sm">
+      ${i.icon} ${i.val}
+    </span>
+  `).join('');
+}
+
+const BADGE = { ring1: 'bg-red-100 text-red-700', ring2: 'bg-orange-100 text-orange-700', ring3: 'bg-yellow-100 text-yellow-700' };
+const RING_IDS = ['ring1', 'ring2', 'ring3'];
+
+function afficherTableau(rings) {
+  document.getElementById('contenu').innerHTML = rings.map((ring, ri) => {
+    const ringId = RING_IDS[ri];
+    const sites = ring.communes[0]?.liens || [];
+
+    return `
+      <!-- Ring : ${ring.label} -->
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+
+        <!-- Titre ring -->
+        <div class="ring-header px-6 py-3 flex items-center gap-3">
+          <span class="text-xl">${ring.badge}</span>
+          <div>
+            <h2 class="text-white font-bold text-base">${ring.label}</h2>
+            <p class="text-slate-400 text-xs">${ring.description} — ${ring.communes.length} communes</p>
+          </div>
+        </div>
+
+        <!-- Tableau -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-gray-50 border-b border-gray-100">
+                <th class="text-left px-4 py-2.5 font-semibold text-gray-500 text-xs uppercase tracking-wide w-40">Commune</th>
+                <th class="text-left px-3 py-2.5 font-semibold text-gray-500 text-xs uppercase tracking-wide w-16">CP</th>
+                ${sites.map(s => `
+                  <th class="text-center px-3 py-2.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">
+                    ${s.nom}
+                  </th>
+                `).join('')}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+              ${ring.communes.map(c => `
+                <tr>
+                  <td class="px-4 py-2.5 font-medium text-gray-700 whitespace-nowrap">${c.nom}</td>
+                  <td class="px-3 py-2.5">
+                    <span class="inline-flex px-2 py-0.5 rounded-full text-xs font-semibold ${BADGE[ringId]}">${c.cp}</span>
+                  </td>
+                  ${c.liens.map(l => `
+                    <td class="px-3 py-2 text-center">
+                      <a href="${l.url}" target="_blank" rel="noopener"
+                         class="btn-site"
+                         style="background:${l.couleur}">
+                        ↗ ${l.nom}
+                      </a>
+                    </td>
+                  `).join('')}
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function afficherAnnonces(annonces) {
+  const el = document.getElementById('annonces');
+  if (!annonces.length) {
+    el.innerHTML = `<div class="bg-white rounded-xl border border-dashed border-gray-200 p-6 text-center text-gray-400">
+      Aucune annonce détectée. Lance <code class="bg-gray-100 px-1 rounded">npm run scrape</code> pour démarrer.
+    </div>`;
+    return;
+  }
+  const triees = [...annonces].sort((a, b) => (a.prix || 999999) - (b.prix || 999999));
+  el.innerHTML = `
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      ${triees.map(a => `
+        <a href="${a.lien}" target="_blank" rel="noopener"
+           class="bg-white rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow block">
+          <div class="font-semibold text-gray-700 text-sm mb-1">${a.titre}</div>
+          <div class="flex gap-3 text-sm">
+            ${a.prix ? `<span class="font-bold text-blue-600">${a.prix.toLocaleString('fr-FR')} €</span>` : ''}
+            ${a.surface ? `<span class="text-gray-500">${a.surface} m²</span>` : ''}
+          </div>
+          <div class="mt-1 text-xs text-gray-400">📍 ${a.ville} (${a.codePostal})</div>
+        </a>
+      `).join('')}
+    </div>
+    <p class="text-xs text-gray-400 mt-2">${annonces.length} annonce(s) en base</p>
+  `;
+}
+
+charger();
+</script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marché Immobilier — SCI L&A</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 52px;
+    }
+    nav .logo { font-weight: 700; font-size: 15px; color: #f8fafc; letter-spacing: 0.3px; }
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav a:hover { color: #f8fafc; }
+    nav a.active { color: #60a5fa; border-bottom-color: #60a5fa; }
+
+    /* ── Layout ── */
+    .page { max-width: 1080px; margin: 0 auto; padding: 36px 24px; }
+
+    /* ── Header ── */
+    .page-header { margin-bottom: 32px; }
+    .page-header h1 { font-size: 22px; font-weight: 700; color: #f8fafc; }
+    .page-header p { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    /* ── Stats globales ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .stat-card .label { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+    .stat-card .value { font-size: 26px; font-weight: 700; color: #f8fafc; margin-top: 6px; line-height: 1; }
+    .stat-card .unit { font-size: 12px; color: #64748b; margin-top: 4px; }
+
+    /* ── Comparateur ── */
+    .comparateur {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 36px;
+    }
+    .comparateur h2 { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 6px; }
+    .comparateur p { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+    .comp-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto auto;
+      gap: 12px;
+      align-items: end;
+    }
+    .field label { display: block; font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .field input, .field select {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #f8fafc;
+      font-size: 14px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .field input:focus, .field select:focus { border-color: #60a5fa; }
+    .field select option { background: #1e293b; }
+    .btn-comparer {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s;
+    }
+    .btn-comparer:hover { background: #2563eb; }
+    .btn-reset {
+      background: transparent;
+      color: #64748b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color .15s, border-color .15s;
+    }
+    .btn-reset:hover { color: #f8fafc; border-color: #64748b; }
+
+    /* ── Résultat comparateur ── */
+    #comp-result {
+      margin-top: 20px;
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: none;
+    }
+    #comp-result.show { display: block; }
+    #comp-result.bon-deal { background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.3); }
+    #comp-result.dans-marche { background: rgba(234,179,8,.1); border: 1px solid rgba(234,179,8,.3); }
+    #comp-result.au-dessus { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3); }
+    .result-icon { font-size: 28px; margin-bottom: 8px; }
+    .result-verdict { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .result-detail { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+    .result-numbers { display: flex; gap: 24px; margin-top: 14px; flex-wrap: wrap; }
+    .result-num { text-align: center; }
+    .result-num .rn-label { font-size: 10px; text-transform: uppercase; color: #64748b; font-weight: 600; letter-spacing: 0.4px; }
+    .result-num .rn-value { font-size: 18px; font-weight: 700; margin-top: 2px; }
+    .result-num.annonce .rn-value { color: #f8fafc; }
+    .result-num.marche .rn-value { color: #60a5fa; }
+    .result-num.ecart .rn-value { }
+    .bon-deal .result-num.ecart .rn-value { color: #10b981; }
+    .dans-marche .result-num.ecart .rn-value { color: #eab308; }
+    .au-dessus .result-num.ecart .rn-value { color: #ef4444; }
+
+    /* ── Ring sections ── */
+    .ring-block { margin-bottom: 32px; }
+    .ring-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .ring-pill {
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .ring1 .ring-pill { background: rgba(59,130,246,.15); color: #60a5fa; border: 1px solid rgba(59,130,246,.3); }
+    .ring2 .ring-pill { background: rgba(6,182,212,.1); color: #22d3ee; border: 1px solid rgba(6,182,212,.25); }
+    .ring-sub { font-size: 12px; color: #64748b; }
+
+    /* ── Table ── */
+    .table-wrap {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    thead tr { background: #162032; }
+    thead th {
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #64748b;
+      border-bottom: 1px solid #334155;
+    }
+    thead th.right { text-align: right; }
+    tbody tr { border-bottom: 1px solid #1e2d3d; transition: background .1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #1a2744; }
+    tbody td { padding: 13px 16px; vertical-align: middle; }
+    tbody td.right { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .commune-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
+    .cp-tag { display: inline-block; background: #0f172a; border: 1px solid #334155; border-radius: 4px; padding: 1px 6px; font-size: 11px; color: #64748b; margin-top: 3px; }
+
+    .price-median { font-weight: 700; font-size: 15px; color: #60a5fa; }
+    .price-range { font-size: 11px; color: #475569; margin-top: 2px; }
+
+    /* ── Barre de niveau ── */
+    .bar-wrap { display: flex; align-items: center; gap: 8px; }
+    .bar-bg { flex: 1; height: 5px; background: #0f172a; border-radius: 3px; overflow: hidden; min-width: 80px; }
+    .bar-fill { height: 100%; border-radius: 3px; transition: width .3s; }
+    .bar-label { font-size: 11px; font-weight: 600; white-space: nowrap; min-width: 70px; }
+
+    .niv-1 .bar-fill { background: #10b981; }
+    .niv-1 .bar-label { color: #10b981; }
+    .niv-2 .bar-fill { background: #84cc16; }
+    .niv-2 .bar-label { color: #84cc16; }
+    .niv-3 .bar-fill { background: #f59e0b; }
+    .niv-3 .bar-label { color: #f59e0b; }
+    .niv-4 .bar-fill { background: #ef4444; }
+    .niv-4 .bar-label { color: #ef4444; }
+
+    /* ── Alert Moselle ── */
+    .alert-moselle {
+      background: rgba(245,158,11,.08);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #d97706;
+      margin-bottom: 32px;
+    }
+    .alert-moselle strong { color: #f59e0b; }
+
+    /* ── Source ── */
+    .source { font-size: 11px; color: #334155; text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #1e293b; }
+
+    @media (max-width: 700px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .comp-inputs { grid-template-columns: 1fr 1fr; }
+      .btn-comparer, .btn-reset { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">🏠 SCI L&A</span>
+  <a href="/marche" class="active">Marché</a>
+  <a href="/">Annonces</a>
+</nav>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Marché Immobilier — Frontière Luxembourg</h1>
+    <p>Prix réels de vente au m² · Source DVF 2024 (data.gouv.fr) · Transactions maisons & appartements</p>
+  </div>
+
+  <!-- Stats globales -->
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card">
+      <div class="label">Transactions</div>
+      <div class="value" id="stat-ventes">—</div>
+      <div class="unit">ventes 2024 analysées</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Communes</div>
+      <div class="value" id="stat-communes">—</div>
+      <div class="unit">Ring 1 & Ring 2</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Médiane Ring 1</div>
+      <div class="value" id="stat-med-r1">—</div>
+      <div class="unit">€/m² (0–15 km LU)</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Médiane Ring 2</div>
+      <div class="value" id="stat-med-r2">—</div>
+      <div class="unit">€/m² (15–30 km LU)</div>
+    </div>
+  </div>
+
+  <!-- Comparateur -->
+  <div class="comparateur">
+    <h2>Comparateur d'annonce</h2>
+    <p>Saisir le prix total et la surface d'un bien pour savoir s'il est au-dessus ou en-dessous du marché.</p>
+    <div class="comp-inputs">
+      <div class="field">
+        <label>Commune</label>
+        <select id="comp-commune">
+          <option value="">— Choisir —</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Prix de vente (€)</label>
+        <input type="number" id="comp-prix" placeholder="ex: 130 000" min="0">
+      </div>
+      <div class="field">
+        <label>Surface (m²)</label>
+        <input type="number" id="comp-surface" placeholder="ex: 120" min="1">
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-comparer" onclick="comparer()">Comparer</button>
+        <button class="btn-reset" onclick="resetComp()">✕</button>
+      </div>
+    </div>
+
+    <div id="comp-result">
+      <div class="result-icon" id="res-icon"></div>
+      <div class="result-verdict" id="res-verdict"></div>
+      <div class="result-detail" id="res-detail"></div>
+      <div class="result-numbers">
+        <div class="result-num annonce">
+          <div class="rn-label">Prix annonce</div>
+          <div class="rn-value" id="res-prix-m2">—</div>
+          <div style="font-size:11px;color:#64748b">€/m²</div>
+        </div>
+        <div class="result-num marche">
+          <div class="rn-label">Médiane marché</div>
+          <div class="rn-value" id="res-median">—</div>
+          <div style="font-size:11px;color:#64748b">€/m²</div>
+        </div>
+        <div class="result-num ecart">
+          <div class="rn-label">Écart</div>
+          <div class="rn-value" id="res-ecart">—</div>
+          <div style="font-size:11px;color:#64748b">vs médiane</div>
+        </div>
+        <div class="result-num" style="text-align:left;flex:1">
+          <div class="rn-label">Fourchette commune</div>
+          <div style="font-size:13px;color:#94a3b8;margin-top:4px" id="res-fourchette">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Moselle -->
+  <div class="alert-moselle">
+    <strong>⚠️ Moselle (57) non disponible</strong> — Thionville, Yutz, Florange, Hayange, Fameck, Uckange : hors DVF national (droit local Alsace-Moselle). Source alternative : <strong>dvf.etalab.gouv.fr</strong>
+  </div>
+
+  <!-- Tables par ring -->
+  <div id="rings-container"></div>
+
+  <div class="source">
+    Source : Demandes de Valeurs Foncières (DVF) 2024 — data.gouv.fr / Ministère des Finances ·
+    Ventes uniquement · Maisons & appartements · Valeurs aberrantes exclues (&lt;200 et &gt;10 000 €/m²)
+  </div>
+
+</div>
+
+<script>
+let DATA = [];
+
+async function init() {
+  const res = await fetch('/api/marche');
+  DATA = await res.json();
+
+  // Stats globales
+  const r1 = DATA.filter(d => d.ring.includes('Ring 1'));
+  const r2 = DATA.filter(d => d.ring.includes('Ring 2'));
+  const totalVentes = DATA.reduce((s, d) => s + d.nbVentes, 0);
+  const medR1 = Math.round(r1.map(d => d.prixM2_median).reduce((a,b)=>a+b,0) / r1.length);
+  const medR2 = Math.round(r2.map(d => d.prixM2_median).reduce((a,b)=>a+b,0) / r2.length);
+  document.getElementById('stat-ventes').textContent = totalVentes.toLocaleString('fr-FR');
+  document.getElementById('stat-communes').textContent = DATA.length;
+  document.getElementById('stat-med-r1').textContent = medR1.toLocaleString('fr-FR');
+  document.getElementById('stat-med-r2').textContent = medR2.toLocaleString('fr-FR');
+
+  // Populate select commune
+  const sel = document.getElementById('comp-commune');
+  DATA.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d.commune;
+    opt.textContent = `${d.commune} (${d.codePostal}) — ${d.ring}`;
+    sel.appendChild(opt);
+  });
+
+  // Rendu tables
+  renderRings(r1, r2);
+}
+
+function niveau(median) {
+  if (median <= 800)  return { cls: 'niv-1', label: 'Très accessible', pct: Math.round(median/3000*100) };
+  if (median <= 1400) return { cls: 'niv-2', label: 'Accessible',       pct: Math.round(median/3000*100) };
+  if (median <= 2000) return { cls: 'niv-3', label: 'Moyen',            pct: Math.round(median/3000*100) };
+  return                     { cls: 'niv-4', label: 'Élevé',            pct: Math.min(Math.round(median/3000*100),100) };
+}
+
+function renderRings(r1, r2) {
+  const container = document.getElementById('rings-container');
+  container.innerHTML = renderBlock('Ring 1 (0–15 km)', 'ring1', r1) + renderBlock('Ring 2 (15–30 km)', 'ring2', r2);
+}
+
+function renderBlock(title, cls, rows) {
+  const sub = cls === 'ring1'
+    ? 'Communes à moins de 15 km de la frontière — forte attractivité frontaliers'
+    : 'Communes à 15–30 km de la frontière — rapport prix/accessibilité optimal';
+
+  const rowsHtml = rows.map(d => {
+    const niv = niveau(d.prixM2_median);
+    return `
+      <tr>
+        <td>
+          <div class="commune-name">${d.commune}</div>
+          <span class="cp-tag">${d.codePostal}</span>
+        </td>
+        <td class="right">${d.nbVentes}</td>
+        <td class="right">${d.prixM2_min.toLocaleString('fr-FR')}</td>
+        <td class="right"><span class="price-median">${d.prixM2_median.toLocaleString('fr-FR')}</span></td>
+        <td class="right">${d.prixM2_max.toLocaleString('fr-FR')}</td>
+        <td>
+          <div class="bar-wrap ${niv.cls}">
+            <div class="bar-bg"><div class="bar-fill" style="width:${niv.pct}%"></div></div>
+            <span class="bar-label">${niv.label}</span>
+          </div>
+        </td>
+      </tr>`;
+  }).join('');
+
+  return `
+    <div class="ring-block ${cls}">
+      <div class="ring-title">
+        <span class="ring-pill">${title}</span>
+        <span class="ring-sub">${sub}</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Commune</th>
+              <th class="right">Ventes 2024</th>
+              <th class="right">Min €/m²</th>
+              <th class="right">Médiane €/m²</th>
+              <th class="right">Max €/m²</th>
+              <th>Niveau</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+function comparer() {
+  const communeNom = document.getElementById('comp-commune').value;
+  const prix = parseFloat(document.getElementById('comp-prix').value);
+  const surface = parseFloat(document.getElementById('comp-surface').value);
+
+  if (!communeNom || !prix || !surface) {
+    alert('Remplis les 3 champs pour comparer.');
+    return;
+  }
+
+  const commune = DATA.find(d => d.commune === communeNom);
+  if (!commune) return;
+
+  const prixM2Annonce = Math.round(prix / surface);
+  const median = commune.prixM2_median;
+  const ecartPct = Math.round(((prixM2Annonce - median) / median) * 100);
+  const ecartAbs = prixM2Annonce - median;
+
+  const result = document.getElementById('comp-result');
+  result.className = 'show';
+
+  document.getElementById('res-prix-m2').textContent = prixM2Annonce.toLocaleString('fr-FR');
+  document.getElementById('res-median').textContent = median.toLocaleString('fr-FR');
+  document.getElementById('res-ecart').textContent = (ecartPct >= 0 ? '+' : '') + ecartPct + '%';
+  document.getElementById('res-fourchette').textContent =
+    `${commune.prixM2_min.toLocaleString('fr-FR')} – ${commune.prixM2_max.toLocaleString('fr-FR')} €/m²`;
+
+  if (ecartPct <= -10) {
+    result.className = 'show bon-deal';
+    document.getElementById('res-icon').textContent = '✅';
+    document.getElementById('res-verdict').textContent = 'Bon deal — En dessous du marché';
+    document.getElementById('res-detail').textContent =
+      `À ${prixM2Annonce} €/m², ce bien est ${Math.abs(ecartPct)}% sous la médiane de ${communeNom} (${median} €/m²). `+
+      `Soit ${Math.abs(ecartAbs).toLocaleString('fr-FR')} €/m² de moins que le marché. Opportunité intéressante.`;
+  } else if (ecartPct <= 10) {
+    result.className = 'show dans-marche';
+    document.getElementById('res-icon').textContent = '🟡';
+    document.getElementById('res-verdict').textContent = 'Dans le marché — Prix cohérent';
+    document.getElementById('res-detail').textContent =
+      `À ${prixM2Annonce} €/m², ce bien est dans la fourchette normale de ${communeNom}. `+
+      `Écart de ${ecartPct >= 0 ? '+' : ''}${ecartPct}% par rapport à la médiane (${median} €/m²).`;
+  } else {
+    result.className = 'show au-dessus';
+    document.getElementById('res-icon').textContent = '🔴';
+    document.getElementById('res-verdict').textContent = 'Au-dessus du marché — Prix élevé';
+    document.getElementById('res-detail').textContent =
+      `À ${prixM2Annonce} €/m², ce bien est ${ecartPct}% au-dessus de la médiane de ${communeNom} (${median} €/m²). `+
+      `Soit ${ecartAbs.toLocaleString('fr-FR')} €/m² de plus que le marché. Négociation recommandée.`;
+  }
+}
+
+function resetComp() {
+  document.getElementById('comp-commune').value = '';
+  document.getElementById('comp-prix').value = '';
+  document.getElementById('comp-surface').value = '';
+  document.getElementById('comp-result').className = '';
+}
+
+init();
+</script>
+</body>
+</html>
