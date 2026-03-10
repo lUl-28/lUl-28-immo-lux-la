@@ -100,9 +100,11 @@ const SITES = [
     id: 'seloger',
     nom: 'SeLoger',
     couleur: '#0077cc',
-    url: ({ cp }) => {
-      const places = encodeURIComponent(JSON.stringify([{ div: 0, cp: parseInt(cp) }]));
-      return `https://www.seloger.com/list.htm?projects=2&types=1%2C2&natures=1&price=NaN%2F${P}&surface=${S}%2FNaN&places=${places}`;
+    url: ({ nom, cp }) => {
+      const slug = nom.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      return `https://www.seloger.com/immobilier/achat/maison,immeuble/${slug}-${cp}/?PRIX_MAX=${P}&SUR_MIN=${S}`;
     },
   },
   {
