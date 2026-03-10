@@ -1,168 +1,663 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Immo Lux L&A — Recherche</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annonces — SCI L&A</title>
   <style>
-    body { font-family: system-ui, sans-serif; background: #f1f5f9; }
-    .btn-site {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
-      color: white; text-decoration: none; white-space: nowrap;
-      transition: opacity 0.15s, transform 0.15s;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
     }
-    .btn-site:hover { opacity: 0.85; transform: translateY(-1px); }
-    tr:hover td { background: #f8fafc; }
-    .ring-header { background: linear-gradient(90deg, #1e293b, #334155); }
+
+    /* ── Nav ── */
+    nav {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 52px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo { font-weight: 700; font-size: 15px; color: #f8fafc; }
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    nav a:hover { color: #f8fafc; }
+    nav a.active { color: #60a5fa; border-bottom-color: #60a5fa; }
+    nav .nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+
+    /* ── Notif badge ── */
+    .notif-badge {
+      display: none;
+      background: #ef4444;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+    /* ── Page layout ── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+    /* ── Header ── */
+    .page-header { margin-bottom: 28px; }
+    .page-header h1 { font-size: 22px; font-weight: 700; color: #f8fafc; }
+    .page-header p { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    /* ── Stats ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 640px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+    .stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .stat-card .label { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+    .stat-card .value { font-size: 26px; font-weight: 700; color: #f8fafc; margin-top: 4px; line-height: 1; }
+    .stat-card .value.green { color: #34d399; }
+    .stat-card .sub { font-size: 11px; color: #475569; margin-top: 3px; }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .toolbar select {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 13px;
+      padding: 8px 12px;
+      outline: none;
+      cursor: pointer;
+    }
+    .toolbar select:focus { border-color: #60a5fa; }
+    .toolbar select option { background: #1e293b; }
+    .btn-refresh {
+      margin-left: auto;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity .15s;
+    }
+    .btn-refresh:hover { opacity: 0.85; }
+    .btn-refresh:disabled { opacity: 0.5; cursor: not-allowed; }
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .refresh-info { font-size: 11px; color: #475569; }
+
+    /* ── Listings grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color .15s, transform .15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { border-color: #475569; transform: translateY(-2px); }
+    .card.is-new { border-color: #f59e0b; }
+    .card.is-new::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+
+    /* ── Card header ── */
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .card-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .badge-type-maison { background: #1d4ed8; color: #bfdbfe; }
+    .badge-type-immeuble { background: #7c3aed; color: #ddd6fe; }
+    .badge-ring1 { background: #dc2626; color: #fecaca; }
+    .badge-ring2 { background: #ea580c; color: #fed7aa; }
+    .badge-ring3 { background: #ca8a04; color: #fef08a; }
+    .badge-new { background: #f59e0b; color: #1c1917; animation: pulse 1.5s ease-in-out infinite; }
+    .badge-deal { background: #059669; color: #d1fae5; }
+
+    /* ── Card title ── */
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.4;
+    }
+
+    /* ── Card price ── */
+    .card-price { display: flex; align-items: baseline; gap: 10px; }
+    .price-main { font-size: 24px; font-weight: 700; color: #60a5fa; }
+    .price-m2 { font-size: 13px; color: #64748b; }
+    .price-m2.good { color: #34d399; }
+
+    /* ── Card details ── */
+    .card-details { display: flex; gap: 16px; flex-wrap: wrap; }
+    .detail { display: flex; align-items: center; gap: 5px; font-size: 13px; color: #94a3b8; }
+    .detail-icon { font-size: 14px; }
+
+    /* ── Card location ── */
+    .card-location {
+      font-size: 12px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── Card footer ── */
+    .card-footer { margin-top: auto; }
+    .btn-voir {
+      display: block;
+      text-align: center;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 8px;
+      transition: background .15s, border-color .15s;
+    }
+    .btn-voir:hover { background: #1e3a5f; border-color: #60a5fa; }
+
+    /* ── Empty state ── */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 24px;
+      background: #1e293b;
+      border: 1px dashed #334155;
+      border-radius: 16px;
+    }
+    .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-state h3 { font-size: 18px; font-weight: 600; color: #f1f5f9; margin-bottom: 8px; }
+    .empty-state p { font-size: 13px; color: #64748b; max-width: 380px; margin: 0 auto 24px; line-height: 1.6; }
+
+    /* ── Scraping progress ── */
+    .scraping-bar {
+      display: none;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .scraping-bar.visible { display: flex; }
+    .scraping-dot {
+      width: 8px; height: 8px;
+      background: #f59e0b;
+      border-radius: 50%;
+      animation: pulse 1s ease-in-out infinite;
+      flex-shrink: 0;
+    }
   </style>
 </head>
-<body style="margin:0;padding:0;font-family:system-ui,sans-serif;background:#f1f5f9;">
+<body>
 
   <!-- Nav -->
-  <nav style="background:#1e293b;border-bottom:1px solid #334155;padding:0 32px;display:flex;align-items:center;gap:32px;height:52px;">
-    <span style="font-weight:700;font-size:15px;color:#f8fafc;">🏠 SCI L&A</span>
-    <a href="/marche" style="color:#94a3b8;text-decoration:none;font-size:13px;font-weight:500;padding:4px 0;border-bottom:2px solid transparent;">Marché</a>
-    <a href="/" style="color:#60a5fa;text-decoration:none;font-size:13px;font-weight:500;padding:4px 0;border-bottom:2px solid #60a5fa;">Annonces</a>
+  <nav>
+    <span class="logo">🏠 SCI L&A</span>
+    <a href="/marche">Marché</a>
+    <a href="/" class="active">Annonces</a>
+    <div class="nav-right">
+      <span id="notif-badge" class="notif-badge"></span>
+    </div>
   </nav>
 
-  <div style="padding:24px;">
+  <div class="page">
 
-  <!-- En-tête -->
-  <div class="max-w-screen-xl mx-auto mb-6 flex items-center justify-between flex-wrap gap-4">
-    <div>
-      <h1 class="text-2xl font-bold text-gray-800">🏠 Immo Lux <span class="text-blue-600">L&A</span></h1>
-      <p class="text-sm text-gray-500">Liens de recherche filtrés — Rayon 60 km frontière Luxembourg</p>
+    <!-- Header -->
+    <div class="page-header">
+      <h1>Annonces correspondant à vos critères</h1>
+      <p>≤ 200 000 € · ≥ 100 m² · À rénover · Parking · Rayon 60 km frontière Luxembourg</p>
     </div>
-    <div id="criteres" class="flex flex-wrap gap-2"></div>
-  </div>
 
-  <!-- Tableau principal -->
-  <div id="contenu" class="max-w-screen-xl mx-auto space-y-8"></div>
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="label">Total annonces</div>
+        <div class="value" id="stat-total">—</div>
+        <div class="sub">en base</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Nouvelles</div>
+        <div class="value green" id="stat-new">—</div>
+        <div class="sub">dernières 48h</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Dernière MAJ</div>
+        <div class="value" id="stat-date" style="font-size:14px;padding-top:6px;">—</div>
+        <div class="sub" id="stat-source">entreparticuliers.com</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Prochain scan</div>
+        <div class="value" id="stat-next" style="font-size:14px;padding-top:6px;">—</div>
+        <div class="sub">automatique</div>
+      </div>
+    </div>
 
-  <!-- Annonces scraper -->
-  <div class="max-w-screen-xl mx-auto mt-10">
-    <h2 class="text-lg font-semibold text-gray-700 mb-3">📋 Annonces détectées automatiquement</h2>
-    <div id="annonces" class="text-gray-400 text-sm italic">Chargement...</div>
+    <!-- Barre de scraping en cours -->
+    <div class="scraping-bar" id="scraping-bar">
+      <div class="scraping-dot"></div>
+      <span>Scan en cours sur entreparticuliers.com — les nouvelles annonces apparaîtront automatiquement...</span>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <select id="filter-ring" onchange="filtrerEtAfficher()">
+        <option value="">Tous les rings</option>
+        <option value="ring1">Ring 1 — 0 à 15 km</option>
+        <option value="ring2">Ring 2 — 15 à 30 km</option>
+        <option value="ring3">Ring 3 — 30 à 45 km</option>
+      </select>
+      <select id="filter-type" onchange="filtrerEtAfficher()">
+        <option value="">Tous les types</option>
+        <option value="maison">Maison</option>
+        <option value="immeuble">Immeuble</option>
+      </select>
+      <select id="filter-sort" onchange="filtrerEtAfficher()">
+        <option value="new">Plus récentes d'abord</option>
+        <option value="prix-asc">Prix croissant</option>
+        <option value="prix-desc">Prix décroissant</option>
+        <option value="m2">Meilleur prix/m²</option>
+      </select>
+      <span class="refresh-info" id="refresh-info"></span>
+      <button class="btn-refresh" id="btn-refresh" onclick="declencherScan()">
+        <div class="spinner" id="spinner"></div>
+        <span id="btn-text">⟳ Actualiser</span>
+      </button>
+    </div>
+
+    <!-- Grille d'annonces -->
+    <div class="grid" id="grid">
+      <div class="empty-state">
+        <div class="icon">⏳</div>
+        <h3>Chargement...</h3>
+        <p>Récupération des annonces en cours.</p>
+      </div>
+    </div>
+
   </div>
 
 <script>
-async function charger() {
-  const [liens, criteres, annonces] = await Promise.all([
-    fetch('/api/liens').then(r => r.json()),
-    fetch('/api/criteres').then(r => r.json()),
-    fetch('/api/annonces').then(r => r.json()),
-  ]);
-  afficherCriteres(criteres);
-  afficherTableau(liens);
-  afficherAnnonces(annonces);
+// ============================================================
+// CONFIG
+// ============================================================
+const POLL_INTERVAL = 5 * 60 * 1000; // 5 minutes
+const NEW_THRESHOLD_H = 48; // heures pour badge "Nouveau"
+
+// Codes postaux par ring (pour classification)
+const RING_MAP = {
+  ring1: ['54350','54400','54180','54590','54430','54440','57390','57840','57330','57570','57480','57970','57100','57180'],
+  ring2: ['54190','54750','54240','54310','54150','54490','57185','57270','57290','57310','57360','57700','57525','57730','57110'],
+  ring3: ['54800','54560','54111','54380','54250','57190','57280','57300','57210','57160','57130','57450','57220','57240','57250'],
+};
+
+function getRing(cp) {
+  if (RING_MAP.ring1.includes(cp)) return 'ring1';
+  if (RING_MAP.ring2.includes(cp)) return 'ring2';
+  if (RING_MAP.ring3.includes(cp)) return 'ring3';
+  return 'ring3';
 }
 
-function afficherCriteres(c) {
-  document.getElementById('criteres').innerHTML = [
-    { icon: '💶', val: c.prixMax.toLocaleString('fr-FR') + ' € max' },
-    { icon: '📐', val: c.surfaceMin + ' m² min' },
-    { icon: '🏢', val: c.nbLotsVisés + ' lots visés' },
-    { icon: '🔧', val: 'À rénover' },
-    { icon: '🅿️', val: 'Parking requis' },
-  ].map(i => `
-    <span class="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1 text-xs font-medium text-gray-700 shadow-sm">
-      ${i.icon} ${i.val}
-    </span>
-  `).join('');
+const RING_LABELS = { ring1: 'Ring 1', ring2: 'Ring 2', ring3: 'Ring 3' };
+const RING_BADGE_CLASS = { ring1: 'badge-ring1', ring2: 'badge-ring2', ring3: 'badge-ring3' };
+
+// ============================================================
+// ÉTAT
+// ============================================================
+let toutesAnnonces = [];
+let seenIds = new Set(JSON.parse(localStorage.getItem('immo_seen_ids') || '[]'));
+let lastPoll = null;
+let pollTimer = null;
+
+// ============================================================
+// NOTIFICATIONS NAVIGATEUR
+// ============================================================
+function demanderPermissionNotif() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
 }
 
-const BADGE = { ring1: 'bg-red-100 text-red-700', ring2: 'bg-orange-100 text-orange-700', ring3: 'bg-yellow-100 text-yellow-700' };
-const RING_IDS = ['ring1', 'ring2', 'ring3'];
-
-function afficherTableau(rings) {
-  document.getElementById('contenu').innerHTML = rings.map((ring, ri) => {
-    const ringId = RING_IDS[ri];
-    const sites = ring.communes[0]?.liens || [];
-
-    return `
-      <!-- Ring : ${ring.label} -->
-      <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-
-        <!-- Titre ring -->
-        <div class="ring-header px-6 py-3 flex items-center gap-3">
-          <span class="text-xl">${ring.badge}</span>
-          <div>
-            <h2 class="text-white font-bold text-base">${ring.label}</h2>
-            <p class="text-slate-400 text-xs">${ring.description} — ${ring.communes.length} communes</p>
-          </div>
-        </div>
-
-        <!-- Tableau -->
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-gray-50 border-b border-gray-100">
-                <th class="text-left px-4 py-2.5 font-semibold text-gray-500 text-xs uppercase tracking-wide w-40">Commune</th>
-                <th class="text-left px-3 py-2.5 font-semibold text-gray-500 text-xs uppercase tracking-wide w-16">CP</th>
-                ${sites.map(s => `
-                  <th class="text-center px-3 py-2.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">
-                    ${s.nom}
-                  </th>
-                `).join('')}
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-50">
-              ${ring.communes.map(c => `
-                <tr>
-                  <td class="px-4 py-2.5 font-medium text-gray-700 whitespace-nowrap">${c.nom}</td>
-                  <td class="px-3 py-2.5">
-                    <span class="inline-flex px-2 py-0.5 rounded-full text-xs font-semibold ${BADGE[ringId]}">${c.cp}</span>
-                  </td>
-                  ${c.liens.map(l => `
-                    <td class="px-3 py-2 text-center">
-                      <a href="${l.url}" target="_blank" rel="noopener"
-                         class="btn-site"
-                         style="background:${l.couleur}">
-                        ↗ ${l.nom}
-                      </a>
-                    </td>
-                  `).join('')}
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    `;
-  }).join('');
+function envoyerNotif(nb, annonces) {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const titre = `${nb} nouvelle${nb > 1 ? 's' : ''} annonce${nb > 1 ? 's' : ''} — SCI L&A`;
+  const corps = annonces.slice(0, 3).map(a =>
+    `${a.titre} — ${a.prix ? a.prix.toLocaleString('fr-FR') + ' €' : '?'}`
+  ).join('\n');
+  const notif = new Notification(titre, {
+    body: corps,
+    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><text y="24" font-size="24">🏠</text></svg>',
+    tag: 'immo-lux',
+  });
+  notif.onclick = () => { window.focus(); notif.close(); };
 }
 
-function afficherAnnonces(annonces) {
-  const el = document.getElementById('annonces');
-  if (!annonces.length) {
-    el.innerHTML = `<div class="bg-white rounded-xl border border-dashed border-gray-200 p-6 text-center text-gray-400">
-      Aucune annonce détectée. Lance <code class="bg-gray-100 px-1 rounded">npm run scrape</code> pour démarrer.
-    </div>`;
+// ============================================================
+// POLLING
+// ============================================================
+async function poll(silent = false) {
+  try {
+    const [annonces, status] = await Promise.all([
+      fetch('/api/annonces').then(r => r.json()),
+      fetch('/api/status').then(r => r.json()),
+    ]);
+
+    // Détection nouvelles annonces (non vues)
+    const nouvelles = annonces.filter(a => !seenIds.has(a.id));
+    if (!silent && nouvelles.length > 0 && lastPoll !== null) {
+      envoyerNotif(nouvelles.length, nouvelles);
+      afficherBadgeNotif(nouvelles.length);
+    }
+
+    toutesAnnonces = annonces;
+    lastPoll = new Date();
+
+    majStats(annonces, status);
+    majScrapingBar(status);
+    filtrerEtAfficher();
+    majRefreshInfo();
+
+  } catch (err) {
+    console.error('Poll error:', err);
+  }
+}
+
+function demarrerPoll() {
+  poll();
+  clearInterval(pollTimer);
+  pollTimer = setInterval(poll, POLL_INTERVAL);
+}
+
+// ============================================================
+// SCAN MANUEL
+// ============================================================
+async function declencherScan() {
+  const btn = document.getElementById('btn-refresh');
+  const spinner = document.getElementById('spinner');
+  const txt = document.getElementById('btn-text');
+  btn.disabled = true;
+  spinner.style.display = 'block';
+  txt.textContent = 'Scan en cours...';
+  document.getElementById('scraping-bar').classList.add('visible');
+
+  try {
+    await fetch('/api/refresh', { method: 'POST' });
+    // Attendre 5s puis re-poll
+    await new Promise(r => setTimeout(r, 5000));
+    await poll(true);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    txt.textContent = '⟳ Actualiser';
+  }
+}
+
+// ============================================================
+// AFFICHAGE STATS
+// ============================================================
+function majStats(annonces, status) {
+  document.getElementById('stat-total').textContent = annonces.length;
+
+  const now = Date.now();
+  const nb48h = annonces.filter(a => {
+    if (!a.dateScrap) return false;
+    return (now - new Date(a.dateScrap).getTime()) < NEW_THRESHOLD_H * 3600 * 1000;
+  }).length;
+  document.getElementById('stat-new').textContent = nb48h;
+
+  if (status.derniereScrape) {
+    const d = new Date(status.derniereScrape);
+    document.getElementById('stat-date').textContent = d.toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+  } else {
+    document.getElementById('stat-date').textContent = 'Jamais';
+  }
+
+  if (status.prochaineScrape && !status.running) {
+    const diff = Math.round((new Date(status.prochaineScrape) - Date.now()) / 60000);
+    document.getElementById('stat-next').textContent = diff > 0 ? `dans ${diff} min` : 'bientôt';
+  } else if (status.running) {
+    document.getElementById('stat-next').textContent = 'en cours...';
+  }
+}
+
+function majScrapingBar(status) {
+  const bar = document.getElementById('scraping-bar');
+  if (status.running) {
+    bar.classList.add('visible');
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+function majRefreshInfo() {
+  if (lastPoll) {
+    const h = lastPoll.getHours().toString().padStart(2, '0');
+    const m = lastPoll.getMinutes().toString().padStart(2, '0');
+    document.getElementById('refresh-info').textContent = `Actualisé à ${h}:${m}`;
+  }
+}
+
+// ============================================================
+// BADGE NOTIF NAV
+// ============================================================
+let totalNonVus = 0;
+function afficherBadgeNotif(nb) {
+  totalNonVus += nb;
+  const badge = document.getElementById('notif-badge');
+  badge.textContent = `${totalNonVus} nouveau${totalNonVus > 1 ? 'x' : ''}`;
+  badge.style.display = 'inline-block';
+}
+
+function effacerBadgeNotif() {
+  totalNonVus = 0;
+  document.getElementById('notif-badge').style.display = 'none';
+  // Marquer toutes comme vues
+  toutesAnnonces.forEach(a => seenIds.add(a.id));
+  localStorage.setItem('immo_seen_ids', JSON.stringify([...seenIds]));
+}
+
+// ============================================================
+// FILTRAGE ET TRI
+// ============================================================
+function filtrerEtAfficher() {
+  const ring = document.getElementById('filter-ring').value;
+  const type = document.getElementById('filter-type').value;
+  const sort = document.getElementById('filter-sort').value;
+
+  let liste = [...toutesAnnonces];
+
+  if (ring) {
+    liste = liste.filter(a => getRing(a.codePostal) === ring);
+  }
+  if (type) {
+    liste = liste.filter(a => a.type === type);
+  }
+
+  // Tri
+  const now = Date.now();
+  if (sort === 'new') {
+    liste.sort((a, b) => new Date(b.dateScrap || 0) - new Date(a.dateScrap || 0));
+  } else if (sort === 'prix-asc') {
+    liste.sort((a, b) => (a.prix || 999999) - (b.prix || 999999));
+  } else if (sort === 'prix-desc') {
+    liste.sort((a, b) => (b.prix || 0) - (a.prix || 0));
+  } else if (sort === 'm2') {
+    liste.sort((a, b) => {
+      const pma = a.prix && a.surface ? a.prix / a.surface : 99999;
+      const pmb = b.prix && b.surface ? b.prix / b.surface : 99999;
+      return pma - pmb;
+    });
+  }
+
+  afficherGrid(liste, now);
+}
+
+// ============================================================
+// RENDU CARDS
+// ============================================================
+function afficherGrid(liste, now) {
+  const grid = document.getElementById('grid');
+
+  if (liste.length === 0 && toutesAnnonces.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <div class="icon">🔍</div>
+        <h3>Aucune annonce pour l'instant</h3>
+        <p>Le scan automatique est en cours. Les annonces de <strong>entreparticuliers.com</strong> matching vos critères apparaîtront ici dès qu'elles sont détectées.</p>
+        <button class="btn-refresh" onclick="declencherScan()" style="margin:0 auto;display:inline-flex;">
+          ⟳ Lancer un scan maintenant
+        </button>
+      </div>`;
     return;
   }
-  const triees = [...annonces].sort((a, b) => (a.prix || 999999) - (b.prix || 999999));
-  el.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      ${triees.map(a => `
-        <a href="${a.lien}" target="_blank" rel="noopener"
-           class="bg-white rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow block">
-          <div class="font-semibold text-gray-700 text-sm mb-1">${a.titre}</div>
-          <div class="flex gap-3 text-sm">
-            ${a.prix ? `<span class="font-bold text-blue-600">${a.prix.toLocaleString('fr-FR')} €</span>` : ''}
-            ${a.surface ? `<span class="text-gray-500">${a.surface} m²</span>` : ''}
-          </div>
-          <div class="mt-1 text-xs text-gray-400">📍 ${a.ville} (${a.codePostal})</div>
+
+  if (liste.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <div class="icon">🔎</div>
+        <h3>Aucune annonce avec ces filtres</h3>
+        <p>Essayez d'élargir les critères de filtrage.</p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = liste.map(a => renderCard(a, now)).join('');
+
+  // Marquer comme vues après 3 secondes
+  setTimeout(effacerBadgeNotif, 3000);
+}
+
+function renderCard(a, now) {
+  const ring = getRing(a.codePostal);
+  const isNew = a.dateScrap && (now - new Date(a.dateScrap).getTime()) < NEW_THRESHOLD_H * 3600 * 1000;
+  const isUnseen = !seenIds.has(a.id);
+  const showNew = isNew && isUnseen;
+
+  const prixM2 = a.prix && a.surface ? Math.round(a.prix / a.surface) : null;
+  const isDeal = prixM2 && prixM2 <= 1800;
+
+  const prixStr = a.prix ? a.prix.toLocaleString('fr-FR') + ' €' : 'Prix NC';
+  const prixM2Str = prixM2 ? prixM2.toLocaleString('fr-FR') + ' €/m²' : '';
+
+  const dateStr = a.dateScrap
+    ? new Date(a.dateScrap).toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' })
+    : '';
+
+  return `
+    <div class="card${showNew ? ' is-new' : ''}">
+      <div class="card-header">
+        <div class="card-badges">
+          <span class="badge ${a.type === 'immeuble' ? 'badge-type-immeuble' : 'badge-type-maison'}">
+            ${a.type === 'immeuble' ? '🏢 Immeuble' : '🏠 Maison'}
+          </span>
+          <span class="badge ${RING_BADGE_CLASS[ring]}">${RING_LABELS[ring]}</span>
+          ${showNew ? '<span class="badge badge-new">✦ Nouveau</span>' : ''}
+          ${isDeal ? '<span class="badge badge-deal">★ Bonne affaire</span>' : ''}
+        </div>
+      </div>
+
+      <div>
+        <div class="card-title">${a.titre || 'Annonce'}</div>
+        <div class="card-location" style="margin-top:4px;">
+          📍 ${a.ville || '—'} · ${a.codePostal}
+        </div>
+      </div>
+
+      <div class="card-price">
+        <span class="price-main">${prixStr}</span>
+        ${prixM2Str ? `<span class="price-m2${isDeal ? ' good' : ''}">${prixM2Str}</span>` : ''}
+      </div>
+
+      <div class="card-details">
+        ${a.surface ? `<span class="detail"><span class="detail-icon">📐</span>${a.surface} m²</span>` : ''}
+        ${a.pieces ? `<span class="detail"><span class="detail-icon">🚪</span>${a.pieces} pièces</span>` : ''}
+        ${dateStr ? `<span class="detail" style="margin-left:auto;font-size:11px;color:#475569;">${dateStr}</span>` : ''}
+      </div>
+
+      <div class="card-footer">
+        <a href="${a.lien}" target="_blank" rel="noopener" class="btn-voir">
+          Voir l'annonce →
         </a>
-      `).join('')}
+      </div>
     </div>
-    <p class="text-xs text-gray-400 mt-2">${annonces.length} annonce(s) en base</p>
   `;
 }
 
-charger();
+// ============================================================
+// INIT
+// ============================================================
+demanderPermissionNotif();
+demarrerPoll();
 </script>
-  </div>
+
 </body>
 </html>
