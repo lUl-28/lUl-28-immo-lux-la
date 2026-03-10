@@ -236,6 +236,85 @@
     .empty-state h3 { font-size: 18px; font-weight: 600; color: #f1f5f9; margin-bottom: 8px; }
     .empty-state p { font-size: 13px; color: #64748b; max-width: 380px; margin: 0 auto 24px; line-height: 1.6; }
 
+    /* ── Liens rapides ── */
+    .liens-section {
+      margin-top: 48px;
+      border-top: 1px solid #1e293b;
+      padding-top: 32px;
+    }
+    .liens-section h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 4px;
+    }
+    .liens-section p {
+      font-size: 12px;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .site-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .site-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .site-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .site-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    .site-note {
+      font-size: 10px;
+      color: #475569;
+      margin-left: auto;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .site-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .site-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 7px;
+      padding: 7px 12px;
+      font-size: 12px;
+      color: #94a3b8;
+      transition: border-color .15s, color .15s;
+    }
+    .site-link:hover { border-color: #60a5fa; color: #f1f5f9; }
+    .site-link .ring-tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #334155;
+      color: #94a3b8;
+    }
+
     /* ── Scraping progress ── */
     .scraping-bar {
       display: none;
@@ -341,6 +420,15 @@
         <div class="icon">⏳</div>
         <h3>Chargement...</h3>
         <p>Récupération des annonces en cours.</p>
+      </div>
+    </div>
+
+    <!-- Liens de recherche manuelle -->
+    <div class="liens-section">
+      <h2>🔍 Rechercher sur d'autres sites</h2>
+      <p>Leboncoin, SeLoger, Figaro et Logic-Immo nécessitent une navigation manuelle — vos critères sont pré-remplis dans les liens ci-dessous.</p>
+      <div class="sites-grid" id="sites-grid">
+        <div style="color:#475569;font-size:13px;">Chargement des liens...</div>
       </div>
     </div>
 
@@ -653,10 +741,77 @@ function renderCard(a, now) {
 }
 
 // ============================================================
+// LIENS RAPIDES PAR SITE
+// ============================================================
+const SITE_NOTES = {
+  entreparticuliers: 'scrapé auto',
+  entreparticuliers_immeuble: null,
+  pap: 'scrapé auto',
+  leboncoin: 'manuel',
+  seloger: 'manuel',
+  logicimmo: 'manuel',
+  figaro: 'manuel',
+};
+
+async function chargerLiensRapides() {
+  try {
+    const rings = await fetch('/api/liens').then(r => r.json());
+
+    // Organiser par site : { siteId → { nom, couleur, rings: [{label, badge, url}] } }
+    const sites = {};
+    for (const ring of rings) {
+      const firstCommune = ring.communes[0];
+      if (!firstCommune) continue;
+      for (const lien of firstCommune.liens) {
+        if (!sites[lien.id]) {
+          sites[lien.id] = { nom: lien.nom, couleur: lien.couleur, rings: [] };
+        }
+        sites[lien.id].rings.push({
+          label: ring.label.replace('Ring ', 'R').split('—')[0].trim(),
+          badge: ring.badge,
+          url: lien.url,
+        });
+      }
+    }
+
+    const siteOrder = ['leboncoin', 'seloger', 'pap', 'logicimmo', 'figaro', 'entreparticuliers'];
+    const ordered = siteOrder
+      .filter(id => sites[id])
+      .map(id => ({ id, ...sites[id] }));
+
+    const grid = document.getElementById('sites-grid');
+    grid.innerHTML = ordered.map(site => {
+      const note = SITE_NOTES[site.id];
+      const isAuto = note === 'scrapé auto';
+      return `
+        <div class="site-card">
+          <div class="site-card-header">
+            <div class="site-dot" style="background:${site.couleur}"></div>
+            <span class="site-name">${site.nom}</span>
+            ${note ? `<span class="site-note" style="${isAuto ? 'color:#34d399' : ''}">${note}</span>` : ''}
+          </div>
+          <div class="site-links">
+            ${site.rings.map(r => `
+              <a href="${r.url}" target="_blank" rel="noopener" class="site-link">
+                <span>${r.badge} ${r.label}</span>
+                <span class="ring-tag">↗ Ouvrir</span>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch (err) {
+    console.error('Liens rapides error:', err);
+  }
+}
+
+// ============================================================
 // INIT
 // ============================================================
 demanderPermissionNotif();
 demarrerPoll();
+chargerLiensRapides();
 </script>
 
 </body>
