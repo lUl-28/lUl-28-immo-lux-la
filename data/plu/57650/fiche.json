@@ -1,0 +1,15 @@
+{
+  "commune": "Sierck-les-Bains",
+  "insee": "57650",
+  "cp": "57480",
+  "dept": "57",
+  "ring": 1,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#57650",
+  "plu": {
+    "traite": true,
+    "found": false,
+    "note": "Aucun PLU/PLUi trouvé sur GPU — peut être sous PLUi intercommunal ou RNU"
+  },
+  "analyse": null,
+  "date_analyse": "2026-03-11T08:02:58.023Z"
+}

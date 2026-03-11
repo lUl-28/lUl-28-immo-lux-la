@@ -1,0 +1,15 @@
+{
+  "commune": "Réhon",
+  "insee": "54451",
+  "cp": "54430",
+  "dept": "54",
+  "ring": 1,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#54451",
+  "plu": {
+    "traite": true,
+    "found": false,
+    "note": "Aucun PLU/PLUi trouvé sur GPU — peut être sous PLUi intercommunal ou RNU"
+  },
+  "analyse": null,
+  "date_analyse": "2026-03-11T07:57:44.533Z"
+}

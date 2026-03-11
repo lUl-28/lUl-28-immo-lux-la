@@ -1,0 +1,76 @@
+{
+  "commune": "Trieux",
+  "insee": "54533",
+  "cp": "54750",
+  "dept": "54",
+  "ring": 2,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#54533",
+  "plu": {
+    "traite": true,
+    "found": true,
+    "type": "PLU",
+    "id": "afc978446e41d267d846486ae41409bc",
+    "nom": "DU_54533",
+    "statut": "APPROVED",
+    "date_pub": "01/03/2018 11:28:24",
+    "date_maj": "02/06/2020 11:32:49",
+    "fichiers": [
+      "54533_info_surf_19_ann_tech_20100927.pdf",
+      "54533_padd_20100927.pdf",
+      "54533_plan_sup_20100927.pdf",
+      "54533_prescription_surf_02_20100927.pdf",
+      "54533_rapport_20100927.pdf",
+      "54533_reglement_20100927.pdf",
+      "54533_reglement_graphique_20100927.pdf"
+    ],
+    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/54533/54533_reglement_20100927.pdf"
+  },
+  "analyse": {
+    "succes": true,
+    "pages": 58,
+    "zones": [
+      "1AU",
+      "2AU",
+      "A",
+      "AU",
+      "N",
+      "UA",
+      "UB",
+      "UC",
+      "UL",
+      "UNE",
+      "UX"
+    ],
+    "stationnement_detecte": null,
+    "hauteur_detectee": "0",
+    "emprise_sol_detectee": null,
+    "extraits": {
+      "stationnement": [
+        "ole sauf cas visés à l'article 2 - d'entrepôt sauf cas visés à l'article 2 2. Les installations classées - soumises à autorisation sauf cas visés à l'article 2 - les carrières 3. Camping et stationnement de caravanes - les terrains aménagés de camping et caravanage - les terrains destinés uniquement à la réception des caravanes 4. Constructions de loisirs - les habitations légères de loisirs - les parcs résidentiels de loisirs 5. Les parcs d'attraction Les garages collectifs de caravanes à ciel ouvert. Les dépôts de véhicules sauf cas visés à l'article 2 6. Les installations produisant de l'électricité à partir de l'énergie mécanique du vent. ARTICLE 2 - OCCUPATIONS ET UTILISATIONS DU SOL ADMISES SOUS CONDITIONS Les constructions à us",
+        "éléments préfabriqués se rapprochant de cette règle sont acceptés. COMMUNE DE TRIEUX ZONE UA S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 12 ARTICLE 12 - STATIONNEMENT 12.1. Le stationnement des véhicules correspondant aux besoins des constructions et installations doit être assuré en dehors des voies publiques sur des emplacements aménagés. 12.2. Suivant la nature et l'utilisation des constructions, les places de stationnement doivent être créées selon les normes suivantes : - logement (< 60 m 2 ) 1 emplacement - logement (≥ 60 m 2 ) 2 emplacements - bureaux, services supérieurs à 100 m 2 2 emplacements pour 100 m 2 - commerce supérieur à 100 m² de surface de vente : 1 emplacement pour 20 m² - a",
+        "pprochant de cette règle sont acceptés. COMMUNE DE TRIEUX ZONE UA S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 12 ARTICLE 12 - STATIONNEMENT 12.1. Le stationnement des véhicules correspondant aux besoins des constructions et installations doit être assuré en dehors des voies publiques sur des emplacements aménagés. 12.2. Suivant la nature et l'utilisation des constructions, les places de stationnement doivent être créées selon les normes suivantes : - logement (< 60 m 2 ) 1 emplacement - logement (≥ 60 m 2 ) 2 emplacements - bureaux, services supérieurs à 100 m 2 2 emplacements pour 100 m 2 - commerce supérieur à 100 m² de surface de vente : 1 emplacement pour 20 m² - artisanat 2 emplacements pour"
+      ],
+      "division": [
+        "ARTICLE 1 - CHAMP D'APPLICATION TERRITORIAL DU PLAN. ARTICLE 2 - PORTEE RESPECTIVE DU REGLEMENT A L'EGARD D'AUTRES LEGISLATIONS RELATIVES A L'OCCUPATION DES SOLS. ARTICLE 3 - DIVISION DU TERRITOIRE EN ZONES. ARTICLE 4 - ADAPTATIONS MINEURES. ARTICLE 5 - PRISES EN COMPTE DES CONSTRUCTIONS EXISTANTES ET RECONSTRUCTIONS APRES SINISTRE. ARTICLE 6 - PRINCIPES D'APPLICATION DU PRESENT REGLEMENT ET PLUS PARTICULIEREMENT SUR L'ARTICULATION ENTRE LES ARTICLES 1 ET 2 DES DIFFERENTES ZONES. TITRE II - DISPOSITIONS APPLICABLES AUX ZONES URBAINES ET A URBANISER CHAPITRE 1 DISPOSITIONS PROPRES A LA ZONE UA CHAPITRE 2 DISPOSITIONS PROPRES A LA ZONE UB CHAPITRE 3 DISPOSITIONS PROPRES A LA ZONE UC CHAPITR",
+        "ion du sol créées en application de législations particulières et qui sont reportées sur le document graphique \"servitudes\" et récapitulées dans les annexes du PLU. ARTICLE III - DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent plan d'occupation des sols est entièrement divisé en zones urbaines et en zones naturelles. I - LES ZONES URBAINES ET A URBANISER Les zones urbaines et à urbaniser auxquelles s'appliquent les dispositions des différents chapitres du titre II du présent règlement sont : - la zone UA, UB et UC, UL et UX - la zone 1AU, 1AUL et 1AUX - la zone 2AU III - LES ZONES AGRICOLES ET NATURELLES Les zones agricoles et naturelles auxquelles s'appliquent les dispositions des différent"
+      ],
+      "hauteur": [
+        "escription ARTICLE 9 - EMPRISE AU SOL Pas de prescription COMMUNE DE TRIEUX ZONE UA S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 9 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. Dans une enfilade remarquable repérée au plan par ce symbole : ∆∆∆∆∆∆∆∆∆ . On s'alignera à la hauteur des égouts voisins. . Entre deux constructions d'inégale hauteur et quelle que soit la hauteur des égouts voisins, on placera l'égout de toiture soit : a) à l'existant. b) à égale hauteur d'un ou des égouts voisins. c) en dessous de l'égout le plus haut, mais au-dessus de l'égout le plus bas. d) dans le cas où les égouts de toitures des constructions voisines sont situés à moins de 5 mètres de haut, il sera aut",
+        "en saillie de la façade. 11.4. Clôtures Excepté les alignements de façades repérées au plan par le symbole ∆∆∆∆∆∆∆∆∆, les clôtures maçonnées en limite du domaine public auront une hauteur maximale de 0,80 m. Elles pourront être surmontées par des éléments à claire voie et doublée d'une haie végétale La hauteur maximale ne pourra pas dépasser 2 m. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits La reconstruction à l'identique est autorisée. Dans les alignements de façades repérées au plan par le symbole ∆∆∆∆∆∆∆∆∆, s'il y a une largeur de façade laissée libre, une clôture opaque d'une hauteur de 2,00 m minimum sera édifiée suivant les règles fixées à l'article 6. 11.5.",
+        "s clôtures maçonnées en limite du domaine public auront une hauteur maximale de 0,80 m. Elles pourront être surmontées par des éléments à claire voie et doublée d'une haie végétale La hauteur maximale ne pourra pas dépasser 2 m. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits La reconstruction à l'identique est autorisée. Dans les alignements de façades repérées au plan par le symbole ∆∆∆∆∆∆∆∆∆, s'il y a une largeur de façade laissée libre, une clôture opaque d'une hauteur de 2,00 m minimum sera édifiée suivant les règles fixées à l'article 6. 11.5. Autres Le premier niveau aura son accès de plain-pied, en cas de pente importante du profil en long de la voirie ou du terrain (+ de"
+      ],
+      "emprise_sol": [
+        "imites séparatives de l'unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL Pas de prescription COMMUNE DE TRIEUX ZONE UA S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 9 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. Dans une enfilade remarquable repérée au plan par ce symbole : ∆∆∆∆∆∆∆∆∆ . On s'alignera à la hauteur des égouts voisins. . Entre deux constructions d'inégale hauteur et quelle que soit la hauteur des égouts voisins, on placera l'égout de toiture soit : a) à l'existant. b) à égale hauteur d'un ou des égouts voisins. c) en dessous de l'égout le plus haut,",
+        "ORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription COMMUNE DE TRIEUX ZONE UB S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 16 ARTICLE 9 - EMPRISE AU SOL L'emprise au sol des entrepôts à usage familial (abris de jardins) est limitée à 12 m 2 extension comprise et par unité foncière ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 10 mètres à l'égout de toiture Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur des abris de jardins ne devra pas excéder 3,50 mètres au faîtage. 10.3. En cas de transformation, d'extensions sur une construction existante et ne respectant",
+        "ORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription COMMUNE DE TRIEUX ZONE UC S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 22 ARTICLE 9 - EMPRISE AU SOL L’emprise du sol des entrepôts à usage familial (abris de jardins) dont l'emprise est limitée à 6 m 2 extension comprise et par unité foncière. ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 10 mètres à l'égout de toiture. Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur des abris de jardins ne devra pas excéder 3,50 mètres au faîtage. 10.3. En cas de transformation, d'extensions sur une construction existante et ne respectant"
+      ],
+      "surface_min": [],
+      "interdictions": [
+        "emploi habituel de \"jour de souffrance\" et ne seront pas posés en façade sur rue. Les paraboles sont interdites en façade sur rue. Les caissons extérieurs en saillie de la façade sur rue sont interdits. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits. Les bardages sont interdits. Les façades doivent avoir un aspect fini. Le ton des façades sera donné par le coloris des enduits ou des peintures. Seules sont autorisées les couleurs d'enduits situées dans la gamme des beiges, gris ocrés ou des ocres gris, soit rosés, jaune, rouge, orangés, bleu ou vert et les couleurs dictées par le sable composant l'enduit ou rappelant les pierres locales. Le blanc pur et",
+        "caissons extérieurs en saillie de la façade sur rue sont interdits. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits. Les bardages sont interdits. Les façades doivent avoir un aspect fini. Le ton des façades sera donné par le coloris des enduits ou des peintures. Seules sont autorisées les couleurs d'enduits situées dans la gamme des beiges, gris ocrés ou des ocres gris, soit rosés, jaune, rouge, orangés, bleu ou vert et les couleurs dictées par le sable composant l'enduit ou rappelant les pierres locales. Le blanc pur et le noir sont interdits. En cas d'extension, la couleur et l'aspect de la façade doivent se rapprocher de celle de la construction existante",
+        "11.1. Façades Les paraboles sont interdites en façade sur rue. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits. Les bardages sont interdits. Les façades doivent avoir un aspect fini. Le ton des façades sera donné par le coloris des enduits ou des peintures. Seules sont autorisées les couleurs d'enduits situées dans la gamme des beiges, gris ocrés ou des ocres gris, soit rosés, jaune, rouge, orangés, bleu ou vert et les couleurs dictées par le sable composant l'enduit ou rappelant les pierres locales. Le blanc pur est interdit. COMMUNE DE TRIEUX ZONE UB S-PERIDE 17, rue de l’Entente 57950 MONTIGNY-LES-METZ 0387 18 52 48, 0387 33 26 76 17 En cas d'extension, la coule"
+      ]
+    }
+  },
+  "date_analyse": "2026-03-11T08:03:02.374Z"
+}

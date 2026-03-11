@@ -1,0 +1,15 @@
+{
+  "commune": "Guénange",
+  "insee": "57269",
+  "cp": "57310",
+  "dept": "57",
+  "ring": 2,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#57269",
+  "plu": {
+    "traite": true,
+    "found": false,
+    "note": "Aucun PLU/PLUi trouvé sur GPU — peut être sous PLUi intercommunal ou RNU"
+  },
+  "analyse": null,
+  "date_analyse": "2026-03-11T08:12:22.897Z"
+}

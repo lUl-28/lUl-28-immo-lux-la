@@ -6,14 +6,21 @@
   "scripts": {
     "start": "node dashboard/server.js",
     "dashboard": "node dashboard/server.js",
-    "scrape": "node agents/scraper/scraper.js",
-    "test": "node agents/scraper/scraper.js --test"
+    "bp": "node scripts/generate_business_plan.js",
+    "plu": "node scripts/analyse_plu.js",
+    "plu:test": "node scripts/analyse_plu.js --test",
+    "fiches": "node scripts/generate_fiches_pdf.js",
+    "test": "echo \"No tests configured\""
   },
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "axios": "^1.13.5",
     "cheerio": "^1.2.0",
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "pdf-parse": "^1.1.1",
+    "pdfkit": "^0.17.2"
   },
   "devDependencies": {
     "playwright": "^1.41.0",

@@ -129,13 +129,11 @@ const PLATEFORMES = {
     nom: 'SeLoger',
     actif: true,
     baseUrl: 'https://www.seloger.com/immobilier/achat',
-    // URL construite dynamiquement par le scraper
   },
   pap: {
     nom: 'PAP',
     actif: true,
     baseUrl: 'https://www.pap.fr/annonce/ventes-maison',
-    // URL construite dynamiquement par le scraper
   },
   logicimmo: {
     nom: 'Logic-Immo',

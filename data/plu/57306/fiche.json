@@ -1,0 +1,80 @@
+{
+  "commune": "Hayange",
+  "insee": "57306",
+  "cp": "57700",
+  "dept": "57",
+  "ring": 2,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#57306",
+  "plu": {
+    "traite": true,
+    "found": true,
+    "type": "PLU",
+    "id": "f5ee21387e8b7953e16bd69560d74d24",
+    "nom": "DU_57306",
+    "statut": "APPROVED",
+    "date_pub": "27/04/2022 13:45:44",
+    "date_maj": "27/04/2022 13:45:44",
+    "fichiers": [
+      "57306_procedure_20220209.pdf",
+      "57306_rapport_20220209.pdf",
+      "57306_padd_20220209.pdf",
+      "57306_reglement_20220209.pdf",
+      "57306_Annexe_dechets_20220209.pdf",
+      "57306_Infra_bruyantes_20220209.pdf",
+      "57306_Liste_des_ER_20220209.pdf",
+      "57306_PPRM_Pieces_ecrites_avec_PG_PLU_20220209.pdf",
+      "57306_PPRM_Plan_20220209.pdf",
+      "57306_Plan_DPU_et_zones_bruit_20220209.pdf",
+      "57306_Plan_assainissement_20220209.pdf",
+      "57306_Plan_des_servitudes_20220209.pdf",
+      "57306_Plan_eau_potable_20220209.pdf",
+      "57306_Recueil_des_SUP_20220209.pdf",
+      "57306_orientations_amenagement_1_20220209.pdf"
+    ],
+    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/57306/57306_reglement_20220209.pdf"
+  },
+  "analyse": {
+    "succes": true,
+    "pages": 128,
+    "zones": [
+      "1AU",
+      "2AU",
+      "A",
+      "AU",
+      "N",
+      "UNE"
+    ],
+    "stationnement_detecte": "1 place(s) de stationnement détectée(s)",
+    "hauteur_detectee": "0",
+    "emprise_sol_detectee": null,
+    "extraits": {
+      "stationnement": [
+        "démolir prévues aux articles L 451-1 et suivants ; f. Les zones soumises aux aléas « eau » et « mouvements terrains ». 6. Délivrance du permis de construire et réalisation d’aire de stationnement : Articles L111-19 à L111-21 (modifiés par ordonnances n°2016-79 du 29 janvier 2016 – art. 9 et n°2015-1174 du 23 septembre 2015) COMMUNE DE HAYANGE – REGLEMENT DU P.L.U. – 2022 – Document approuvé 5  Article L111-19 : « Nonobstant toute disposition contraire du plan local d'urbanisme, l'emprise au sol des surfaces, bâties ou non, affectées aux aires de stationnement annexes d'un commerce soumis à l'autorisation d'exploitation commerciale prévue aux 1° et 4° du I de l'article L. 752-1 du code de commerce et à l'autoris",
+        "ment approuvé 5  Article L111-19 : « Nonobstant toute disposition contraire du plan local d'urbanisme, l'emprise au sol des surfaces, bâties ou non, affectées aux aires de stationnement annexes d'un commerce soumis à l'autorisation d'exploitation commerciale prévue aux 1° et 4° du I de l'article L. 752-1 du code de commerce et à l'autorisation prévue au 1° de l'article L. 212-7 du code du cinéma et de l'image animée, ne peut excéder un plafond correspondant aux trois quarts de la surface de plancher des bâtiments affectés au commerce. Les espaces paysagers en pleine terre, les surfaces des aménagements relevant de l’article L. 3114-1 du code des transports, les surfaces réservées à l'auto-partage et",
+        "spaces paysagers en pleine terre, les surfaces des aménagements relevant de l’article L. 3114-1 du code des transports, les surfaces réservées à l'auto-partage et les places de stationnement destinées à l'alimentation des véhicules électriques ou hybrides rechargeables sont déduits de l'emprise au sol des surfaces affectées au stationnement. La surface des places de stationnement non imperméabilisées compte pour la moitié de leur surface ».  Article L111-20 : « Lorsqu'un établissement de spectacles cinématographiques soumis à l'autorisation prévue aux articles L. 212-7 et L. 212-8 du code du cinéma et de l'image animée n'est pas installé sur le même site qu'un commerce soumis aux autorisa"
+      ],
+      "division": [
+        "NS GENERALES Article 1. Champ d'application territorial du plan p.3 Article 2. Portée respective du règlement à l'égard d'autres p.3 législations relatives à l'occupation des sols Article 3. Division du territoire en zones p.7 Article 4. Adaptations mineures p.8 Article 5. Schéma Directeur d’Aménagement et de Gestion des Eaux p.9 Article 6. Sites Archéologiques p.9 II - DISPOSITIONS APPLICABLES AUX ZONES URBAINES Dispositions applicables à la zone U p.11 Dispositions applicables à la zone Ux p.43 Dispositions applicables à la zone Uz p.59 III - DISPOSITIONS APPLICABLES AUX ZONES A URBANISER Dispositions applicables à la zone 1AU p.70 Dispositions applicables à la zone 1AUx p.84 Dispositions applicables à la zone 2AU p.96 IV - DISPOSITIONS APPLIC",
+        "des prescriptions d’un éventuel cahier des charges relève du droit privé et ne peut en aucun cas engendrer un refus de demande d’autorisation administrative. ARTICLE 3 - DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent Plan Local d'Urbanisme est entièrement divisé en zones Urbaines \"zones U\", en zones A Urbaniser \"zones AU\", en zones Agricoles \"zones A\" et en zones Naturelles et forestières \"zones N\". 1 - LES ZONES URBAINES \"zones U\" Les zones urbaines sont dites \"zones U\". Peuvent être classées en zone urbaine, les secteurs déjà urbanisés et les secteurs où les équipements publics existants ou en cours de réalisation ont une capacité suffisante pour desservir les constructions à implanter. Les zones",
+        "r les écoulements de la crue. COMMUNE DE HAYANGE – REGLEMENT DU P.L.U. – 2022 – Document approuvé 15 ARTICLE U 3 - ACCES ET VOIRIE Pour les lotissements et les permis valant division parcellaire, comme le permet le code de l’urbanisme, les dispositions du présent article ne s’appliquent pas à l’échelle de l’unité foncière initiale ou des unités contigües initiales, mais à l’échelle de chaque terrain ou unité issu(e) de la division. I - Voirie Définitions : - Voie et plateforme : - Une voie privée est une voirie de statut juridique non public mais ouverte malgré tout à la circulation publique automobile. Une telle voirie n’est donc pas considérée comme « voie » mais comme « accès » si elle fait l’objet d’une restriction de circulation o"
+      ],
+      "hauteur": [
+        "teur de la construction principale ne pourra pas être inférieure à 6,00 mètres (hormis pour les extensions) ni supérieure à 16 mètres. 2. Pour les constructions annexes isolées, la hauteur maximale de la construction projetée est fixée à 2,50 mètres. Dans les secteurs Uv, Ub, Uc, Ucc, Uck, Ucm et Uct : 1. La hauteur de la construction principale ne pourra pas dépasser 10,00 mètres. 2. Pour les constructions annexes isolées, la hauteur maximale de la construction projetée est fixée à 2,50 mètres. 3. Dans les secteurs Uc, Ucc, Uck, Ucm et Uct, la surélévation d’une construction principale n’est pas autorisée. La surélévation est toutefois autorisée sur les volumes positionnés en extension du volume principal (de type véranda ou",
+        "tres. Dans les secteurs Uv, Ub, Uc, Ucc, Uck, Ucm et Uct : 1. La hauteur de la construction principale ne pourra pas dépasser 10,00 mètres. 2. Pour les constructions annexes isolées, la hauteur maximale de la construction projetée est fixée à 2,50 mètres. 3. Dans les secteurs Uc, Ucc, Uck, Ucm et Uct, la surélévation d’une construction principale n’est pas autorisée. La surélévation est toutefois autorisée sur les volumes positionnés en extension du volume principal (de type véranda ou annexes par exemple), à condition de ne pas dépasser la hauteur du volume principal. COMMUNE DE HAYANGE – REGLEMENT DU P.L.U. – 2022 – Document approuvé 24 Dans le secteur Ubb : 1. La hauteur de la construction principale ne pourra pas dépasser 9,0",
+        ". – 2022 – Document approuvé 24 Dans le secteur Ubb : 1. La hauteur de la construction principale ne pourra pas dépasser 9,00 mètres. 2. Pour les constructions annexes isolées, la hauteur maximale de la construction projetée est fixée à 2,50 mètres. Dans le secteur Ue : Pas de prescription. ARTICLE U 11 - ASPECT EXTERIEUR Pour les lotissements et les permis valant division parcellaire, comme le permet le code de l’urbanisme, les dispositions du présent article ne s’appliquent pas à l’échelle de l’unité foncière initiale ou des unités contigües initiales, mais à l’échelle de chaque terrain ou unité issu(e) de la division. Prescriptions générales pour tous les secteurs : 1. Les démolitions, même partielles, ne doivent pas porter at"
+      ],
+      "emprise_sol": [
+        "de l'image animée n'est pas installé sur le même site qu'un commerce soumis aux autorisations d'exploitation commerciale prévues à l'article L. 752-1 du code de commerce, l'emprise au sol des surfaces, bâties ou non, affectées aux aires de stationnement annexes de cet établissement de spectacles cinématographiques ne doit pas excéder une place de stationnement pour trois places de spectateur ».  Article L111-21 : « Les dispositions des articles L. 111-19 et L. 111- 20 ne font pas obstacle aux travaux de réfection et d'amélioration ou à l'extension limitée des bâtiments commerciaux existant le 15 décembre 2000 ». Articles L151-30 à L151-33 (crées par ordonnance n°2015-1174 du 23 septembre 2015)  Article L151-",
+        "e cette extension soit modérée, et dans la limite d’une seule extension à compter de la date d’approbation de l’élaboration du présent P.L.U. L’extension ne devra pas dépasser 20% de l’emprise au sol de la construction existante. L’emprise au sol est la projection verticale du volume de la construction, tous débords et surplombs inclus ; le règlement du présent P.L.U. exclut les terrasses non couvertes et les piscines non couvertes du calcul de l’emprise au sol. 4. Les constructions à usage d’habitation situées à l’intérieur des couloirs de bruit inscrits sur le règlement graphique, à condition qu’elles respectent les dispositions législatives en vigueur concernant l’isolement acoustique des bâtiments d’habitation contre les bru",
+        "limite d’une seule extension à compter de la date d’approbation de l’élaboration du présent P.L.U. L’extension ne devra pas dépasser 20% de l’emprise au sol de la construction existante. L’emprise au sol est la projection verticale du volume de la construction, tous débords et surplombs inclus ; le règlement du présent P.L.U. exclut les terrasses non couvertes et les piscines non couvertes du calcul de l’emprise au sol. 4. Les constructions à usage d’habitation situées à l’intérieur des couloirs de bruit inscrits sur le règlement graphique, à condition qu’elles respectent les dispositions législatives en vigueur concernant l’isolement acoustique des bâtiments d’habitation contre les bruits de l’espace extérieur. 5. Les éoliennes à"
+      ],
+      "surface_min": [],
+      "interdictions": [
+        "pistes de défense de la forêt contre l’incendie, les voies express et les autoroutes. 5. Les accès individuels nouveaux hors agglomération sur les routes départementales sont interdits. COMMUNE DE HAYANGE – REGLEMENT DU P.L.U. – 2022 – Document approuvé 17 ARTICLE U 4 - DESSERTE PAR LES RESEAUX - Les réseaux d’eau, d’assainissement, d’électricité devront avoir des caractéristiques suffisantes pour répondre aux besoins de l’ensemble des constructions susceptibles d’être desservies par des réseaux. - Les constructions principales implantées en seconde ligne doivent avoir des branchements aux réseaux indépendants des branchements de la construction principale implantée en première ligne. I - Eau",
+        "s terrasses sont autorisés. 2. Pour les vérandas et les abris de jardins, pas de prescription concernant la pente ou la forme des toitures. Eléments de façade, tels que percements et balcons : 1. Sont interdits : - Les caissons de volets roulants visibles depuis l’espace public. - Le remplacement des fenêtres à deux vantaux par un châssis à un seul vantail. - Les paraboles, climatiseurs et pompes à chaleur disposés en applique sur la façade sur rue. - La destruction et le camouflage des éléments traditionnels du décor architectural (encadrements de baies, bandeaux, corniches, pilastres, frontons, sculptures, chaînages d’angle, ...). 2. Les volets à battants en bois devront être conservés ou remplacés à l’identique. 3. Les enseignes s",
+        "s la masse. Les bardages en bois sont cependant autorisés à condition de ne pas camoufler des éléments de modénature à valeur patrimoniale. Eléments de façade, tels que percements et balcons : 1. Sont interdits : - Le remplacement des fenêtres à deux vantaux par un châssis à un seul vantail. COMMUNE DE HAYANGE – REGLEMENT DU P.L.U. – 2022 – Document approuvé 27 - Les paraboles, climatiseurs et pompes à chaleur disposés en applique sur la façade sur rue. - La destruction et le camouflage des éléments traditionnels du décor architectural (encadrements de baies, bandeaux, corniches, pilastres, frontons, sculptures, chaînages d’angle, ...). 2. Les volets à battants en bois devront être conservés ou remplacés à l’identique. 3. L"
+      ]
+    }
+  },
+  "date_analyse": "2026-03-11T08:07:03.391Z"
+}

@@ -1,0 +1,77 @@
+{
+  "commune": "Piennes",
+  "insee": "54425",
+  "cp": "54490",
+  "dept": "54",
+  "ring": 2,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#54425",
+  "plu": {
+    "traite": true,
+    "found": true,
+    "type": "PLU",
+    "id": "bc12e343536dfba846bcf2e6c0dda623",
+    "nom": "DU_54425",
+    "statut": "APPROVED",
+    "date_pub": "01/03/2018 11:36:27",
+    "date_maj": "02/06/2020 11:32:49",
+    "fichiers": [
+      "54425_info_19_ann_tech_20130610.pdf",
+      "54425_info_lin_19_aep_20130610.pdf",
+      "54425_info_lin_19_eu_20130610.pdf",
+      "54425_padd_20130610.pdf",
+      "54425_rapport_20130610.pdf",
+      "54425_reglement_20130610.pdf",
+      "54425_reglement_graphique_20130610.pdf"
+    ],
+    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/54425/54425_reglement_20130610.pdf"
+  },
+  "analyse": {
+    "succes": true,
+    "pages": 68,
+    "zones": [
+      "1AU",
+      "2AU",
+      "A",
+      "AU",
+      "N",
+      "UA",
+      "UB",
+      "UC",
+      "UD",
+      "UE",
+      "UNE",
+      "UX"
+    ],
+    "stationnement_detecte": null,
+    "hauteur_detectee": "0",
+    "emprise_sol_detectee": null,
+    "extraits": {
+      "stationnement": [
+        "BLICS OU D'INTERET COLLECTIF. 3. LES LOTISSEMENTS A USAGE : - d'habitation. - d'activité. 4. LES INSTALLATIONS CLASSEES : - soumises a déclaration - soumises a autorisation 5. CAMPING ET STATIONNEMENT DE CARAVANES - les caravanes isolées - les terrains aménagés de camping et caravanage - les terrains destinés uniquement à la réception des caravanes. 6. LES HABITATIONS LEGERES DE LOISIRS - les habitations légères de loisirs - les parcs résidentiels de loisirs 7. LES INSTALLATIONS ET TRAVAUX DIVERS SUIVANTS : - les parcs d'attraction, - les dépôts de véhicules (neufs ou usages) susceptibles de contenir au moins dix unités, - les garages collectifs de caravanes - les affouillements et exhaussements du sol - les aires de jeux et de sports ouvertes au public - le",
+        "usceptibles de contenir au moins dix unités, - les garages collectifs de caravanes - les affouillements et exhaussements du sol - les aires de jeux et de sports ouvertes au public - les aires de stationnement ouvertes au public - les travaux ayant pour effet de détruire un élément de paysage identifié par le PLU. 8. LES EQUIPEMENTS D'INFRASTRUCTURES AINSI QUE LES CONSTRUCTIONS LIEES A LA REALISATION ET A L'EXPLOITATION DE CES EQUIPEMENTS. COMMUNE DE PIENNES S-PERIDE 17, rue de l’entente 57950 MONTIGNY-LES-METZ TEL 0387 18 52 48 \u0001 s.peride@wanadoo.fr 5 TITRE II DISPOSITIONS APPLICABLES AUX ZONES URBAINES ET A URBANISER COMMUNE DE PIENNES ZONE UA S-PERIDE 17, rue de l’entente 57950 MONTIGNY-LES-METZ TEL 0387 18 52 48 \u0001 s.peride@wana",
+        "2 2. Les lotissements à usage : - d'activité 3. Les installations classées - soumise à déclaration sauf cas visés à l'article 2 - soumises à autorisation - les carrières 4. Camping et stationnement de caravanes - les caravanes isolées - les terrains aménagés de camping et caravanage - les terrains destinés uniquement à la réception des caravanes 5. Constructions de loisirs - les habitations légères de loisirs - les parcs résidentiels de loisirs COMMUNE DE PIENNES ZONE UA S-PERIDE 17, rue de l’entente 57950 MONTIGNY-LES-METZ TEL 0387 18 52 48 \u0001 s.peride@wanadoo.fr 7 6. Les installations et travaux divers suivants : - les parcs d'attraction - les garages collectifs de caravanes à ciel ouvert. - les dépôts de véhicules sauf cas visés à l'article 2 7. Les"
+      ],
+      "division": [
+        "ARTICLE 1 - CHAMP D'APPLICATION TERRITORIAL DU PLAN. ARTICLE 2 - PORTEE RESPECTIVE DU REGLEMENT A L'EGARD D'AUTRES LEGISLATIONS RELATIVES A L'OCCUPATION DES SOLS. ARTICLE 3 - DIVISION DU TERRITOIRE EN ZONES. ARTICLE 4 - ADAPTATIONS MINEURES. ARTICLE 5 - PRISES EN COMPTE DES CONSTRUCTIONS EXISTANTES ET RECONSTRUCTIONS APRES SINISTRE. ARTICLE 6 - PRINCIPES D'APPLICATION DU PRESENT REGLEMENT ET PLUS PARTICULIEREMENT SUR L'ARTICULATION ENTRE LES ARTICLES 1 ET 2 DES DIFFERENTES ZONES. ARTICLE 7 - LISTE DES OCCUPATIONS ET UTILISATIONS DU SOL. TITRE II - DISPOSITIONS APPLICABLES AUX ZONES URBAINES ET A URBANISER CHAPITRE 1 DISPOSITIONS PROPRES A LA ZONE UA CHAPITRE 2 DISPOSITIONS PROPRES A LA ZONE",
+        "ion du sol créées en application de législations particulières et qui sont reportées sur le document graphique \"servitudes\" et récapitulées dans les annexes du PLU. ARTICLE III - DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent plan d'occupation des sols est entièrement divisé en zones urbaines et en zones naturelles. I - LES ZONES URBAINES ET A URBANISER Les zones urbaines et à urbaniser auxquelles s'appliquent les dispositions des différents chapitres du titre II du présent règlement sont : - la zone UA, UB et UC, UD, UE et UX - la zone 1AU - la zone 2AU et 2AUX III - LES ZONES AGRICOLES ET NATURELLES Les zones agricoles et naturelles auxquelles s'appliquent les dispositions des différents"
+      ],
+      "hauteur": [
+        "- EMPRISE AU SOL Pas de prescription sauf pour : - les abris de jardins dont l'emprise au sol est limitée à 12 m 2 surface cumulée, extension comprise et par unité foncière ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. Dans une enfilade remarquable repérée au plan par ce symbole : ∆∆∆∆∆∆∆∆∆ . On s'alignera à la hauteur des égouts de toiture voisins. . Entre deux constructions d'inégale hauteur et quelle que soit la hauteur des égouts voisins, on placera l'égout de toiture soit : a) à l'existant. b) à égale hauteur d'un ou des égouts de toiture voisins. c) en dessous de l'égout de toiture le plus haut, mais au-dessus de l'égout de toiture le plus bas. d) dans le cas où les égouts de toiture des constructions voisines sont",
+        "ZONE UA S-PERIDE 17, rue de l’entente 57950 MONTIGNY-LES-METZ TEL 0387 18 52 48 \u0001 s.peride@wanadoo.fr 13 11.4. Clôtures Les clôtures maçonnées en limite du domaine public auront une hauteur maximale de 0,60 m. Elles pourront être surmontées par des éléments à claire voie (hormis le grillage) et doublée d'une haie végétale La hauteur maximale ne pourra pas dépasser 1,50 m sur rue et 2 m ailleurs. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits La reconstruction à l'identique est autorisée. 11.5. Autres Le premier niveau aura son accès de plain-pied, en cas de pente importante du profil en long de la voirie ou du terrain (+ de 5 %), et lorsque l'usoir est assez important quelques marches",
+        "s en limite du domaine public auront une hauteur maximale de 0,60 m. Elles pourront être surmontées par des éléments à claire voie (hormis le grillage) et doublée d'une haie végétale La hauteur maximale ne pourra pas dépasser 1,50 m sur rue et 2 m ailleurs. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits La reconstruction à l'identique est autorisée. 11.5. Autres Le premier niveau aura son accès de plain-pied, en cas de pente importante du profil en long de la voirie ou du terrain (+ de 5 %), et lorsque l'usoir est assez important quelques marches peuvent être aménagées le long de la façade (leur nombre sera suffisamment réduit pour ne pas justifier de garde-corps). Sont interdit"
+      ],
+      "emprise_sol": [
+        "limites séparatives de l'unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL Pas de prescription sauf pour : - les abris de jardins dont l'emprise au sol est limitée à 12 m 2 surface cumulée, extension comprise et par unité foncière ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. Dans une enfilade remarquable repérée au plan par ce symbole : ∆∆∆∆∆∆∆∆∆ . On s'alignera à la hauteur des égouts de toiture voisins. . Entre deux constructions d'inégale hauteur et quelle que soit la hauteur des égouts voisins, on placera l'égout de toiture soit : a) à l'existant. b) à égale hauteur d'un ou des égouts de toiture v",
+        "NSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL Pas de prescription sauf pour : - les abris de jardins dont l'emprise au sol est limitée à 12 m 2 surface cumulée, extension comprise et par unité foncière ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. Dans une enfilade remarquable repérée au plan par ce symbole : ∆∆∆∆∆∆∆∆∆ . On s'alignera à la hauteur des égouts de toiture voisins. . Entre deux constructions d'inégale hauteur et quelle que soit la hauteur des égouts voisins, on placera l'égout de toiture soit : a) à l'existant. b) à égale hauteur d'un ou des égouts de toiture voisins. c) en dessous de l'égout de toiture le plus haut, mais au-dessu",
+        "imites séparatives de l'unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL Pas de prescription sauf : - les abris de jardins dont l'emprise au sol est limitée à 12 m 2 surface cumulée, extension comprise et par unité foncière ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 7 mètres à l'égout de toiture Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur des abris de jardins ne devra pas excéder 3,50 mètres au faîtage. 10.3. En cas de transformation, d'extensions sur une construction existante et ne"
+      ],
+      "surface_min": [],
+      "interdictions": [
+        "erdun, rue de la liberté, rue Gino Raimondi, place Jean Jaurès, rue Pierre Potier, rue Ambroise Croizat) devront rester à usage commercial. En zone UAi, les remblais sont interdits. La cote des planchers des constructions devra être située au dessus de la cote de la crue centennale. SECTION II - CONDITIONS DE L'OCCUPATION DU SOL ARTICLE 3 - ACCES ET VOIRIE - ACCES Toute occupation et utilisation du sol nécessitant un accès sont interdites sur les terrains non desservis par une voie publique ou une voie privée dans les conditions répondant à l'importance et à la destination de l'immeuble ou de l'ensemble d'immeubles envisagés et notamment si les caractéristiques de ces voies rendent difficiles la circulation ou l'ut",
+        "En façade sur rue, les fenêtres des pièces principales seront plus hautes que larges sauf adaptation à l'existant. Les saillies de balcons sont interdites au dessus du domaine public. Sont interdits les retraits de façades d'un étage sur l'autre en façade sur rue et ne sont pas comptés comme retrait d'un étage sur l'autre : les loggias et les aménagements liés à l'accès des constructions. Les murs en pavés translucides resteront réservés à leur emploi habituel de \"jour de souffrance\" et ne seront pas posés en façade sur rue. Les paraboles sont interdites en façade sur rue. COMMUNE DE PIENNES ZONE UA S-PERIDE 17, rue de l’entente 57950 MONTIGNY-LES-METZ TEL 0387 18 52 48 \u0001 s.peride@wanadoo.fr 12 Les matériaux de gros œuvre non des",
+        "rosés, jaune, rouge, orangés, bleu ou vert et les couleurs dictées par le sable composant l'enduit ou rappelant les pierres locales. Le blanc pur, le noir et le gris non teinté sont interdits. Les bardages auront le même aspect et la même couleur que les enduits. En cas d'extension, la couleur et l'aspect de la façade doivent se rapprocher de celle de la construction existante. 11.2. Toitures La ligne de faîtage principale est placée parallèlement à la rue. La toiture principale est à deux pans, excepté aux angles de rues et dans extrémités de bande. Tous les aménagements de combles sont autorisés à la réserve expresse qu'ils ne créent pas de saillies sur les toitures sur rue. Les matériaux de toitures autorisés seront obligatoirement en t"
+      ]
+    }
+  },
+  "date_analyse": "2026-03-11T08:06:00.843Z"
+}

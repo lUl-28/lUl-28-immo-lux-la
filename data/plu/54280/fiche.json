@@ -1,0 +1,48 @@
+{
+  "commune": "Jœuf",
+  "insee": "54280",
+  "cp": "54240",
+  "dept": "54",
+  "ring": 2,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#54280",
+  "plu": {
+    "traite": true,
+    "found": true,
+    "type": "PLU",
+    "id": "51f328efd4522c4cf858513a9a5251d7",
+    "nom": "DU_54280",
+    "statut": "APPROVED",
+    "date_pub": "30/10/2024 16:32:19",
+    "date_maj": "30/10/2024 16:32:19",
+    "fichiers": [
+      "54280_procedure_20241014.pdf",
+      "54280_rapport_20241014.pdf",
+      "54280_padd_20241014.pdf",
+      "54280_prescription_surf_02_01_20241014.pdf",
+      "54280_prescription_surf_02_02_20241014.pdf",
+      "54280_prescription_surf_02_03_20241014.pdf",
+      "54280_prescription_surf_05_20241014.pdf",
+      "54280_reglement_20241014.pdf",
+      "54280_reglement_graphique_20241014.pdf",
+      "54280_info_lin_19_01_01_20241014.pdf",
+      "54280_info_lin_19_01_02_20241014.pdf",
+      "54280_info_surf_04_20241014.pdf",
+      "54280_info_surf_14_20241014.pdf",
+      "54280_info_surf_19_01_20241014.pdf",
+      "54280_info_surf_38_20241014.pdf",
+      "54280_info_surf_99_20241014.pdf",
+      "54280_liste_annexes_20241014.pdf",
+      "54280_liste_sup_20241014.pdf",
+      "54280_plan_sup_20241014.pdf",
+      "54280_orientations_amenagement_20241014.pdf"
+    ],
+    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/54280/54280_reglement_20241014.pdf"
+  },
+  "analyse": {
+    "succes": false,
+    "erreur": "PDF scanné — extraction texte impossible",
+    "pages": 68,
+    "texte": ""
+  },
+  "date_analyse": "2026-03-11T08:03:09.681Z"
+}

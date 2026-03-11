@@ -1,0 +1,32 @@
+{
+  "commune": "Hussigny-Godbrange",
+  "insee": "54270",
+  "cp": "54590",
+  "dept": "54",
+  "ring": 1,
+  "url_gpu": "https://www.geoportail-urbanisme.gouv.fr/#54270",
+  "plu": {
+    "traite": true,
+    "found": true,
+    "type": "PLU",
+    "id": "e10d5f9826100b4f09d9399c46134275",
+    "nom": "DU_54270",
+    "statut": "APPROVED",
+    "date_pub": "08/11/2019 18:04:04",
+    "date_maj": "02/06/2020 11:32:56",
+    "fichiers": [
+      "54270_annexes_20190403.pdf",
+      "54270_dpu_20190403.pdf",
+      "54270_orientations_amenagement_20190403.pdf",
+      "54270_padd_20190403.pdf",
+      "54270_rapport_20190403.pdf",
+      "54270_reglement_20190403.pdf",
+      "54270_reglement_graphique_1_20190403.pdf",
+      "54270_reglement_graphique_2_20190403.pdf",
+      "54270_reglement_graphique_3_20190403.pdf"
+    ],
+    "note_pdf": "Téléchargement PDF échoué — consulter GPU manuellement"
+  },
+  "analyse": null,
+  "date_analyse": "2026-03-11T07:57:01.366Z"
+}
