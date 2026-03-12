@@ -8,8 +8,8 @@
   "plu": {
     "traite": true,
     "found": false,
-    "note": "Aucun PLU/PLUi trouvé sur GPU — peut être sous PLUi intercommunal ou RNU"
+    "note": "Aucun PLU/PLUi trouvé sur GPU (ni commune ni EPCI)"
   },
   "analyse": null,
-  "date_analyse": "2026-03-11T08:12:22.897Z"
+  "date_analyse": "2026-03-12T12:34:14.144Z"
 }

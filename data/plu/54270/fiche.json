@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "08/11/2019 18:04:04",
     "date_maj": "02/06/2020 11:32:56",
+    "source": "commune",
     "fichiers": [
       "54270_annexes_20190403.pdf",
       "54270_dpu_20190403.pdf",
@@ -25,8 +26,8 @@
       "54270_reglement_graphique_2_20190403.pdf",
       "54270_reglement_graphique_3_20190403.pdf"
     ],
-    "note_pdf": "Téléchargement PDF échoué — consulter GPU manuellement"
+    "pdf_note": "PDF non téléchargeable — consulter GPU manuellement"
   },
   "analyse": null,
-  "date_analyse": "2026-03-11T07:57:01.366Z"
+  "date_analyse": "2026-03-12T10:50:47.727Z"
 }

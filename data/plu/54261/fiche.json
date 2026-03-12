@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "09/10/2023 09:13:59",
     "date_maj": "09/10/2023 09:13:59",
+    "source": "commune",
     "fichiers": [
       "54261_procedure_20230918.pdf",
       "54261_rapport_1_20230918.pdf",
@@ -48,8 +49,8 @@
       "54261_plan_sup_20230918.pdf",
       "54261_orientations_amenagement_20230918.pdf"
     ],
-    "note_pdf": "Téléchargement PDF échoué — consulter GPU manuellement"
+    "pdf_note": "PDF non téléchargeable — consulter GPU manuellement"
   },
   "analyse": null,
-  "date_analyse": "2026-03-11T07:57:46.767Z"
+  "date_analyse": "2026-03-12T10:51:57.048Z"
 }

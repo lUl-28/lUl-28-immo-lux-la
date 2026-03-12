@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "18/11/2024 09:25:48",
     "date_maj": "18/11/2024 09:25:48",
+    "source": "commune",
     "fichiers": [
       "54382_procedure_20241028.pdf",
       "54382_rapport_20241028.pdf",
@@ -33,7 +34,7 @@
       "54382_plan_sup_20241028.pdf",
       "54382_orientations_amenagement_20241028.pdf"
     ],
-    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/54382/54382_reglement_20241028.pdf"
+    "pdf_local": "data/plu/54382/54382_reglement_20241028.pdf"
   },
   "analyse": {
     "succes": true,
@@ -44,6 +45,7 @@
       "A",
       "AM",
       "AU",
+      "AUe",
       "N",
       "UA",
       "UB",
@@ -53,37 +55,25 @@
       "UNE",
       "UX"
     ],
-    "stationnement_detecte": "1 place(s) de stationnement détectée(s)",
-    "hauteur_detectee": "0",
-    "emprise_sol_detectee": "80%",
-    "extraits": {
-      "stationnement": [
-        " à l'industrie;  à la fonction d’entrepôt ;  à l’activité agricole et forestière. 1.2. Les installations classées suivantes :  soumises à autorisation ;  les carrières. 1.3. Camping et stationnement de caravanes :  les caravanes isolées ;  les terrains de camping et les aires d’accueil de camping-cars. 1.4. L'installation d'une résidence mobile visée par l'article 1er de la loi n° 2000-614 du 5 juillet 2000 relative à l'accueil et à l'habitat des gens du voyage, constituant l'habitat permanent des gens du voyage, lorsque cette installation dure plus de trois mois consécutifs; 1.5. Les aires d’accueil des gens du voyage. 1.6. Les habitations légères de loisirs :  les habitations légères de loisirs ;  les",
-        "ruire un immeuble identifié par le symbole dans le PLU. 1.8. Dans le secteur UAa, toutes les occupations et utilisations du sol sont interdites à l’exception des garages et aires de stationnement. 1.9 Dans le secteur UAd, les travaux ou modifications du bâti existant qui viseraient à créer ou à maintenir la destination d’un bâtiment vers une activité susceptible de provoquer des nuisances notamment sonores ou d’origine festive. 1.10 Dans la zone UA et ses secteurs, la modification ou la transformation de l’usage d’un garage de stationnement de véhicules, sauf si l’article 12 sur le stationnement est respecté ARTICLE 2 - OCCUPATIONS ET UTILISATIONS DU SOL SOUMISES À DES CONDITIONS PARTICULIÈRES SONT ADMIS SOUS CONDITIONS : 2.1. Les constructions d",
-        "ne activité susceptible de provoquer des nuisances notamment sonores ou d’origine festive. 1.10 Dans la zone UA et ses secteurs, la modification ou la transformation de l’usage d’un garage de stationnement de véhicules, sauf si l’article 12 sur le stationnement est respecté ARTICLE 2 - OCCUPATIONS ET UTILISATIONS DU SOL SOUMISES À DES CONDITIONS PARTICULIÈRES SONT ADMIS SOUS CONDITIONS : 2.1. Les constructions destinées :  Les annexes (abri de jardin...) suivants les articles 9 et 10. 2.2. Les équipements d’infrastructure ainsi que les constructions nécessaires à leur réalisation, leur entretien et leur exploitation. 2.3 Les affouillements et exhaussements de sol cumulant les caractéristiques suivantes : plus de 100 m² et à compter"
-      ],
-      "division": [
-        "même unité foncière, chaque pan qui la compose sera considéré comme une façade distincte de la voisine. 6.3. Pour les lotissements et opérations d’aménagement qui font l’objet d’une division en propriété ou en jouissance, les règles précédentes s’appliquent lot par lot. 6.4. Dans le secteur UAa, les constructions devront être édifiées en recul de 5 m par rapport à l’alignement de la voie. 6.5. Les règles précisées à cet article ne s’appliquent pas aux constructions et ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services publics qui devront être implantés en limite ou en recul de l’alignement des voies et emprises publiques. COMMUNE DE MONT-SAINT-MARTIN ZONE",
-        "s sur les limites séparatives de fond de propriété, elles doivent s’implanter à une distance au moins égale à 3 mètres. 7.3. Pour les lotissements et opérations d’aménagement qui font l’objet d’une division en propriété ou en jouissance, les règles précédentes s’appliquent lot par lot. 7.4. Les constructions et les ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services publics devront être édifiés en limite ou en recul des limites séparatives de l’unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MÊME UNITÉ FONCIÈRE Pas de prescription. ARTICLE 9 - EMPRISE AU SOL Pas de prescription sauf : - Pour les bâtiments annexes et dép",
-        "qu'une opération comprend un ou plusieurs bâtiments destinés à des logements et à des bureaux ou commerces, autorisés par un permis de construire ou un permis de construire valant division, le nombre de places de stationnement à réaliser est égal à 80 % du nombre de places exigibles en application des règles ci-dessus. 12.5.2. Véhicules électriques ou hybrides Pour toute construction neuve à usage principal d'habitation (groupant au moins deux logements), industriel, de bureaux, de commerce, cinématographique, équipée d'un parc de stationnement, ce parc devra être alimenté par un circuit électrique spécialisé pour permettre la recharge des véhicules électriques ou hybrides rechargeables conformé"
-      ],
-      "hauteur": [
-        "din : 1 seul abri de jardin limité à 9 m². COMMUNE DE MONT-SAINT-MARTIN ZONE UA 12 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1 Hauteur maximale La hauteur absolue des constructions est mesurée à partir du sol existant (dans le cas d’un terrain pentu le point le plus bas du terrain de l’emprise du bâtiment est à prendre en compte) jusqu’au point référérencé (faitière) , ouvrages techniques, cheminée, dispositifs nécessaires à l’utilisation des énergies renouvelables (capteurs solaires...) et autres superstructures exclues. La hauteur absolue de toutes constructions ne devra pas excéder 15 mètres au faîtage. La hauteur, toutes superstructures comprise",
-        "COMMUNE DE MONT-SAINT-MARTIN ZONE UA 12 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1 Hauteur maximale La hauteur absolue des constructions est mesurée à partir du sol existant (dans le cas d’un terrain pentu le point le plus bas du terrain de l’emprise du bâtiment est à prendre en compte) jusqu’au point référérencé (faitière) , ouvrages techniques, cheminée, dispositifs nécessaires à l’utilisation des énergies renouvelables (capteurs solaires...) et autres superstructures exclues. La hauteur absolue de toutes constructions ne devra pas excéder 15 mètres au faîtage. La hauteur, toutes superstructures comprises, est limitée à 2,50 mètres pour les abr",
-        "é d’une claire-voie pouvant être constituée d’une grille, d’éléments en bois ou d’un écran végétal. La hauteur totale ne devra pas excéder 1 m sur rue. Les piliers et les portails auront une hauteur maximale de 1,50 m. Les matériaux à enduire ne devront pas être laissés bruts. Entre deux propriétés Elles pourront être constituées d’un muret en maçonnerie ou béton d’une hauteur de 1 m maximum surmonté d’une claire-voie pouvant être constituée d’une grille, d’éléments en bois ou d’un écran végétal. La hauteur totale de la clôture ne devra pas excéder 2 m. Les matériaux à enduire ne devront pas être laissés bruts. COMMUNE DE MONT-SAINT-MARTIN ZONE UA 15 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 12"
-      ],
-      "emprise_sol": [
-        "limites séparatives de l’unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MÊME UNITÉ FONCIÈRE Pas de prescription. ARTICLE 9 - EMPRISE AU SOL Pas de prescription sauf : - Pour les bâtiments annexes et dépendances : L’emprise au sol est limitée à 30 m² de surface cumulée à la date d’opposabilité du PLU, extensions comprises et par unité foncière hors garage(s) destiné(s) au stationnement automobile. - - Pour les abris de jardin : 1 seul abri de jardin limité à 9 m². COMMUNE DE MONT-SAINT-MARTIN ZONE UA 12 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1 Hauteur maximale La hauteur absolue des",
-        "UNES PAR RAPPORT AUX AUTRES SUR UNE MÊME UNITÉ FONCIÈRE Pas de prescription. ARTICLE 9 - EMPRISE AU SOL Pas de prescription sauf : - Pour les bâtiments annexes et dépendances : L’emprise au sol est limitée à 30 m² de surface cumulée à la date d’opposabilité du PLU, extensions comprises et par unité foncière hors garage(s) destiné(s) au stationnement automobile. - - Pour les abris de jardin : 1 seul abri de jardin limité à 9 m². COMMUNE DE MONT-SAINT-MARTIN ZONE UA 12 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1 Hauteur maximale La hauteur absolue des constructions est mesurée à partir du sol existant (dans le cas d’un terrain pentu le point le plus",
-        "ites séparatives de l'unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MÊME UNITÉ FONCIÈRE Pas de prescription. ARTICLE 9 - EMPRISE AU SOL Pas de prescription . ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. Hauteur absolue La hauteur absolue des constructions est mesurée à partir du sol naturel existant (dans le cas d’un terrain pentu le point le plus bas du terrain de l’emprise du bâtiment est à prendre en compte) jusqu’au point référérencé (faitière), ouvrages techniques, cheminée, dispositifs nécessaires à l’utilisation des énergies renouvelables (capteurs solaires...) et autres superstructures exclues. La hauteur absolue des constructions"
-      ],
-      "surface_min": [],
-      "interdictions": [
-        "vent être soumises à interdiction, limitation et/ou prescriptions. SECTION I - NATURE DE L'OCCUPATION ET DE L'UTILISATION DU SOL ARTICLE 1 - OCCUPATIONS ET UTILISATIONS DU SOL INTERDITES I - SONT INTERDITS 1.1. Les constructions destinées :  à l'industrie;  à la fonction d’entrepôt ;  à l’activité agricole et forestière. 1.2. Les installations classées suivantes :  soumises à autorisation ;  les carrières. 1.3. Camping et stationnement de caravanes :  les caravanes isolées ;  les terrains de camping et les aires d’accueil de camping-cars. 1.4. L'installation d'une résidence mobile visée par l'article 1er de la loi n° 2000-614 du 5 juillet 2000 relative à l'accueil et à l'habitat des gens du voyage, constituant l'habitat perman",
-        "être soumises à interdiction, limitation et/ou prescriptions. SECTION I - NATURE DE L'OCCUPATION ET DE L'UTILISATION DU SOL ARTICLE 1 - OCCUPATIONS ET UTILISATIONS DU SOL INTERDITES I - SONT INTERDITS : A) Dans l’ensemble de la zone de la zone UB, dans les secteurs UBa1, UBa2, et UBa3, UBb et dans les secteurs UBc, UBe et UBl : 1.1. Les constructions destinées :  à l'industrie;  à la fonction d’entrepôt ;  à l’exploitation agricole et forestière. 1.2. Les installations classées :  soumises à autorisation ;  les carrières. COMMUNE DE MONT-SAINT-MARTIN ZONE UB 18 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 1.3 Camping et stationnement de caravanes :  les caravanes isolées;  les terrains de",
-        "nt être soumises à interdiction, limitation et/ou prescriptions. SECTION I - NATURE DE L'OCCUPATION ET DE L'UTILISATION DU SOL ARTICLE 1 - OCCUPATIONS ET UTILISATIONS DU SOL INTERDITES I - SONT INTERDITS : 1.1 Les constructions destinées :  à l'industrie;  à l’exploitation agricole et forestière ;  à la fonction d’entrepôt. 1.2. Les installations classées suivantes :  soumises à autorisation ;  les carrières. 1.3. Camping et stationnement de caravanes :  les caravanes isolées;  les terrains de camping et les aires d’accueil de camping-car. 1.4. L'installation d'une résidence mobile visée par l'article 1er de la loi n° 2000-614 du 5 juillet 2000 relative à l'accueil et à l'habitat des gens du voyage, constituant l'habitat pe"
-      ]
-    }
+    "parking": "8 place(s) par logement",
+    "hauteur": "0",
+    "emprise_sol": "0%",
+    "division": [
+      "division en propriété ou en jouissance, les règles précédentes s’appliquent lot par lot",
+      "division, le nombre de places de stationnement à réaliser est égal à 80 % du nombre de places exigibles en application des règles ci-dessus"
+    ],
+    "extraits_parking": [
+      "à l’activité agricole et forestière. 1.2. Les installations classées suivantes :  soumises à autorisation ;  les carrières. 1.3. Camping et stationnement de caravanes :  les caravanes isolées ;  les terrains de camping et les aires d’accueil de camping-cars. 1.4. L'installation d'une résidence mobile visée par l'article 1er de la loi n° 2000-614 du 5 juillet 2000 relative à l'accueil et à l'habitat des gens du voyage, constituant l'habitat permanent des gens du voyage, lorsque cette installation dure plus de trois mois cons",
+      "le PLU. 1.8. Dans le secteur UAa, toutes les occupations et utilisations du sol sont interdites à l’exception des garages et aires de stationnement. 1.9 Dans le secteur UAd, les travaux ou modifications du bâti existant qui viseraient à créer ou à maintenir la destination d’un bâtiment vers une activité susceptible de provoquer des nuisances notamment sonores ou d’origine festive. 1.10 Dans la zone UA et ses secteurs, la modification ou la transformation de l’usage d’un garage de stationnement de véhicules, sauf si l’article 12 sur le stationnement est respecté A"
+    ],
+    "extraits_division": [
+      "mpose sera considéré comme une façade distincte de la voisine. 6.3. Pour les lotissements et opérations d’aménagement qui font l’objet d’une division en propriété ou en jouissance, les règles précédentes s’appliquent lot par lot. 6.4. Dans le secteur UAa, les constructions devront être édifiées en recul de 5 m par rapport à l’alignement de la voie. 6.5. Les règles précisées à cet article ne s’appliquent pas aux constructions et ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services pu",
+      "é, elles doivent s’implanter à une distance au moins égale à 3 mètres. 7.3. Pour les lotissements et opérations d’aménagement qui font l’objet d’une division en propriété ou en jouissance, les règles précédentes s’appliquent lot par lot. 7.4. Les constructions et les ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services publics devront être édifiés en limite ou en recul des limites séparatives de l’unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UN"
+    ],
+    "extraits_hauteur": [
+      "MUNE DE MONT-SAINT-MARTIN ZONE UA 12 Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1 Hauteur maximale La hauteur absolue des constructions est mesurée à partir du sol existant (dans le cas d’un terrain pentu le point le plus bas du terrain de l’emprise du bâtiment est à prendre en compte) jusqu’au point référérencé (faitière) , ouvrages techniques, cheminée, dispositifs nécessaires à l’utilisation des énergies renouvelables (capteurs solaires...) et autres superstru",
+      "Commune de Mont-Saint-Martin–Révision du Plan Local d’Urbanisme approuvée le 11/04//2018 ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1 Hauteur maximale La hauteur absolue des constructions est mesurée à partir du sol existant (dans le cas d’un terrain pentu le point le plus bas du terrain de l’emprise du bâtiment est à prendre en compte) jusqu’au point référérencé (faitière) , ouvrages techniques, cheminée, dispositifs nécessaires à l’utilisation des énergies renouvelables (capteurs solaires...) et autres superstructures exclues. La hauteur absolue de t"
+    ]
   },
-  "date_analyse": "2026-03-11T07:56:23.961Z"
+  "date_analyse": "2026-03-12T10:50:14.625Z"
 }

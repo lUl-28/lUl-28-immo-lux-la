@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "09/01/2025 16:12:37",
     "date_maj": "09/01/2025 16:12:37",
+    "source": "commune",
     "fichiers": [
       "57757_jugement_20241218.pdf",
       "57757_procedure_20241218.pdf",
@@ -51,8 +52,42 @@
       "57757_projet_captage_20241218.pdf",
       "57757_orientations_amenagement_20241218.pdf"
     ],
-    "note_pdf": "Téléchargement PDF échoué — consulter GPU manuellement"
+    "pdf_local": "data/plu/57757/57757_reglement_20241218.pdf"
   },
-  "analyse": null,
-  "date_analyse": "2026-03-11T08:00:09.346Z"
+  "analyse": {
+    "succes": true,
+    "pages": 110,
+    "zones": [
+      "1AU",
+      "A",
+      "AU",
+      "N",
+      "UA",
+      "UB",
+      "UD",
+      "UE",
+      "UX",
+      "UY",
+      "UZ"
+    ],
+    "parking": null,
+    "hauteur": "8",
+    "emprise_sol": "0%",
+    "division": [
+      "DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent Plan Local d'Urbanisme est entièrement divisé en zones urbaines (U), à urbaniser (AU), agricoles (A) et naturelles et forestières (N)",
+      "lot de propriété"
+    ],
+    "extraits_parking": [
+      "UA / TRAITEMENT ENVIRONNEMENTAL ET PAYSAGER DES ESPACES NON BÂTIS ET ABORDS DES CONSTRUCTIONS  Les surfaces libres de construction et d'aires de stationnement doivent être plantées et/ou aménagées en espaces verts.  Les usoirs existants doivent rester libres de toute construction et doivent être aménagés (engazonnement, plantations, revêtements de sol traditionnels).  Dans les espaces de jardin repérés sur le document graphique par le symbole seuls sont autorisés les abris de jardin et les piscines. UA / STATIONNEMENT  Des aires de stationnement des véhicules",
+      " Dans les espaces de jardin repérés sur le document graphique par le symbole seuls sont autorisés les abris de jardin et les piscines. UA / STATIONNEMENT  Des aires de stationnement des véhicules correspondant aux besoins des occupations et utilisations du sol doivent être réalisées en dehors des voies publiques, soit au minimum :  Les surfaces de référence sont des surfaces de plancher. La valeur obtenue par le calcul ci-dessus est arrondie à l'unité supérieure.  Dans le cas d’un changement de destination d’un commerce en un seul logement et dans le cas"
+    ],
+    "extraits_division": [
+      "LE 1 - CHAMP D'APPLICATION TERRITORIAL DU PLAN Le présent règlement s'applique à la totalité du territoire de la commune de YUTZ. ARTICLE 2 - DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent Plan Local d'Urbanisme est entièrement divisé en zones urbaines (U), à urbaniser (AU), agricoles (A) et naturelles et forestières (N). I - Les zones urbaines (dites \"zones U\") « Les zones urbaines sont dites \" zones U \". Peuvent être classés en zone urbaine, les secteurs déjà urbanisés et les secteurs où les équipements publics existants ou en cours de réal"
+    ],
+    "extraits_hauteur": [
+      "propriété, les constructions principales non contiguës doivent être distantes d'au minimum 3 mètres. 4. Hauteur des constructions  La hauteur maximale de la construction projetée est fixée à : o 8 mètres à l’égout de toiture ou à l’acrotère, o 12 mètres au faitage.  La hauteur maximale est calculée du terrain naturel avant tout remaniement depuis l’endroit le moins favorable (hauteur la plus importante) en fonction du point de référence (égout de toiture, acrotère ou faitage). La référence de hauteur la plus restrictive s’applique.  Pour les constructions annexes is",
+      "ons  La hauteur maximale de la construction projetée est fixée à : o 8 mètres à l’égout de toiture ou à l’acrotère, o 12 mètres au faitage.  La hauteur maximale est calculée du terrain naturel avant tout remaniement depuis l’endroit le moins favorable (hauteur la plus importante) en fonction du point de référence (égout de toiture, acrotère ou faitage). La référence de hauteur la plus restrictive s’applique.  Pour les constructions annexes isolées de la construction principale, la hauteur hors tout de la construction projetée est fixée à 3 mètres.  Les règles de ha"
+    ]
+  },
+  "date_analyse": "2026-03-12T11:11:00.099Z"
 }

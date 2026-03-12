@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "30/10/2024 16:32:19",
     "date_maj": "30/10/2024 16:32:19",
+    "source": "commune",
     "fichiers": [
       "54280_procedure_20241014.pdf",
       "54280_rapport_20241014.pdf",
@@ -36,13 +37,12 @@
       "54280_plan_sup_20241014.pdf",
       "54280_orientations_amenagement_20241014.pdf"
     ],
-    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/54280/54280_reglement_20241014.pdf"
+    "pdf_local": "data/plu/54280/54280_reglement_20241014.pdf"
   },
   "analyse": {
     "succes": false,
-    "erreur": "PDF scanné — extraction texte impossible",
-    "pages": 68,
-    "texte": ""
+    "erreur": "PDF scanné (image) — texte non extractible",
+    "pages": 68
   },
-  "date_analyse": "2026-03-11T08:03:09.681Z"
+  "date_analyse": "2026-03-12T12:19:26.329Z"
 }

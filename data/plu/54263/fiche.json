@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "23/07/2024 10:04:27",
     "date_maj": "23/07/2024 10:04:27",
+    "source": "commune",
     "fichiers": [
       "54263_procedure_20240627.pdf",
       "54263_rapport_20240627.pdf",
@@ -34,7 +35,7 @@
       "54263_plan_sup_20240627.pdf",
       "54263_orientations_amenagement_20240627.pdf"
     ],
-    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/54263/54263_reglement_20240627.pdf"
+    "pdf_local": "data/plu/54263/54263_reglement_20240627.pdf"
   },
   "analyse": {
     "succes": true,
@@ -53,35 +54,23 @@
       "UNE",
       "UX"
     ],
-    "stationnement_detecte": null,
-    "hauteur_detectee": "0",
-    "emprise_sol_detectee": null,
-    "extraits": {
-      "stationnement": [
-        "tions destinées: - à l’industrie, - à l'exploitation agricole - aux entrepôt sauf les cas visés à l'article 2  2. Les installations classées : - soumises à autorisation  3. Camping et stationnement de caravanes : - les caravanes isolées - les terrains aménagés de camping et caravanage - les terrains destinés uniquement à la réception des caravanes  4. Constructions de loisirs : - les habitations légères de loisirs - les parcs résidentiels de loisirs  5. Les installations et travaux divers suivants : - les parcs d'attraction - les dépôts de véhicules (usagés) susceptibles de contenir au moins dix unités, - les garages collectifs de caravanes à ciel ouvert.  6. Les remblais dans le secteur UAi  7. Les occupations et installations du sol pour l'installa",
-        "e cette règle sont acceptés. Les matériaux hétéroclites et de récupération sont interdits. Les toitures de couleur métallique (aluminium, galvanisé, ...) sont interdites. ARTICLE 12 - STATIONNEMENT 12.1. Le stationnement des véhicules correspondant aux besoins des constructions et installations doit être assuré en dehors des voies publiques sur des emplacements aménagés. 12.2. Suivant la nature et l'utilisation des constructions, les places de stationnement doivent être créées selon les normes suivantes (les surfaces de référence sont des surfaces hors oeuvre nettes ; la valeur obtenue par le calcul ci-dessus est arrondie à l'unité supérieure) : - logement (≤ 60 m2) 1 emplacement - logement (> 60 m2) 2 emplacements - maison individuelle 2 emplacements - burea",
-        "eptés. Les matériaux hétéroclites et de récupération sont interdits. Les toitures de couleur métallique (aluminium, galvanisé, ...) sont interdites. ARTICLE 12 - STATIONNEMENT 12.1. Le stationnement des véhicules correspondant aux besoins des constructions et installations doit être assuré en dehors des voies publiques sur des emplacements aménagés. 12.2. Suivant la nature et l'utilisation des constructions, les places de stationnement doivent être créées selon les normes suivantes (les surfaces de référence sont des surfaces hors oeuvre nettes ; la valeur obtenue par le calcul ci-dessus est arrondie à l'unité supérieure) : - logement (≤ 60 m2) 1 emplacement - logement (> 60 m2) 2 emplacements - maison individuelle 2 emplacements - bureaux, services supérieurs à"
-      ],
-      "division": [
-        "ol créées en application de législations particulières et qui sont reportées sur le document graphique \"servitudes\" et récapitulées dans les annexes du PLU. ARTICLE III - DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent plan Local d’urbanisme est entièrement divisé en zones urbaines et en zones naturelles. Un indice \"i\" est précisé pour certains secteurs ; il figure un risque dans un secteur et non pas une zone spécifique. I - LES ZONES URBAINES ET A URBANISER Les zones urbaines et à urbaniser auxquelles s'appliquent les dispositions des différents chapitres du titre II du présent règlement sont : - la zone UA, UB, UC, UCa, UCb, UCc, UE, UL et UX - la zone 1AU, 1AUX et 1AUXs - la zone 2AU, 2AUX III - LES ZO"
-      ],
-      "hauteur": [
-        "aximum de 50 m2 surface cumulée, extension comprise. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 13 - ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 12 mètres à l'égout de toiture. Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur des dépendances et surfaces annexes (remise, abris de jardin, serre, garage) ne devra pas excéder 3,50 mètres au faîtage. 10.3. Dans les alignements de façades en ordre continu repérés au plan par le symbole ∆∆∆∆∆∆∆∆∆∆ On s'alignera à la hauteur des égouts de toiture voisins. Entre deux constructions d'inégale h",
-        "n tableau. Sur rue, ils ne seront pas en saillie de la façade. 11.4. Clôtures En absence d'alignement de façade en ordre continu repéré au plan, les clôtures maçonnées auront une hauteur maximale de 1,50 m. Elles pourront être surmontées par des éléments à claire voie et doublée d'une haie végétale. La hauteur maximale ne pourra pas dépasser 1,50 m sur rue et 2 m en limite séparative. En cas de pente, la clôture maçonnée sera toujours horizontale avec décrochements (aspect en escalier). Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits et peints si nécessaires. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 15 - 11.5.",
-        "rdre continu repéré au plan, les clôtures maçonnées auront une hauteur maximale de 1,50 m. Elles pourront être surmontées par des éléments à claire voie et doublée d'une haie végétale. La hauteur maximale ne pourra pas dépasser 1,50 m sur rue et 2 m en limite séparative. En cas de pente, la clôture maçonnée sera toujours horizontale avec décrochements (aspect en escalier). Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits et peints si nécessaires. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 15 - 11.5. Autres Les murs des abris de jardins seront enduits ou en matériau d'aspect bois. Les éléments préfabriqués se"
-      ],
-      "emprise_sol": [
-        "plusieurs limites séparatives de l'unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL L'emprise au sol des dépendances et surfaces annexes non contiguës à l'habitation (remise, abris de jardin, serre, garage) est limitée à un maximum de 50 m2 surface cumulée, extension comprise. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 13 - ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 12 mètres à l'égout de toiture. Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue.",
-        "paratives de l'unité foncière. ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL L'emprise au sol des dépendances et surfaces annexes non contiguës à l'habitation (remise, abris de jardin, serre, garage) est limitée à un maximum de 50 m2 surface cumulée, extension comprise. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 13 - ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 12 mètres à l'égout de toiture. Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur de",
-        "-METZ 03 87 18 52 48, 03 87 33 26 76 - 20 - ARTICLE 8 - IMPLANTATION DES CONSTRUCTIONS LES UNES PAR RAPPORT AUX AUTRES SUR UNE MEME UNITE FONCIERE Pas de prescription ARTICLE 9 - EMPRISE AU SOL L'emprise au sol des dépendances et surfaces annexes non contiguës à l'habitation (remise, abris de jardin, serre, garage) est limitée à un maximum de 50 m2 surface cumulée, extension comprise. ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 12 mètres à l'égout de toiture. Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur des dépendances et surfaces annexes (remise, abris de jardin, serre, garage) ne devra pas excéder 3,50 mètres"
-      ],
-      "surface_min": [],
-      "interdictions": [
-        "SECTION I – NATURE DE L’OCCUPATION ET DE L’UTILISATION DU SOL ZONE DE BRUIT Application de l'arrêté préfectoral du 31 août 1998 ARTICLE 1 – OCCUPATIONS ET UTILISATIONS DU SOL INTERDITES, SONT INTERDITS :  1. Les constructions destinées: - à l’industrie, - à l'exploitation agricole - aux entrepôt sauf les cas visés à l'article 2  2. Les installations classées : - soumises à autorisation  3. Camping et stationnement de caravanes : - les caravanes isolées - les terrains aménagés de camping et caravanage - les terrains destinés uniquement à la réception des caravanes  4. Constructions de loisirs : - les habitations légères de loisirs - les parcs résidentiels de loisirs  5. Les installations et travaux divers suivants : - les parcs d'attraction - l",
-        "es saillies de balcons sont interdites au dessus du domaine public. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 14 - Sont interdits les retraits de façades d'un étage sur l'autre en façade sur rue, ne sont pas comptés comme retrait d'un étage sur l'autre : les loggias, les balcons et les aménagements liés à l'accès des constructions. Les murs en pavés translucides resteront réservés à leur emploi habituel de \"jour de souffrance\" et ne seront pas posés en façade sur rue. Les paraboles sont interdites en façade sur rue. Les caissons des volets roulants en saillie de la façade sur rue sont interdits. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être end",
-        "loi habituel de \"jour de souffrance\" et ne seront pas posés en façade sur rue. Les paraboles sont interdites en façade sur rue. Les caissons des volets roulants en saillie de la façade sur rue sont interdits. Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits et peints si nécessaires. Le ton des façades (hors commerces) sera donné par le coloris des enduits ou de la peinture et sera pastel. Le blanc pur, le noir et le gris ciment sont interdits. Les bardages auront la même couleur que les enduits. 11.2. Toitures Les matériaux de toitures autorisés seront obligatoirement en tuiles (de ton rouge ou ton voisin, ou ton noir), en ardoise ou en matériaux d'aspect similaire. Les installations relatives à la"
-      ]
-    }
+    "parking": null,
+    "hauteur": "0",
+    "emprise_sol": null,
+    "division": [
+      "DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent plan Local d’urbanisme est entièrement divisé en zones urbaines et en zones naturelles"
+    ],
+    "extraits_parking": [
+      "tation agricole - aux entrepôt sauf les cas visés à l'article 2  2. Les installations classées : - soumises à autorisation  3. Camping et stationnement de caravanes : - les caravanes isolées - les terrains aménagés de camping et caravanage - les terrains destinés uniquement à la réception des caravanes  4. Constructions de loisirs : - les habitations légères de loisirs - les parcs résidentiels de loisirs  5. Les installations et travaux divers suivants : - les parcs d'attraction - les dépôts de véhicules (usagés) susceptibles de contenir au moins dix unités, - les g",
+      "hétéroclites et de récupération sont interdits. Les toitures de couleur métallique (aluminium, galvanisé, ...) sont interdites. ARTICLE 12 - STATIONNEMENT 12.1. Le stationnement des véhicules correspondant aux besoins des constructions et installations doit être assuré en dehors des voies publiques sur des emplacements aménagés. 12.2. Suivant la nature et l'utilisation des constructions, les places de stationnement doivent être créées selon les normes suivantes (les surfaces de référence sont des surfaces hors oeuvre nettes ; la valeur obtenue par le calcul ci-dessus est arro"
+    ],
+    "extraits_division": [
+      "rticulières et qui sont reportées sur le document graphique \"servitudes\" et récapitulées dans les annexes du PLU. ARTICLE III - DIVISION DU TERRITOIRE EN ZONES Le territoire couvert par le présent plan Local d’urbanisme est entièrement divisé en zones urbaines et en zones naturelles. Un indice \"i\" est précisé pour certains secteurs ; il figure un risque dans un secteur et non pas une zone spécifique. I - LES ZONES URBAINES ET A URBANISER Les zones urbaines et à urbaniser auxquelles s'appliquent les dispositions des différents chapitres du titre"
+    ],
+    "extraits_hauteur": [
+      "e. ZONE UA Réalisé par : S-PERIDE 17, rue de l'Entente 57950 MONTIGNY-LES-METZ 03 87 18 52 48, 03 87 33 26 76 - 13 - ARTICLE 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur des constructions ne devra pas excéder 12 mètres à l'égout de toiture. Cette hauteur sera prise au point le plus haut du terrain naturel au droit de la façade sur rue. 10.2. La hauteur des dépendances et surfaces annexes (remise, abris de jardin, serre, garage) ne devra pas excéder 3,50 mètres au faîtage. 10.3. Dans les alignements de façades en ordre continu re",
+      "e la façade. 11.4. Clôtures En absence d'alignement de façade en ordre continu repéré au plan, les clôtures maçonnées auront une hauteur maximale de 1,50 m. Elles pourront être surmontées par des éléments à claire voie et doublée d'une haie végétale. La hauteur maximale ne pourra pas dépasser 1,50 m sur rue et 2 m en limite séparative. En cas de pente, la clôture maçonnée sera toujours horizontale avec décrochements (aspect en escalier). Les matériaux de gros œuvre non destinés à être laissés bruts (aggloméré, ...) devront être enduits et peints si"
+    ]
   },
-  "date_analyse": "2026-03-11T08:04:36.648Z"
+  "date_analyse": "2026-03-12T12:20:29.220Z"
 }

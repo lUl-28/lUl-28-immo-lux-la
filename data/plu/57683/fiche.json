@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "17/11/2025 16:41:04",
     "date_maj": "17/11/2025 16:41:04",
+    "source": "commune",
     "fichiers": [
       "57683_procedure_20251008.pdf",
       "57683_rapport_1_20251008.pdf",
@@ -63,13 +64,12 @@
       "57683_07_guidetech_3_Ifsttar_20251008.pdf",
       "57683_orientations_amenagement_20251008.pdf"
     ],
-    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/57683/57683_reglement_20251008.pdf"
+    "pdf_local": "data/plu/57683/57683_reglement_20251008.pdf"
   },
   "analyse": {
     "succes": false,
-    "erreur": "PDF scanné — extraction texte impossible",
-    "pages": 38,
-    "texte": ""
+    "erreur": "PDF scanné (image) — texte non extractible",
+    "pages": 38
   },
-  "date_analyse": "2026-03-11T08:09:19.244Z"
+  "date_analyse": "2026-03-12T12:32:31.079Z"
 }

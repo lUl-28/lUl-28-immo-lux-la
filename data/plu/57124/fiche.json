@@ -14,6 +14,7 @@
     "statut": "APPROVED",
     "date_pub": "11/04/2023 15:24:18",
     "date_maj": "11/04/2023 15:24:18",
+    "source": "commune",
     "fichiers": [
       "57124_procedure_20211004.pdf",
       "57124_rapport_20211004.pdf",
@@ -42,7 +43,7 @@
       "57124_plan_sup_20211004.pdf",
       "57124_orientations_amenagement_18_00_20211004.pdf"
     ],
-    "pdf_local": "/workspace/Projet Immo Lux L&A/data/plu/57124/57124_reglement_20211004.pdf"
+    "pdf_local": "data/plu/57124/57124_reglement_20211004.pdf"
   },
   "analyse": {
     "succes": true,
@@ -51,6 +52,8 @@
       "2AU",
       "A",
       "AU",
+      "AUg1",
+      "AUw",
       "N",
       "NL",
       "NP",
@@ -58,37 +61,25 @@
       "UNE",
       "UX"
     ],
-    "stationnement_detecte": "2 place(s) de stationnement détectée(s)",
-    "hauteur_detectee": "4",
-    "emprise_sol_detectee": null,
-    "extraits": {
-      "stationnement": [
-        "de toutes natures en dehors des bâtiments clos spécialement aménagés à cet effet, - les carrières ou décharges, - les habitations légères de loisirs, - l'aménagement de terrains pour le camping, - le stationnement de caravanes ou le stationnement de plusieurs caravanes sur un même terrain, - les constructions à usage industriel. ARTICLE U 2 - OCCUPATIONS ET UTILISATIONS DES SOLS ADMISES SOUS CONDITIONS 2.1. Les constructions à usage: d'artisanat, hôtelier, de commerces, de services et les installations classées à condition que soient mises en œuvre toutes les dispositions pour les rendre compatibles avec le milieu environnant. 2.2.Les constructions à usage agricole à condition qu'il s'agisse d'une extension à usage de stockage de matériel ou l",
-        "âtiments clos spécialement aménagés à cet effet, - les carrières ou décharges, - les habitations légères de loisirs, - l'aménagement de terrains pour le camping, - le stationnement de caravanes ou le stationnement de plusieurs caravanes sur un même terrain, - les constructions à usage industriel. ARTICLE U 2 - OCCUPATIONS ET UTILISATIONS DES SOLS ADMISES SOUS CONDITIONS 2.1. Les constructions à usage: d'artisanat, hôtelier, de commerces, de services et les installations classées à condition que soient mises en œuvre toutes les dispositions pour les rendre compatibles avec le milieu environnant. 2.2.Les constructions à usage agricole à condition qu'il s'agisse d'une extension à usage de stockage de matériel ou liées à une mise aux normes de l'e",
-        "ments carrefours, bifurcations ou passages à niveau. Si les clôtures, sont situées à proximité d'un carrefour, elles ne peuvent pas porter préjudice aux conditions de visibilité. ARTICLE U 12 – STATIONNEMENT 12.1. Dans les secteurs construits en ordre continu: Des aires de stationnement des véhicules correspondant aux besoins des occupations et utilisations du sol doivent être réalisées en dehors des voies publiques. 12.2. Dans les secteurs construits en ordre discontinu: Des aires de stationnement des véhicules correspondant aux besoins des occupations et utilisations du sol doivent être réalisées en dehors des voies publiques, soit au minimum : 2 places de stationnement par logement, hors logement conventionné. 12.3. Cet article ne s'applique pas aux bâtiments agricoles, aux équip"
-      ],
-      "division": [
-        "................................................................................3 ARTICLE 1 - CHAMP D'APPLICATION TERRITORIAL DU PLAN ....................................................4 ARTICLE 2 - DIVISION DU TERRITOIRE EN ZONES ...................................................................4 TITRE II - DISPOSITIONS APPLICABLES AUX ZONES URBAINES ET AUX ZONES A URBANISER ..7 CHAPITRE I- DISPOSITIONS PROPRES A LA ZONE U..........................................................8 CHAPITRE II- DISPOSITIONS PROPRES A LA ZONE Ue..........................................................15 CHAPITRE III- DISPOSITIONS PROPRES A LA ZONE Ux..........................................................19 CHAPITRE IV - DISPOSITIONS PROPRES A L",
-        "........................46 TITRE I DISPOSITIONS GENERALES 3 ARTICLE I : Champ d’application territorial du plan Le présent règlement s’applique au territoire de la commune de CATTENOM. ARTICLE II : Division du territoire en zones A)Les zones U : « Peuvent être classés en zone urbaine, les secteurs déjà urbanisés et les secteurs où les équipements publics existants ou en cours de réalisation ont une capacité suffisante pour desservir les constructions à implanter. » 1)Les zones AU : « Peuvent être classés en zone à urbaniser les secteurs à caractère naturel de la commune destinés à être ouverts à l'urbanisation. Lorsque les voies publiques et les réseaux d'eau, d'électricité et, le cas échéant, d'assainissement existant à la périphérie immédiate d'une zone AU ont une capacité suffisante",
-        "s ou concourant aux missions des services publics. 6.5. Cet article, pour les lotissements ou les permis groupés, s’applique lot par lot et non à l’enveloppe du lotissement ou du permis groupé valant division. ARTICLE U 7 - IMPLANTATION DES CONSTRUCTIONS PAR RAPPORT AUX LIMITES SEPARATIVES 7.1.Sur une profondeur de 10 mètres mesurée à partir de l’alignement, la construction doit être édifiée d'une limite latérale à l'autre. 7.2.Au-delà de cette profondeur de 10 m et à moins que le bâtiment à construire ne jouxte la limite parcellaire, la distance comptée horizontalement de tout point de ce bâtiment au point de la limite parcellaire qui en est le plus rapproché ne peut être inférieure à 3 mètres. 7.3.Lorsque le terrain a une façade sur rue"
-      ],
-      "hauteur": [
-        "ES PAR RAPPORT AUX AUTRES SUR UNE MEME PROPRIETE . Pas de prescription. ARTICLE U 9 - EMPRISE AU SOL Pas de prescription. ARTICLE U 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur maximale de la construction projetée ne pourra développer plus de trois niveaux (R+1+C) aménageables. 10.2. La hauteur maximale hors tout est fixée à 4 m pour les constructions annexes isolées. La hau- teur est calculée à partir du terrain naturel. 10.3. Cet article ne s'applique pas aux bâtiments agricoles, aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services publics. ARTICLE U 11 - ASPECT EXTERIEUR Cet article",
-        "UNE MEME PROPRIETE . Pas de prescription. ARTICLE U 9 - EMPRISE AU SOL Pas de prescription. ARTICLE U 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur maximale de la construction projetée ne pourra développer plus de trois niveaux (R+1+C) aménageables. 10.2. La hauteur maximale hors tout est fixée à 4 m pour les constructions annexes isolées. La hau- teur est calculée à partir du terrain naturel. 10.3. Cet article ne s'applique pas aux bâtiments agricoles, aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services publics. ARTICLE U 11 - ASPECT EXTERIEUR Cet article ne s'applique pas aux équipements et bâtiments publics,",
-        "n. ARTICLE U 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur maximale de la construction projetée ne pourra développer plus de trois niveaux (R+1+C) aménageables. 10.2. La hauteur maximale hors tout est fixée à 4 m pour les constructions annexes isolées. La hau- teur est calculée à partir du terrain naturel. 10.3. Cet article ne s'applique pas aux bâtiments agricoles, aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des services publics. ARTICLE U 11 - ASPECT EXTERIEUR Cet article ne s'applique pas aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des serv"
-      ],
-      "emprise_sol": [
-        "s à l’habitation sont autorisées. Les extensions mesurées de construction à usage d’habitation existante non intégrées au volume des constructions d’activités sont autorisées dans la limite de 50m² d’emprise au sol supplémentaire par unité foncière et toute extension comprise. 2.3. Les décharges, les déchetteries ou les installations de traitement des ordures ménagères à condition qu'elles soient prévues par le Schéma Départemental. 2.4. Aucune construction ne pourra être autorisée à moins de 10 mètres des berges de la Moselle. Aucune construction ne pourra être autorisée à moins de 4 mètres des berges des autres cours d’eau. SECTION II - CONDITIONS DE L ' OCCUPATION DU SOL ARTICLE UX 3 - ACCES ET VOIRIE 3.1. Voirie 3.1.1. Les accès nouveaux i",
-        "RES SUR UNE MEME PROPRIETE . Pas de prescription. ARTICLE N 9 - EMPRISE AU SOL Dans les secteurs Nl et Nli uniquement : 9.1. L’emprise au sol maximale des constructions, installations et aménagements à usage sportif et/ou de loisirs est fixée à 100 m² par unité foncière, toute extension comprise. 9.2. Les constructions à usage d'habitation devront être intégrées au bâti ou en extension du bâti (mitoyenneté) des bâtiments à usage sportifs et ou de loisirs. Les annexes devront être intégralement intégrées au volume des bâtiments 9.3. Cet article ne s'applique pas aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques nécessaires au fonctionnement des services publics ou concourant aux missions des serv",
-        "n ensemble de constructions ayant la même fonction. Égout du toit : Limite basse d’un pan de couverture, vers laquelle ruissellent les eaux de pluie. Emprise au sol : L’emprise au sol des constructions correspond à leur projection verticale au sol, exception faite des débords de toiture, des balcons, oriels, et des parties de construction dont la hauteur ne dépasse pas 0.60 m au dessus du sol naturel avant travaux. Commune de Cattenom – Règlement PLU 47 Équipement d ’ intérêt collectif : Établis"
-      ],
-      "surface_min": [],
-      "interdictions": [
-        "e façade , tels que percements et balcons : Dans tous les secteurs construits 11.3.1. les volets roulants à caisson extérieur, la suppression de volets bois à battant sont interdits 11.3.2. la destruction ou le camouflage de sculpture ou ornementation ancienne est interdit 11.3.3. la mise à nu de maçonnerie de pierres destinée à être enduite (moellons) est interdite, de même que les matériaux neufs destinés à être recouverts (par un enduit par exemple) ne pourront être laissés à l’état brut 11.3.4. la pierre de taille et la brique (non destinée à être enduite) doivent rester apparentes 11.3.5. lors de modifications ou transformations de bâtiments existants les percements d’origine devront être conservés (grange, ventilation comble, gerbière, soupirail) 11.3",
-        "IONS DE L ' OCCUPATION DU SOL ARTICLE Uw 3 - ACCES ET VOIRIE 3.1. Voirie 3.1.1. Les accès nouveaux individuels sur les Routes Départementales hors agglomération sont interdits sauf en cas de besoin impérieux lié à l’exploitation du CNPE. 3.1.2. Pour être constructible, un terrain doit être desservi par une voie (publique ou privée) de caractéristiques proportionnées à l'importance de l'occupation ou de l'utilisation des sols envisagée. 3.1.3. Les voies nouvelles ouvertes à la circulation publique automobile doivent avoir au moins 8 mètres d'emprise. 3.1.4. Les voies nouvelles en impasse ouvertes à la circulation publique automobile doivent être aménagées dans leur partie terminale de façon à permettre aux véhicules de service de faire demi-tour.",
-        "SECTION II - CONDITIONS DE L ' OCCUPATION DU SOL ARTICLE N 3 - ACCES ET VOIRIE Les accès nouveaux individuels sur les Routes Départementales hors agglomération sont interdits. ARTICLE N 4 - DESSERTE PAR LES RESEAUX 4.1. Eau potable Toute construction ou installation nécessitant une alimentation en eau doit être alimentée en eau potable, soit par branchement de caractéristiques suffisantes sur le réseau public de distribution lorsqu’il existe, soit dans les conditions fixées par le règlement sanitaire départemental par captage, forage ou puits particulier préalablement autorisés. 4.2. Assainissement 4.2.1. Eaux usées Toute construction ou installation nécessitant une évacuation des eaux usées doit être raccordée au"
-      ]
-    }
+    "parking": "2 place(s) par logement",
+    "hauteur": "4",
+    "emprise_sol": null,
+    "division": [
+      "DIVISION DU TERRITOIRE EN ZONES",
+      "Division du territoire en zones A)Les zones U : « Peuvent être classés en zone urbaine, les secteurs déjà urbanisés et les secteurs où les équipements publics existants ou en cours de réalisation ont une cap"
+    ],
+    "extraits_parking": [
+      "cialement aménagés à cet effet, - les carrières ou décharges, - les habitations légères de loisirs, - l'aménagement de terrains pour le camping, - le stationnement de caravanes ou le stationnement de plusieurs caravanes sur un même terrain, - les constructions à usage industriel. ARTICLE U 2 - OCCUPATIONS ET UTILISATIONS DES SOLS ADMISES SOUS CONDITIONS 2.1. Les constructions à usage: d'artisanat, hôtelier, de commerces, de services et les installations classées à condition que soient mises en œuvre toutes les dispositions pour les rendre compatible",
+      "les carrières ou décharges, - les habitations légères de loisirs, - l'aménagement de terrains pour le camping, - le stationnement de caravanes ou le stationnement de plusieurs caravanes sur un même terrain, - les constructions à usage industriel. ARTICLE U 2 - OCCUPATIONS ET UTILISATIONS DES SOLS ADMISES SOUS CONDITIONS 2.1. Les constructions à usage: d'artisanat, hôtelier, de commerces, de services et les installations classées à condition que soient mises en œuvre toutes les dispositions pour les rendre compatibles avec le milieu environnant. 2.2"
+    ],
+    "extraits_division": [
+      "..............................3 ARTICLE 1 - CHAMP D'APPLICATION TERRITORIAL DU PLAN ....................................................4 ARTICLE 2 - DIVISION DU TERRITOIRE EN ZONES ...................................................................4 TITRE II - DISPOSITIONS APPLICABLES AUX ZONES URBAINES ET AUX ZONES A URBANISER ..7 CHAPITRE I- DISPOSITIONS PROPRES A LA ZONE U..........................................................8 CHAPITRE II- DISPOSITIONS PROPRES A LA ZONE Ue.........................................................",
+      "ENERALES 3 ARTICLE I : Champ d’application territorial du plan Le présent règlement s’applique au territoire de la commune de CATTENOM. ARTICLE II : Division du territoire en zones A)Les zones U : « Peuvent être classés en zone urbaine, les secteurs déjà urbanisés et les secteurs où les équipements publics existants ou en cours de réalisation ont une capacité suffisante pour desservir les constructions à implanter. » 1)Les zones AU : « Peuvent être classés en zone à urbaniser les secteurs à caractère naturel de la commune destinés à être ouverts à l'urbanisation. Lorsque les voies publiques"
+    ],
+    "extraits_hauteur": [
+      "UR UNE MEME PROPRIETE . Pas de prescription. ARTICLE U 9 - EMPRISE AU SOL Pas de prescription. ARTICLE U 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur maximale de la construction projetée ne pourra développer plus de trois niveaux (R+1+C) aménageables. 10.2. La hauteur maximale hors tout est fixée à 4 m pour les constructions annexes isolées. La hau- teur est calculée à partir du terrain naturel. 10.3. Cet article ne s'applique pas aux bâtiments agricoles, aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques néc",
+      "ption. ARTICLE U 9 - EMPRISE AU SOL Pas de prescription. ARTICLE U 10 - HAUTEUR MAXIMUM DES CONSTRUCTIONS 10.1. La hauteur maximale de la construction projetée ne pourra développer plus de trois niveaux (R+1+C) aménageables. 10.2. La hauteur maximale hors tout est fixée à 4 m pour les constructions annexes isolées. La hau- teur est calculée à partir du terrain naturel. 10.3. Cet article ne s'applique pas aux bâtiments agricoles, aux équipements et bâtiments publics, ainsi qu'aux ouvrages techniques nécessaires au fonctionnement des services publics ou concou"
+    ]
   },
-  "date_analyse": "2026-03-11T08:02:31.494Z"
+  "date_analyse": "2026-03-12T11:12:02.298Z"
 }
