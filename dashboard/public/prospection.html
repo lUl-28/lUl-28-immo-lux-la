@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prospection — SCI L&A</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+
+    /* ── Nav ── */
+    nav { background: #1e293b; border-bottom: 1px solid #334155; padding: 0 32px; display: flex; align-items: center; gap: 32px; height: 52px; }
+    nav .logo { font-weight: 700; font-size: 15px; color: #f8fafc; }
+    nav a { color: #94a3b8; text-decoration: none; font-size: 13px; font-weight: 500; padding: 4px 0; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+    nav a:hover { color: #f8fafc; }
+    nav a.active { color: #60a5fa; border-bottom-color: #60a5fa; }
+
+    /* ── Layout ── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 36px 24px; }
+    .page-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+    .page-header h1 { font-size: 22px; font-weight: 700; color: #f8fafc; }
+    .page-header p { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    /* ── Btn ── */
+    .btn { border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s; }
+    .btn-primary { background: #3b82f6; color: #fff; }
+    .btn-primary:hover { background: #2563eb; }
+    .btn-ghost { background: transparent; color: #94a3b8; border: 1px solid #334155; }
+    .btn-ghost:hover { color: #f8fafc; border-color: #64748b; }
+    .btn-danger { background: transparent; color: #f87171; border: 1px solid #ef4444; }
+    .btn-danger:hover { background: rgba(239,68,68,.1); }
+    .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+    /* ── Stats bar ── */
+    .stats-row { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+    .stat-mini { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px; min-width: 120px; }
+    .stat-mini .sv { font-size: 24px; font-weight: 700; }
+    .stat-mini .sl { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
+    .note-A .sv { color: #10b981; }
+    .note-B .sv { color: #60a5fa; }
+    .note-C .sv { color: #f59e0b; }
+    .note-D .sv { color: #ef4444; }
+
+    /* ── Grille biens ── */
+    .biens-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+    /* ── Carte bien ── */
+    .bien-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color .15s, transform .1s;
+      cursor: pointer;
+    }
+    .bien-card:hover { border-color: #60a5fa; transform: translateY(-1px); }
+    .bien-card-header { padding: 16px 18px 12px; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: flex-start; }
+    .bien-adresse { font-weight: 700; font-size: 15px; color: #f1f5f9; }
+    .bien-commune { font-size: 12px; color: #64748b; margin-top: 2px; }
+    .note-badge { padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+    .badge-A { background: rgba(16,185,129,.15); color: #10b981; border: 1px solid rgba(16,185,129,.3); }
+    .badge-B { background: rgba(96,165,250,.15); color: #60a5fa; border: 1px solid rgba(96,165,250,.3); }
+    .badge-C { background: rgba(245,158,11,.12); color: #f59e0b; border: 1px solid rgba(245,158,11,.3); }
+    .badge-D { background: rgba(239,68,68,.1); color: #f87171; border: 1px solid rgba(239,68,68,.3); }
+    .badge-new { background: rgba(148,163,184,.1); color: #94a3b8; border: 1px solid #334155; }
+
+    .bien-card-body { padding: 14px 18px; }
+    .bien-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+    .meta-chip { background: #0f172a; border: 1px solid #334155; border-radius: 5px; padding: 3px 8px; font-size: 11px; color: #94a3b8; }
+    .meta-chip.green { color: #10b981; border-color: rgba(16,185,129,.3); background: rgba(16,185,129,.08); }
+    .meta-chip.orange { color: #f59e0b; border-color: rgba(245,158,11,.3); background: rgba(245,158,11,.08); }
+    .meta-chip.red { color: #f87171; border-color: rgba(239,68,68,.3); background: rgba(239,68,68,.08); }
+
+    .bien-progress { margin-top: 10px; }
+    .progress-label { font-size: 11px; color: #64748b; margin-bottom: 5px; display: flex; justify-content: space-between; }
+    .progress-bar { height: 4px; background: #0f172a; border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #3b82f6; border-radius: 3px; transition: width .3s; }
+
+    .phase-dots { display: flex; gap: 6px; margin-top: 10px; }
+    .phase-dot { width: 8px; height: 8px; border-radius: 50%; background: #334155; }
+    .phase-dot.done { background: #10b981; }
+    .phase-dot.active { background: #3b82f6; }
+
+    .bien-card-footer { padding: 10px 18px; background: #162032; display: flex; justify-content: space-between; align-items: center; }
+    .bien-date { font-size: 11px; color: #475569; }
+
+    /* ── Empty state ── */
+    .empty-state { text-align: center; padding: 80px 20px; color: #475569; }
+    .empty-state .ei { font-size: 48px; margin-bottom: 16px; }
+    .empty-state h3 { font-size: 18px; color: #64748b; margin-bottom: 8px; }
+    .empty-state p { font-size: 13px; margin-bottom: 24px; }
+
+    /* ── Modal overlay ── */
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 24px; overflow-y: auto; }
+    .overlay.open { display: flex; }
+
+    /* ── Modal ── */
+    .modal { background: #1e293b; border: 1px solid #334155; border-radius: 16px; width: 100%; max-width: 780px; margin: auto; }
+    .modal-header { padding: 22px 28px 18px; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h2 { font-size: 17px; font-weight: 700; color: #f8fafc; }
+    .close-btn { background: none; border: none; color: #64748b; font-size: 22px; cursor: pointer; line-height: 1; padding: 4px; border-radius: 6px; }
+    .close-btn:hover { color: #f8fafc; background: #334155; }
+    .modal-body { padding: 24px 28px; }
+    .modal-footer { padding: 16px 28px; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+
+    /* ── Formulaire bien ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    .field label { display: block; font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; background: #0f172a; border: 1px solid #334155;
+      border-radius: 8px; color: #f8fafc; font-size: 14px; padding: 9px 13px;
+      outline: none; transition: border-color .15s; font-family: inherit;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #60a5fa; }
+    .field select option { background: #1e293b; }
+    .field textarea { resize: vertical; min-height: 70px; }
+
+    /* ── Tabs phases ── */
+    .phase-tabs { display: flex; gap: 4px; margin-bottom: 20px; background: #0f172a; border-radius: 10px; padding: 4px; }
+    .phase-tab { flex: 1; padding: 8px 12px; background: none; border: none; color: #64748b; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 7px; transition: all .15s; text-align: center; }
+    .phase-tab.active { background: #1e293b; color: #f8fafc; }
+    .phase-tab .tab-done { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #10b981; margin-left: 5px; vertical-align: middle; }
+
+    /* ── Checklist ── */
+    .phase-panel { display: none; }
+    .phase-panel.active { display: block; }
+    .checklist-section { margin-bottom: 18px; }
+    .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #475569; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #1e293b; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #1a2436; }
+    .check-item:last-child { border-bottom: none; }
+    .check-item input[type=checkbox] { margin-top: 2px; width: 15px; height: 15px; accent-color: #3b82f6; flex-shrink: 0; cursor: pointer; }
+    .check-item label { font-size: 13px; color: #cbd5e1; cursor: pointer; line-height: 1.4; }
+    .check-item.checked label { color: #475569; text-decoration: line-through; }
+    .check-item.blocking label::after { content: ' ⚠️'; font-size: 11px; }
+
+    /* ── Score panel ── */
+    .score-panel { background: #0f172a; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
+    .score-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .score-note { font-size: 36px; font-weight: 900; }
+    .score-A { color: #10b981; } .score-B { color: #60a5fa; } .score-C { color: #f59e0b; } .score-D { color: #f87171; }
+    .score-desc { font-size: 13px; color: #94a3b8; line-height: 1.5; }
+    .score-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .score-bar-item { }
+    .score-bar-label { font-size: 11px; color: #64748b; margin-bottom: 3px; display: flex; justify-content: space-between; }
+    .score-bar-bg { height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 3px; transition: width .4s; }
+    .fill-blue { background: #3b82f6; } .fill-green { background: #10b981; } .fill-yellow { background: #f59e0b; } .fill-purple { background: #a78bfa; }
+
+    /* ── Rentabilité ── */
+    .renta-block { background: #0f172a; border-radius: 12px; padding: 18px 20px; }
+    .renta-block h4 { font-size: 13px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 14px; }
+    .renta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .renta-field label { display: block; font-size: 11px; color: #64748b; margin-bottom: 4px; font-weight: 600; }
+    .renta-field input { width: 100%; background: #1e293b; border: 1px solid #334155; border-radius: 7px; color: #f8fafc; font-size: 13px; padding: 8px 10px; outline: none; }
+    .renta-field input:focus { border-color: #60a5fa; }
+    .renta-result { margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .renta-kpi { background: #1e293b; border-radius: 8px; padding: 10px 14px; min-width: 100px; text-align: center; }
+    .renta-kpi .rv { font-size: 20px; font-weight: 700; }
+    .renta-kpi .rl { font-size: 10px; color: #64748b; text-transform: uppercase; margin-top: 2px; }
+    .rv-good { color: #10b981; } .rv-ok { color: #f59e0b; } .rv-bad { color: #f87171; }
+
+    /* ── Notes libres ── */
+    .notes-area { width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: #e2e8f0; font-size: 13px; padding: 12px; outline: none; resize: vertical; min-height: 90px; font-family: inherit; }
+    .notes-area:focus { border-color: #60a5fa; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">🏠 SCI L&A</span>
+  <a href="/prospection" class="active">Prospection</a>
+  <a href="/marche">Marché Immobilier</a>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Prospection — Suivi des biens</h1>
+      <p>Checklist division · 4 phases · Scoring automatique A/B/C/D</p>
+    </div>
+    <button class="btn btn-primary" onclick="openNew()">+ Ajouter un bien</button>
+  </div>
+
+  <div class="stats-row" id="stats-row">
+    <div class="stat-mini"><div class="sv" id="s-total">0</div><div class="sl">Biens suivis</div></div>
+    <div class="stat-mini note-A"><div class="sv" id="s-A">0</div><div class="sl">Note A</div></div>
+    <div class="stat-mini note-B"><div class="sv" id="s-B">0</div><div class="sl">Note B</div></div>
+    <div class="stat-mini note-C"><div class="sv" id="s-C">0</div><div class="sl">Note C</div></div>
+    <div class="stat-mini note-D"><div class="sv" id="s-D">0</div><div class="sl">Note D</div></div>
+  </div>
+
+  <div id="biens-container"></div>
+</div>
+
+<!-- ══ MODAL ══════════════════════════════════════════════════ -->
+<div class="overlay" id="overlay" onclick="closeIfOverlay(event)">
+<div class="modal" id="modal">
+
+  <div class="modal-header">
+    <h2 id="modal-title">Nouveau bien</h2>
+    <button class="close-btn" onclick="closeModal()">×</button>
+  </div>
+
+  <div class="modal-body">
+
+    <!-- Infos générales -->
+    <div id="panel-infos">
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="field">
+          <label>Adresse</label>
+          <input type="text" id="f-adresse" placeholder="12 rue du Général de Gaulle">
+        </div>
+        <div class="field">
+          <label>Commune</label>
+          <input type="text" id="f-commune" placeholder="Longwy (54400)">
+        </div>
+        <div class="field">
+          <label>Lien annonce</label>
+          <input type="url" id="f-lien" placeholder="https://...">
+        </div>
+        <div class="field">
+          <label>Prix affiché (€)</label>
+          <input type="number" id="f-prix" placeholder="130000">
+        </div>
+        <div class="field">
+          <label>Surface (m²)</label>
+          <input type="number" id="f-surface" placeholder="120">
+        </div>
+        <div class="field">
+          <label>Ring</label>
+          <select id="f-ring">
+            <option value="">— Sélectionner —</option>
+            <option value="Ring 1">Ring 1 (0–15 km)</option>
+            <option value="Ring 2">Ring 2 (15–30 km)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field form-grid full">
+        <label>Remarques générales</label>
+        <textarea id="f-notes" class="notes-area" placeholder="Premières impressions, contexte, source..."></textarea>
+      </div>
+    </div>
+
+    <!-- Score -->
+    <div class="score-panel" id="score-panel">
+      <div class="score-row">
+        <div class="score-note" id="sc-note">—</div>
+        <div>
+          <div style="font-size:15px;font-weight:700;color:#f8fafc" id="sc-label">Compléter les phases</div>
+          <div class="score-desc" id="sc-desc">Remplir les checklists pour obtenir une note automatique.</div>
+        </div>
+      </div>
+      <div class="score-bars">
+        <div class="score-bar-item">
+          <div class="score-bar-label"><span>Budget & surface</span><span id="bar-budget-pct">0%</span></div>
+          <div class="score-bar-bg"><div class="score-bar-fill fill-blue" id="bar-budget" style="width:0%"></div></div>
+        </div>
+        <div class="score-bar-item">
+          <div class="score-bar-label"><span>Config division</span><span id="bar-config-pct">0%</span></div>
+          <div class="score-bar-bg"><div class="score-bar-fill fill-green" id="bar-config" style="width:0%"></div></div>
+        </div>
+        <div class="score-bar-item">
+          <div class="score-bar-label"><span>Technique</span><span id="bar-tech-pct">0%</span></div>
+          <div class="score-bar-bg"><div class="score-bar-fill fill-yellow" id="bar-tech" style="width:0%"></div></div>
+        </div>
+        <div class="score-bar-item">
+          <div class="score-bar-label"><span>Réglementaire</span><span id="bar-reg-pct">0%</span></div>
+          <div class="score-bar-bg"><div class="score-bar-fill fill-purple" id="bar-reg" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs phases -->
+    <div class="phase-tabs">
+      <button class="phase-tab active" onclick="switchPhase(0)" id="tab-0">📋 Annonce <span class="tab-done" id="tdone-0" style="display:none"></span></button>
+      <button class="phase-tab" onclick="switchPhase(1)" id="tab-1">📞 Appel <span class="tab-done" id="tdone-1" style="display:none"></span></button>
+      <button class="phase-tab" onclick="switchPhase(2)" id="tab-2">🏠 Visite <span class="tab-done" id="tdone-2" style="display:none"></span></button>
+      <button class="phase-tab" onclick="switchPhase(3)" id="tab-3">✅ Post-visite <span class="tab-done" id="tdone-3" style="display:none"></span></button>
+    </div>
+
+    <!-- Phase 0 — Annonce -->
+    <div class="phase-panel active" id="phase-0">
+      <div class="checklist-section">
+        <div class="section-title">Budget</div>
+        <div class="check-item blocking" data-phase="0" data-cat="budget"><input type="checkbox" id="c0_0"><label for="c0_0">Prix affiché ≤ 180 000 € (marge travaux)</label></div>
+        <div class="check-item" data-phase="0" data-cat="budget"><input type="checkbox" id="c0_1"><label for="c0_1">Prix/m² cohérent avec le marché de la commune</label></div>
+        <div class="check-item" data-phase="0" data-cat="budget"><input type="checkbox" id="c0_2"><label for="c0_2">Frais de notaire (~8%) inclus dans le budget total ≤ 250 000 €</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Le bien</div>
+        <div class="check-item blocking" data-phase="0" data-cat="config"><input type="checkbox" id="c0_3"><label for="c0_3">Surface ≥ 100 m² habitable</label></div>
+        <div class="check-item blocking" data-phase="0" data-cat="config"><input type="checkbox" id="c0_4"><label for="c0_4">Maison individuelle ou petit immeuble (pas de copropriété)</label></div>
+        <div class="check-item" data-phase="0" data-cat="config"><input type="checkbox" id="c0_5"><label for="c0_5">R+1 minimum — 2 niveaux distincts</label></div>
+        <div class="check-item" data-phase="0" data-cat="config"><input type="checkbox" id="c0_6"><label for="c0_6">Pas de gros œuvre apparent (toiture, fissures)</label></div>
+        <div class="check-item" data-phase="0" data-cat="config"><input type="checkbox" id="c0_7"><label for="c0_7">DPE ≥ D (pas F ou G)</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Localisation & parking</div>
+        <div class="check-item blocking" data-phase="0" data-cat="reg"><input type="checkbox" id="c0_8"><label for="c0_8">Commune dans Ring 1 ou Ring 2 (≤ 30 km LU)</label></div>
+        <div class="check-item blocking" data-phase="0" data-cat="config"><input type="checkbox" id="c0_9"><label for="c0_9">Parking existant ou terrain pour en créer un</label></div>
+        <div class="check-item" data-phase="0" data-cat="reg"><input type="checkbox" id="c0_10"><label for="c0_10">Secteur locatif actif (frontaliers, connexions LU)</label></div>
+      </div>
+    </div>
+
+    <!-- Phase 1 — Appel -->
+    <div class="phase-panel" id="phase-1">
+      <div class="checklist-section">
+        <div class="section-title">Qualifier le bien</div>
+        <div class="check-item" data-phase="1" data-cat="config"><input type="checkbox" id="c1_0"><label for="c1_0">Surface habitable exacte confirmée</label></div>
+        <div class="check-item" data-phase="1" data-cat="config"><input type="checkbox" id="c1_1"><label for="c1_1">Nombre de niveaux, sous-sol, combles habitables</label></div>
+        <div class="check-item" data-phase="1" data-cat="config"><input type="checkbox" id="c1_2"><label for="c1_2">Disposition des pièces par niveau (config imaginable)</label></div>
+        <div class="check-item" data-phase="1" data-cat="tech"><input type="checkbox" id="c1_3"><label for="c1_3">2 compteurs électriques existants ? (atout majeur)</label></div>
+        <div class="check-item" data-phase="1" data-cat="tech"><input type="checkbox" id="c1_4"><label for="c1_4">Système de chauffage — individuel par niveau possible ?</label></div>
+        <div class="check-item" data-phase="1" data-cat="tech"><input type="checkbox" id="c1_5"><label for="c1_5">Toiture : âge et état renseignés</label></div>
+        <div class="check-item" data-phase="1" data-cat="config"><input type="checkbox" id="c1_6"><label for="c1_6">Parking confirmé — nombre de places</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Qualifier le vendeur</div>
+        <div class="check-item" data-phase="1" data-cat="budget"><input type="checkbox" id="c1_7"><label for="c1_7">Raison de la vente connue (succession, divorce, mutation…)</label></div>
+        <div class="check-item" data-phase="1" data-cat="budget"><input type="checkbox" id="c1_8"><label for="c1_8">Durée de mise en vente — offres précédentes ?</label></div>
+        <div class="check-item" data-phase="1" data-cat="budget"><input type="checkbox" id="c1_9"><label for="c1_9">Prix négociable et délai souhaité par le vendeur</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">PLU & diagnostics</div>
+        <div class="check-item" data-phase="1" data-cat="reg"><input type="checkbox" id="c1_10"><label for="c1_10">Vendeur sait si division autorisée dans la commune</label></div>
+        <div class="check-item" data-phase="1" data-cat="reg"><input type="checkbox" id="c1_11"><label for="c1_11">Diagnostics disponibles (DPE, amiante, plomb, électricité)</label></div>
+        <div class="check-item" data-phase="1" data-cat="tech"><input type="checkbox" id="c1_12"><label for="c1_12">Assainissement : tout-à-l'égout (pas fosse septique)</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Décision</div>
+        <div class="check-item" data-phase="1" data-cat="config"><input type="checkbox" id="c1_13"><label for="c1_13">✅ Décision prise : visite confirmée</label></div>
+      </div>
+    </div>
+
+    <!-- Phase 2 — Visite -->
+    <div class="phase-panel" id="phase-2">
+      <div class="checklist-section">
+        <div class="section-title">Gros œuvre</div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_0"><label for="c2_0">Toiture : tuiles, zinguerie, charpente — état satisfaisant</label></div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_1"><label for="c2_1">Façade : pas de fissures structurelles en escalier</label></div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_2"><label for="c2_2">Cave / sous-sol : pas de traces d'humidité ou remontées</label></div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_3"><label for="c2_3">Planchers : pas de souplesse anormale ni craquements</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Configuration pour la division</div>
+        <div class="check-item blocking" data-phase="2" data-cat="config"><input type="checkbox" id="c2_4"><label for="c2_4">Chaque niveau fait ≥ 45 m² utile (mesuré au télémètre)</label></div>
+        <div class="check-item blocking" data-phase="2" data-cat="config"><input type="checkbox" id="c2_5"><label for="c2_5">Hauteur sous plafond ≥ 2,20 m à chaque niveau</label></div>
+        <div class="check-item" data-phase="2" data-cat="config"><input type="checkbox" id="c2_6"><label for="c2_6">Emplacement pour créer une 2ème entrée indépendante</label></div>
+        <div class="check-item" data-phase="2" data-cat="config"><input type="checkbox" id="c2_7"><label for="c2_7">Escalier cloisonnable ou séparable</label></div>
+        <div class="check-item" data-phase="2" data-cat="config"><input type="checkbox" id="c2_8"><label for="c2_8">Chaque lot : emplacement cuisine + salle de bain possible</label></div>
+        <div class="check-item" data-phase="2" data-cat="config"><input type="checkbox" id="c2_9"><label for="c2_9">Chaque lot a au moins 1 fenêtre en façade principale</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Réseaux</div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_10"><label for="c2_10">Tableau électrique : âge acceptable, capacité suffisante</label></div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_11"><label for="c2_11">Plomberie : pas de fuites visibles, matériaux corrects</label></div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_12"><label for="c2_12">Chaudière / chauffage : âge et état corrects</label></div>
+        <div class="check-item" data-phase="2" data-cat="tech"><input type="checkbox" id="c2_13"><label for="c2_13">Assainissement collectif confirmé sur place</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Parking & extérieur</div>
+        <div class="check-item blocking" data-phase="2" data-cat="config"><input type="checkbox" id="c2_14"><label for="c2_14">≥ 2 places de stationnement concrètes (mesurées)</label></div>
+        <div class="check-item" data-phase="2" data-cat="config"><input type="checkbox" id="c2_15"><label for="c2_15">Jardin ou cour partageable / séparable</label></div>
+      </div>
+    </div>
+
+    <!-- Phase 3 — Post-visite -->
+    <div class="phase-panel" id="phase-3">
+      <div class="checklist-section">
+        <div class="section-title">Vérifications réglementaires</div>
+        <div class="check-item" data-phase="3" data-cat="reg"><input type="checkbox" id="c3_0"><label for="c3_0">PLU de la commune consulté (rapport_plu.md)</label></div>
+        <div class="check-item" data-phase="3" data-cat="reg"><input type="checkbox" id="c3_1"><label for="c3_1">Zone PLU compatible avec division résidentielle</label></div>
+        <div class="check-item" data-phase="3" data-cat="reg"><input type="checkbox" id="c3_2"><label for="c3_2">Nombre de places de parking PLU respecté</label></div>
+        <div class="check-item" data-phase="3" data-cat="reg"><input type="checkbox" id="c3_3"><label for="c3_3">Cadastre vérifié (parcelle, surface, servitudes)</label></div>
+        <div class="check-item" data-phase="3" data-cat="reg"><input type="checkbox" id="c3_4"><label for="c3_4">Mairie contactée — division autorisée confirmée</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Financier</div>
+        <div class="check-item" data-phase="3" data-cat="budget"><input type="checkbox" id="c3_5"><label for="c3_5">Devis travaux obtenu — dans l'enveloppe 50–70 k€</label></div>
+        <div class="check-item" data-phase="3" data-cat="budget"><input type="checkbox" id="c3_6"><label for="c3_6">Rentabilité brute ≥ 5% calculée</label></div>
+        <div class="check-item" data-phase="3" data-cat="budget"><input type="checkbox" id="c3_7"><label for="c3_7">Diagnostics complets reçus et analysés</label></div>
+      </div>
+      <div class="checklist-section">
+        <div class="section-title">Offre</div>
+        <div class="check-item" data-phase="3" data-cat="budget"><input type="checkbox" id="c3_8"><label for="c3_8">Offre d'achat rédigée avec clauses suspensives</label></div>
+        <div class="check-item" data-phase="3" data-cat="budget"><input type="checkbox" id="c3_9"><label for="c3_9">Offre envoyée / négociation en cours</label></div>
+      </div>
+
+      <!-- Calcul rentabilité -->
+      <div class="renta-block" style="margin-top:8px">
+        <h4>Calcul de rentabilité</h4>
+        <div class="renta-grid">
+          <div class="renta-field"><label>Prix achat + frais notaire (€)</label><input type="number" id="r-achat" placeholder="145000" oninput="calcRenta()"></div>
+          <div class="renta-field"><label>Budget travaux estimé (€)</label><input type="number" id="r-travaux" placeholder="60000" oninput="calcRenta()"></div>
+          <div class="renta-field"><label>Loyer mensuel par lot (€)</label><input type="number" id="r-loyer" placeholder="550" oninput="calcRenta()"></div>
+        </div>
+        <div class="renta-result" id="renta-result" style="display:none">
+          <div class="renta-kpi"><div class="rv" id="rv-total">—</div><div class="rl">Investissement total</div></div>
+          <div class="renta-kpi"><div class="rv" id="rv-annuel">—</div><div class="rl">Revenus bruts/an</div></div>
+          <div class="renta-kpi"><div class="rv" id="rv-renta">—</div><div class="rl">Rendement brut</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /modal-body -->
+
+  <div class="modal-footer">
+    <div id="modal-left-actions">
+      <button class="btn btn-danger btn-sm" id="btn-delete" onclick="deleteBien()" style="display:none">Supprimer</button>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-ghost" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-primary" onclick="saveBien()">Enregistrer</button>
+    </div>
+  </div>
+
+</div><!-- /modal -->
+</div><!-- /overlay -->
+
+<script>
+// ── État ───────────────────────────────────────────────────
+let biens = [];
+let currentId = null;
+let currentPhase = 0;
+
+// Toutes les checkboxes avec leur catégorie de scoring
+const CHECKS = [
+  // phase 0
+  { id:'c0_0', phase:0, cat:'budget',  weight:3 },
+  { id:'c0_1', phase:0, cat:'budget',  weight:1 },
+  { id:'c0_2', phase:0, cat:'budget',  weight:2 },
+  { id:'c0_3', phase:0, cat:'config',  weight:3 },
+  { id:'c0_4', phase:0, cat:'config',  weight:3 },
+  { id:'c0_5', phase:0, cat:'config',  weight:2 },
+  { id:'c0_6', phase:0, cat:'config',  weight:2 },
+  { id:'c0_7', phase:0, cat:'config',  weight:1 },
+  { id:'c0_8', phase:0, cat:'reg',     weight:2 },
+  { id:'c0_9', phase:0, cat:'config',  weight:3 },
+  { id:'c0_10',phase:0, cat:'reg',     weight:1 },
+  // phase 1
+  { id:'c1_0', phase:1, cat:'config',  weight:2 },
+  { id:'c1_1', phase:1, cat:'config',  weight:2 },
+  { id:'c1_2', phase:1, cat:'config',  weight:2 },
+  { id:'c1_3', phase:1, cat:'tech',    weight:3 },
+  { id:'c1_4', phase:1, cat:'tech',    weight:2 },
+  { id:'c1_5', phase:1, cat:'tech',    weight:2 },
+  { id:'c1_6', phase:1, cat:'config',  weight:2 },
+  { id:'c1_7', phase:1, cat:'budget',  weight:2 },
+  { id:'c1_8', phase:1, cat:'budget',  weight:1 },
+  { id:'c1_9', phase:1, cat:'budget',  weight:2 },
+  { id:'c1_10',phase:1, cat:'reg',     weight:2 },
+  { id:'c1_11',phase:1, cat:'reg',     weight:2 },
+  { id:'c1_12',phase:1, cat:'tech',    weight:2 },
+  { id:'c1_13',phase:1, cat:'config',  weight:1 },
+  // phase 2
+  { id:'c2_0', phase:2, cat:'tech',    weight:3 },
+  { id:'c2_1', phase:2, cat:'tech',    weight:3 },
+  { id:'c2_2', phase:2, cat:'tech',    weight:2 },
+  { id:'c2_3', phase:2, cat:'tech',    weight:2 },
+  { id:'c2_4', phase:2, cat:'config',  weight:3 },
+  { id:'c2_5', phase:2, cat:'config',  weight:3 },
+  { id:'c2_6', phase:2, cat:'config',  weight:3 },
+  { id:'c2_7', phase:2, cat:'config',  weight:2 },
+  { id:'c2_8', phase:2, cat:'config',  weight:3 },
+  { id:'c2_9', phase:2, cat:'config',  weight:2 },
+  { id:'c2_10',phase:2, cat:'tech',    weight:2 },
+  { id:'c2_11',phase:2, cat:'tech',    weight:2 },
+  { id:'c2_12',phase:2, cat:'tech',    weight:2 },
+  { id:'c2_13',phase:2, cat:'tech',    weight:2 },
+  { id:'c2_14',phase:2, cat:'config',  weight:3 },
+  { id:'c2_15',phase:2, cat:'config',  weight:1 },
+  // phase 3
+  { id:'c3_0', phase:3, cat:'reg',     weight:2 },
+  { id:'c3_1', phase:3, cat:'reg',     weight:3 },
+  { id:'c3_2', phase:3, cat:'reg',     weight:3 },
+  { id:'c3_3', phase:3, cat:'reg',     weight:2 },
+  { id:'c3_4', phase:3, cat:'reg',     weight:3 },
+  { id:'c3_5', phase:3, cat:'budget',  weight:3 },
+  { id:'c3_6', phase:3, cat:'budget',  weight:3 },
+  { id:'c3_7', phase:3, cat:'budget',  weight:2 },
+  { id:'c3_8', phase:3, cat:'budget',  weight:1 },
+  { id:'c3_9', phase:3, cat:'budget',  weight:1 },
+];
+
+// ── Chargement ─────────────────────────────────────────────
+async function loadBiens() {
+  const r = await fetch('/api/biens');
+  biens = await r.json();
+  renderAll();
+}
+
+// ── Rendu liste ────────────────────────────────────────────
+function renderAll() {
+  const container = document.getElementById('biens-container');
+  const note = n => biens.filter(b => computeNote(b.checks) === n).length;
+  document.getElementById('s-total').textContent = biens.length;
+  document.getElementById('s-A').textContent = note('A');
+  document.getElementById('s-B').textContent = note('B');
+  document.getElementById('s-C').textContent = note('C');
+  document.getElementById('s-D').textContent = note('D');
+
+  if (!biens.length) {
+    container.innerHTML = `<div class="empty-state"><div class="ei">🏚️</div><h3>Aucun bien suivi</h3><p>Ajoute ta première annonce pour commencer.</p><button class="btn btn-primary" onclick="openNew()">+ Ajouter un bien</button></div>`;
+    return;
+  }
+
+  container.innerHTML = `<div class="biens-grid">${biens.map(renderCard).join('')}</div>`;
+}
+
+function renderCard(b) {
+  const checks = b.checks || {};
+  const note = computeNote(checks);
+  const total = CHECKS.length;
+  const done  = CHECKS.filter(c => checks[c.id]).length;
+  const pct   = Math.round(done / total * 100);
+
+  const phaseDone = [0,1,2,3].map(p => {
+    const pc = CHECKS.filter(c => c.phase === p);
+    return pc.every(c => checks[c.id]) ? 'done' : (pc.some(c => checks[c.id]) ? 'active' : '');
+  });
+
+  const badgeCls = note ? `badge-${note}` : 'badge-new';
+  const noteLabel = note || '—';
+
+  const prixM2 = (b.prix && b.surface) ? Math.round(b.prix / b.surface) : null;
+  const chips = [
+    b.ring ? `<span class="meta-chip">${b.ring}</span>` : '',
+    b.surface ? `<span class="meta-chip">${b.surface} m²</span>` : '',
+    b.prix ? `<span class="meta-chip">${Number(b.prix).toLocaleString('fr-FR')} €</span>` : '',
+    prixM2 ? `<span class="meta-chip">${prixM2.toLocaleString('fr-FR')} €/m²</span>` : '',
+  ].filter(Boolean).join('');
+
+  return `
+    <div class="bien-card" onclick="openEdit('${b.id}')">
+      <div class="bien-card-header">
+        <div>
+          <div class="bien-adresse">${esc(b.adresse || 'Sans adresse')}</div>
+          <div class="bien-commune">${esc(b.commune || '')}</div>
+        </div>
+        <span class="note-badge ${badgeCls}">${noteLabel}</span>
+      </div>
+      <div class="bien-card-body">
+        <div class="bien-meta">${chips}</div>
+        <div class="bien-progress">
+          <div class="progress-label"><span>Avancement checklist</span><span>${done}/${total}</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+        <div class="phase-dots">
+          ${phaseDone.map((s,i) => `<div class="phase-dot ${s}" title="Phase ${i+1}"></div>`).join('')}
+        </div>
+      </div>
+      <div class="bien-card-footer">
+        <span class="bien-date">${b.lien ? `<a href="${b.lien}" target="_blank" onclick="event.stopPropagation()" style="color:#60a5fa;font-size:11px">Voir l'annonce ↗</a>` : ''}</span>
+        <span class="bien-date">${formatDate(b.createdAt)}</span>
+      </div>
+    </div>`;
+}
+
+// ── Score ──────────────────────────────────────────────────
+function computeScore(checks) {
+  const cats = { budget: { score: 0, max: 0 }, config: { score: 0, max: 0 }, tech: { score: 0, max: 0 }, reg: { score: 0, max: 0 } };
+  CHECKS.forEach(c => {
+    cats[c.cat].max += c.weight;
+    if (checks && checks[c.id]) cats[c.cat].score += c.weight;
+  });
+  return cats;
+}
+
+function computeNote(checks) {
+  if (!checks || !Object.values(checks).some(Boolean)) return null;
+  const cats = computeScore(checks);
+  const pcts = Object.values(cats).map(c => c.max ? c.score / c.max : 0);
+  const avg = pcts.reduce((a,b)=>a+b,0) / pcts.length;
+  if (avg >= 0.80) return 'A';
+  if (avg >= 0.60) return 'B';
+  if (avg >= 0.35) return 'C';
+  return 'D';
+}
+
+function updateScore() {
+  const checks = getChecksFromForm();
+  const cats   = computeScore(checks);
+  const note   = computeNote(checks) || '—';
+
+  document.getElementById('sc-note').textContent = note;
+  document.getElementById('sc-note').className = `score-note score-${note}`;
+
+  const msgs = {
+    A: ['Excellent', 'Tous les critères clés sont remplis. Ce bien mérite une offre rapide.'],
+    B: ['Bon potentiel', 'La plupart des critères sont remplis. Quelques points à clarifier.'],
+    C: ['À surveiller', 'Plusieurs critères manquants. Compléter les vérifications avant d\'aller plus loin.'],
+    D: ['Peu adapté', 'Trop de critères bloquants. Sauf négociation importante, passer au suivant.'],
+    '—':['Compléter les phases','Remplir les checklists pour obtenir une note automatique.'],
+  };
+  const [label, desc] = msgs[note] || msgs['—'];
+  document.getElementById('sc-label').textContent = label;
+  document.getElementById('sc-desc').textContent  = desc;
+
+  Object.entries(cats).forEach(([cat, { score, max }]) => {
+    const pct = max ? Math.round(score / max * 100) : 0;
+    const key = { budget:'budget', config:'config', tech:'tech', reg:'reg' }[cat];
+    document.getElementById(`bar-${key}`).style.width = pct + '%';
+    document.getElementById(`bar-${key}-pct`).textContent = pct + '%';
+  });
+
+  // Dots phases
+  [0,1,2,3].forEach(p => {
+    const pc = CHECKS.filter(c => c.phase === p);
+    const allDone = pc.every(c => checks[c.id]);
+    document.getElementById(`tdone-${p}`).style.display = allDone ? 'inline-block' : 'none';
+  });
+}
+
+// ── Formulaire ─────────────────────────────────────────────
+function getChecksFromForm() {
+  const obj = {};
+  CHECKS.forEach(c => { obj[c.id] = document.getElementById(c.id)?.checked || false; });
+  return obj;
+}
+
+function fillChecksInForm(checks) {
+  CHECKS.forEach(c => {
+    const el = document.getElementById(c.id);
+    if (el) {
+      el.checked = !!(checks && checks[c.id]);
+      el.closest('.check-item').classList.toggle('checked', el.checked);
+    }
+  });
+  updateScore();
+}
+
+function switchPhase(p) {
+  currentPhase = p;
+  document.querySelectorAll('.phase-panel').forEach((el, i) => el.classList.toggle('active', i === p));
+  document.querySelectorAll('.phase-tab').forEach((el, i) => el.classList.toggle('active', i === p));
+}
+
+// ── Rentabilité ────────────────────────────────────────────
+function calcRenta() {
+  const achat   = parseFloat(document.getElementById('r-achat').value) || 0;
+  const travaux = parseFloat(document.getElementById('r-travaux').value) || 0;
+  const loyer   = parseFloat(document.getElementById('r-loyer').value) || 0;
+  if (!achat || !loyer) { document.getElementById('renta-result').style.display = 'none'; return; }
+  const total  = achat + travaux;
+  const annuel = loyer * 2 * 12;
+  const renta  = (annuel / total * 100).toFixed(1);
+  document.getElementById('rv-total').textContent = total.toLocaleString('fr-FR') + ' €';
+  document.getElementById('rv-annuel').textContent = annuel.toLocaleString('fr-FR') + ' €';
+  document.getElementById('rv-renta').textContent = renta + ' %';
+  const cls = renta >= 5 ? 'rv-good' : (renta >= 4 ? 'rv-ok' : 'rv-bad');
+  document.getElementById('rv-renta').className = `rv ${cls}`;
+  document.getElementById('renta-result').style.display = 'flex';
+}
+
+// ── Ouvrir / fermer modal ──────────────────────────────────
+function openNew() {
+  currentId = null;
+  document.getElementById('modal-title').textContent = 'Nouveau bien';
+  document.getElementById('btn-delete').style.display = 'none';
+  ['f-adresse','f-commune','f-lien','f-prix','f-surface','f-notes'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-ring').value = '';
+  fillChecksInForm({});
+  ['r-achat','r-travaux','r-loyer'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('renta-result').style.display = 'none';
+  switchPhase(0);
+  document.getElementById('overlay').classList.add('open');
+}
+
+function openEdit(id) {
+  const b = biens.find(x => x.id === id);
+  if (!b) return;
+  currentId = id;
+  document.getElementById('modal-title').textContent = b.adresse || 'Modifier le bien';
+  document.getElementById('btn-delete').style.display = 'inline-block';
+  document.getElementById('f-adresse').value  = b.adresse  || '';
+  document.getElementById('f-commune').value  = b.commune  || '';
+  document.getElementById('f-lien').value     = b.lien     || '';
+  document.getElementById('f-prix').value     = b.prix     || '';
+  document.getElementById('f-surface').value  = b.surface  || '';
+  document.getElementById('f-ring').value     = b.ring     || '';
+  document.getElementById('f-notes').value    = b.notes    || '';
+  fillChecksInForm(b.checks || {});
+  document.getElementById('r-achat').value    = b.r_achat   || '';
+  document.getElementById('r-travaux').value  = b.r_travaux || '';
+  document.getElementById('r-loyer').value    = b.r_loyer   || '';
+  calcRenta();
+  switchPhase(0);
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  currentId = null;
+}
+
+function closeIfOverlay(e) {
+  if (e.target === document.getElementById('overlay')) closeModal();
+}
+
+// ── Sauvegarder ────────────────────────────────────────────
+async function saveBien() {
+  const payload = {
+    adresse:    document.getElementById('f-adresse').value.trim(),
+    commune:    document.getElementById('f-commune').value.trim(),
+    lien:       document.getElementById('f-lien').value.trim(),
+    prix:       parseFloat(document.getElementById('f-prix').value) || null,
+    surface:    parseFloat(document.getElementById('f-surface').value) || null,
+    ring:       document.getElementById('f-ring').value,
+    notes:      document.getElementById('f-notes').value.trim(),
+    checks:     getChecksFromForm(),
+    r_achat:    parseFloat(document.getElementById('r-achat').value) || null,
+    r_travaux:  parseFloat(document.getElementById('r-travaux').value) || null,
+    r_loyer:    parseFloat(document.getElementById('r-loyer').value) || null,
+  };
+
+  if (currentId) {
+    await fetch(`/api/biens/${currentId}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+  } else {
+    await fetch('/api/biens', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+  }
+  closeModal();
+  await loadBiens();
+}
+
+// ── Supprimer ──────────────────────────────────────────────
+async function deleteBien() {
+  if (!currentId) return;
+  if (!confirm('Supprimer ce bien définitivement ?')) return;
+  await fetch(`/api/biens/${currentId}`, { method: 'DELETE' });
+  closeModal();
+  await loadBiens();
+}
+
+// ── Helpers ────────────────────────────────────────────────
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function formatDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
+}
+
+// Mettre à jour le score en temps réel
+document.querySelectorAll('.check-item input').forEach(el => {
+  el.addEventListener('change', () => {
+    el.closest('.check-item').classList.toggle('checked', el.checked);
+    updateScore();
+  });
+});
+
+loadBiens();
+</script>
+</body>
+</html>
