@@ -69,6 +69,13 @@ app.delete('/api/biens/:id', (req, res) => {
   res.json({ ok: true });
 });
 
+// Import complet (remplace tout)
+app.post('/api/biens/import', (req, res) => {
+  if (!Array.isArray(req.body)) return res.status(400).json({ error: 'Array expected' });
+  saveBiens(req.body);
+  res.json({ ok: true, count: req.body.length });
+});
+
 // Page marché
 app.get('/marche', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'marche.html'));

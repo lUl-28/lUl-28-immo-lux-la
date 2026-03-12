@@ -171,6 +171,10 @@
   <span class="logo">🏠 SCI L&A</span>
   <a href="/prospection" class="active">Prospection</a>
   <a href="/marche">Marché Immobilier</a>
+  <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+    <button class="btn btn-ghost" style="padding:5px 12px;font-size:12px" onclick="exportData()" title="Télécharger les données pour backup / commit git">⬇ Export</button>
+    <label class="btn btn-ghost" style="padding:5px 12px;font-size:12px;cursor:pointer" title="Restaurer des données exportées">⬆ Import<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label>
+  </div>
 </nav>
 
 <div class="page">
@@ -749,6 +753,36 @@ document.querySelectorAll('.check-item input').forEach(el => {
     updateScore();
   });
 });
+
+// ── Export / Import ────────────────────────────────────────
+function exportData() {
+  const data = JSON.stringify(biens, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `prospection_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const text = await file.text();
+  let data;
+  try { data = JSON.parse(text); } catch { alert('Fichier JSON invalide.'); return; }
+  if (!Array.isArray(data)) { alert('Format invalide — tableau JSON attendu.'); return; }
+  if (!confirm(`Importer ${data.length} bien(s) ? Cela remplacera toutes les données actuelles.`)) return;
+  await fetch('/api/biens/import', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  event.target.value = '';
+  await loadBiens();
+  alert(`${data.length} bien(s) importé(s).`);
+}
 
 loadBiens();
 </script>
