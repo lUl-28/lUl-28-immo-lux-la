@@ -86,7 +86,7 @@
 
 ---
 
-## 6. SITES À SCRAPER
+## 6. SITES DE RECHERCHE MANUELLE
 
 | Site | Type |
 |---|---|
@@ -98,49 +98,67 @@
 
 ---
 
-## 7. FONCTIONNALITÉS ATTENDUES DE L'OUTIL
+## 7. FONCTIONNALITÉS DE L'OUTIL
 
-- [x] Scraping quotidien automatique des annonces
-- [x] Filtrage selon critères (prix ≤ 180K, surface ≥ 100m², zone 60km LU)
-- [x] Scoring automatique du potentiel de division
-- [x] Vérification parking (mention dans annonce)
-- [ ] Dashboard de visualisation (phase 2)
-- [ ] Alertes email (phase 2)
-- [ ] Accès multi-utilisateurs Lucas + Adrien (phase 2)
+- [x] Liens pré-filtrés par ring et site (config/links.js)
+- [x] Dashboard de visualisation (port 3001)
+- [x] Suivi manuel des biens prospectés (prospection.json + Excel)
+- [x] Analyse marché DVF (données de ventes réelles)
+- [x] Analyse PLU par commune
+- [x] Génération fiches PDF par bien
+- [x] Business plan exportable
+- [ ] Alertes email (à venir)
+- [ ] Accès multi-utilisateurs Lucas + Adrien (à venir)
 
 ---
 
-## 8. ARCHITECTURE TECHNIQUE CIBLE
+## 8. ARCHITECTURE TECHNIQUE
 
 ```
 Projet Immo Lux L&A/
 ├── config/
-│   └── settings.js          # Critères, zones géo, budget, seuils
-├── agents/
-│   ├── scraper/             # Scraping multi-plateformes
-│   ├── scorer/              # Scoring potentiel de division
-│   └── notifier/            # Alertes email (phase 2)
-├── data/
-│   └── biens/
-│       └── annonces.json    # Base de données des annonces filtrées
-├── dashboard/               # Interface web (phase 2)
+│   ├── settings.js          # Critères, zones géo, budget, seuils
+│   └── links.js             # Liens pré-filtrés par ring et site
+├── dashboard/               # Interface web — port 3001
 │   ├── server.js
 │   └── public/
 ├── scripts/
-│   └── cron.js              # Tâche quotidienne automatique
-├── package.json
-└── CONTEXTE.md
+│   ├── analyse/
+│   │   ├── dvf.js           # Analyse prix marché DVF
+│   │   └── plu.js           # Vérification PLU communes
+│   └── generate/
+│       ├── business_plan.js
+│       ├── fiches_pdf.js
+│       ├── tasks_excel.js
+│       └── dashboard_excel.js
+├── data/
+│   ├── annonces/
+│   │   └── prospection.json              # Base biens suivis manuellement
+│   ├── marche/
+│   │   └── rapport_dvf.json              # Données DVF 2024
+│   └── plu/                              # Fiches PLU par commune (22)
+│       └── {insee}/fiche.json + PDF
+├── exports/                 # Fichiers générés (Excel, PDF)
+│   ├── Business_Plan_SCI_LA.xlsx
+│   ├── Taches_SCI_LA.xlsx
+│   ├── Suivi_Annonces_ImmoLux.xlsx
+│   └── Fiches_PLU_SCI_LA.pdf
+├── docs/                    # Documentation
+│   ├── CONTEXTE.md
+│   ├── CHECKLIST_DIVISION.md
+│   └── INSTALL.md
+├── README.md
+└── package.json
 ```
 
 ### Stack technique
 | Composant | Technologie |
 |---|---|
 | Langage | Node.js |
-| Scraping | Axios + Cheerio / Playwright (selon protection) |
-| Base de données | JSON (évolutif vers SQLite) |
-| Planification | node-cron |
-| Dashboard | Express + HTML (phase 2) |
-| Alertes | Microsoft Graph API / Outlook (phase 2) |
+| Dashboard | Express + HTML |
+| Base de données | JSON + Excel (ExcelJS) |
+| PDF | PDFKit |
+| Alertes (à venir) | Microsoft Graph API / Outlook |
 
 ---
 

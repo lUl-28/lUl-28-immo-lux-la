@@ -17,7 +17,7 @@ const pdfParse = require('pdf-parse');
 
 const GPU_BASE = 'https://www.geoportail-urbanisme.gouv.fr/api';
 const GEO_BASE = 'https://geo.api.gouv.fr';
-const OUT_DIR  = path.join(__dirname, '../data/plu');
+const OUT_DIR  = path.join(__dirname, '../../data/plu');
 const IS_TEST  = process.argv.includes('--test');
 const IS_FORCE = process.argv.includes('--force');
 const PAUSE_MS = 2500;

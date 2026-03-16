@@ -10,7 +10,7 @@ const ExcelJS = require('exceljs');
 const path    = require('path');
 const fs      = require('fs');
 
-const OUTPUT = path.join(__dirname, '../data/Business_Plan_SCI_LA.xlsx');
+const OUTPUT = path.join(__dirname, '../../exports/Business_Plan_SCI_LA.xlsx');
 
 // ── Palette ──────────────────────────────────────────────────
 const C = {

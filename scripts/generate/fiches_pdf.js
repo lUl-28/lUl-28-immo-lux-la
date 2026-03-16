@@ -27,8 +27,8 @@ const C = {
 };
 
 // ── Chemins ────────────────────────────────────────────────
-const DATA_DIR   = path.join(__dirname, '..', 'data', 'plu');
-const OUTPUT_PDF = path.join(DATA_DIR, 'Fiches_PLU_SCI_LA.pdf');
+const DATA_DIR   = path.join(__dirname, '..', '..', 'data', 'plu');
+const OUTPUT_PDF = path.join(__dirname, '..', '..', 'exports', 'Fiches_PLU_SCI_LA.pdf');
 
 // ── Labels lisibles ────────────────────────────────────────
 const LABELS = {

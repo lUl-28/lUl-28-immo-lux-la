@@ -6,10 +6,12 @@
   "scripts": {
     "start": "node dashboard/server.js",
     "dashboard": "node dashboard/server.js",
-    "bp": "node scripts/generate_business_plan.js",
-    "plu": "node scripts/analyse_plu.js",
-    "plu:test": "node scripts/analyse_plu.js --test",
-    "fiches": "node scripts/generate_fiches_pdf.js",
+    "dvf": "node scripts/analyse/dvf.js",
+    "plu": "node scripts/analyse/plu.js",
+    "plu:test": "node scripts/analyse/plu.js --test",
+    "bp": "node scripts/generate/business_plan.js",
+    "fiches": "node scripts/generate/fiches_pdf.js",
+    "tasks": "node scripts/generate/tasks_excel.js",
     "test": "echo \"No tests configured\""
   },
   "dependencies": {

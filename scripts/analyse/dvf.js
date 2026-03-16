@@ -156,7 +156,7 @@ async function analyser() {
 
 // ── Génération du rapport ─────────────────────────────────────────────────────
 function genererRapport(stats) {
-  const outputDir = path.join(__dirname, '..', 'data');
+  const outputDir = path.join(__dirname, '..', '..', 'data', 'marche');
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
   // Trier par ring puis par commune
@@ -239,7 +239,7 @@ function genererRapport(stats) {
   console.log('\nGénération du rapport...');
   const { reportJson, mdPath } = genererRapport(stats);
 
-  console.log(`\nRapport sauvegardé :\n  - data/rapport_dvf.json\n  - data/rapport_dvf.md`);
+  console.log(`\nRapport sauvegardé :\n  - data/marche/rapport_dvf.json\n  - data/marche/rapport_dvf.md`);
 
   // Affichage console du tableau
   console.log('\n' + '─'.repeat(90));

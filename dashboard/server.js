@@ -7,6 +7,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { genererTousLesLiens, CRITERES } = require('../config/links');
+const { PIECES, GAMMES, UNITE_LABELS, MARGE_IMPREVUS } = require('../config/renovation_prices');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const BIENS_FILE = path.join(__dirname, '../data/biens/prospection.json');
+const BIENS_FILE = path.join(__dirname, '../data/annonces/prospection.json');
 function loadBiens() {
   if (!fs.existsSync(BIENS_FILE)) return [];
   return JSON.parse(fs.readFileSync(BIENS_FILE, 'utf-8'));
@@ -25,7 +26,7 @@ function saveBiens(data) {
 
 // API — données marché DVF
 app.get('/api/marche', (_, res) => {
-  const file = path.join(__dirname, '../data/rapport_dvf.json');
+  const file = path.join(__dirname, '../data/marche/rapport_dvf.json');
   if (fs.existsSync(file)) {
     res.json(JSON.parse(fs.readFileSync(file, 'utf-8')));
   } else {
@@ -76,6 +77,11 @@ app.post('/api/biens/import', (req, res) => {
   res.json({ ok: true, count: req.body.length });
 });
 
+// API — base de prix rénovation
+app.get('/api/renovation/prices', (_, res) => {
+  res.json({ pieces: PIECES, gammes: GAMMES, uniteLabels: UNITE_LABELS, margeImprevus: MARGE_IMPREVUS });
+});
+
 // Page marché
 app.get('/marche', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'marche.html'));
@@ -84,6 +90,11 @@ app.get('/marche', (_, res) => {
 // Page prospection
 app.get('/prospection', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'prospection.html'));
+});
+
+// Page rénovation
+app.get('/renovation', (_, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'renovation.html'));
 });
 
 // Redirection racine → prospection
