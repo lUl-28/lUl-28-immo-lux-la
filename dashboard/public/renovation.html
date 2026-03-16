@@ -26,219 +26,148 @@
     .btn-primary { background: #3b82f6; color: #fff; }
     .btn-primary:hover { background: #2563eb; }
     .btn-primary:disabled { opacity: .4; cursor: not-allowed; }
-    .btn-ghost { background: transparent; color: #94a3b8; border: 1px solid #334155; }
-    .btn-ghost:hover { color: #f8fafc; border-color: #64748b; }
     .btn-danger-sm { background: transparent; border: none; color: #64748b; cursor: pointer; font-size: 16px; padding: 4px 6px; border-radius: 6px; transition: color .15s, background .15s; }
     .btn-danger-sm:hover { color: #f87171; background: rgba(239,68,68,.1); }
 
     /* ── Grille principale ── */
-    .main-grid { display: grid; grid-template-columns: 380px 1fr; gap: 24px; align-items: start; }
+    .main-grid { display: grid; grid-template-columns: 390px 1fr; gap: 24px; align-items: start; }
     @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
 
     /* ── Panneau formulaire ── */
-    .form-panel {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 24px;
-      position: sticky;
-      top: 24px;
-    }
-    .form-panel h2 { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .form-panel { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 24px; position: sticky; top: 24px; }
+    .form-panel h2 { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 20px; }
 
     .field { margin-bottom: 16px; }
     .field label { display: block; font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
-    .field input, .field select {
-      width: 100%;
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 9px 12px;
-      color: #f1f5f9;
-      font-size: 14px;
-      outline: none;
-      transition: border-color .15s;
-    }
+    .field input, .field select { width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 9px 12px; color: #f1f5f9; font-size: 14px; outline: none; transition: border-color .15s; }
     .field input:focus, .field select:focus { border-color: #3b82f6; }
     .field select option { background: #1e293b; }
 
-    /* ── Gamme selector ── */
-    .gamme-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .gamme-btn {
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 8px 6px;
-      background: #0f172a;
-      color: #64748b;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: all .15s;
-    }
-    .gamme-btn:hover { border-color: #64748b; color: #94a3b8; }
-    .gamme-btn.active { border-color: #3b82f6; background: rgba(59,130,246,.12); color: #60a5fa; }
-    .gamme-btn.active.milieu { border-color: #10b981; background: rgba(16,185,129,.1); color: #34d399; }
-    .gamme-btn.active.haut   { border-color: #f59e0b; background: rgba(245,158,11,.1); color: #fbbf24; }
+    /* ── Sélecteur 3 boutons (gamme + mode) ── */
+    .tri-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .tri-btn { border: 1px solid #334155; border-radius: 8px; padding: 8px 6px; background: #0f172a; color: #64748b; font-size: 12px; font-weight: 600; cursor: pointer; text-align: center; transition: all .15s; line-height: 1.3; }
+    .tri-btn:hover { border-color: #64748b; color: #94a3b8; }
+
+    /* Gamme */
+    .tri-btn.active-entree { border-color: #3b82f6; background: rgba(59,130,246,.12); color: #60a5fa; }
+    .tri-btn.active-milieu { border-color: #10b981; background: rgba(16,185,129,.10); color: #34d399; }
+    .tri-btn.active-haut   { border-color: #f59e0b; background: rgba(245,158,11,.10); color: #fbbf24; }
+
+    /* Mode réalisation */
+    .tri-btn.active-artisan { border-color: #6366f1; background: rgba(99,102,241,.12); color: #a5b4fc; }
+    .tri-btn.active-diy     { border-color: #10b981; background: rgba(16,185,129,.10); color: #34d399; }
+    .tri-btn.active-mixte   { border-color: #f59e0b; background: rgba(245,158,11,.10); color: #fbbf24; }
 
     /* ── Liste travaux ── */
-    .travaux-list { max-height: 280px; overflow-y: auto; margin-top: 4px; }
+    .travaux-list { max-height: 300px; overflow-y: auto; margin-top: 4px; }
     .travaux-list::-webkit-scrollbar { width: 4px; }
     .travaux-list::-webkit-scrollbar-track { background: #0f172a; }
     .travaux-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
 
-    .travail-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background .12s;
-      margin-bottom: 2px;
-    }
+    .travail-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer; transition: background .12s; margin-bottom: 2px; }
     .travail-row:hover { background: #0f172a; }
     .travail-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: #3b82f6; flex-shrink: 0; cursor: pointer; }
     .travail-row .trav-label { font-size: 13px; color: #e2e8f0; flex: 1; }
-    .travail-row .trav-unite { font-size: 11px; color: #475569; background: #0f172a; border: 1px solid #334155; border-radius: 4px; padding: 2px 5px; flex-shrink: 0; }
-    .travail-row .trav-qty { width: 60px; background: #1e293b; border: 1px solid #3b82f6; border-radius: 6px; padding: 4px 7px; color: #60a5fa; font-size: 12px; text-align: center; outline: none; display: none; }
-    .travail-row .trav-qty.visible { display: block; }
-    .travail-row .trav-qty-label { font-size: 11px; color: #60a5fa; display: none; white-space: nowrap; }
-    .travail-row .trav-qty-label.visible { display: block; }
+    .trav-warning { font-size: 11px; color: #f59e0b; flex-shrink: 0; title: "Pro recommandé"; }
+    .trav-unite { font-size: 11px; color: #475569; background: #0f172a; border: 1px solid #334155; border-radius: 4px; padding: 2px 5px; flex-shrink: 0; }
+    .trav-qty { width: 58px; background: #1e293b; border: 1px solid #3b82f6; border-radius: 6px; padding: 4px 7px; color: #60a5fa; font-size: 12px; text-align: center; outline: none; display: none; }
+    .trav-qty.visible { display: block; }
+    .trav-qty-label { font-size: 11px; color: #60a5fa; display: none; white-space: nowrap; }
+    .trav-qty-label.visible { display: block; }
+
+    /* Toggle artisan/DIY par poste (mode mixte) */
+    .trav-mode-toggle { display: none; gap: 2px; flex-shrink: 0; }
+    .trav-mode-toggle.visible { display: flex; }
+    .tmt-btn { font-size: 10px; font-weight: 700; padding: 3px 6px; border-radius: 4px; cursor: pointer; border: 1px solid #334155; background: #0f172a; color: #475569; transition: all .12s; }
+    .tmt-btn.active-a { border-color: #6366f1; background: rgba(99,102,241,.15); color: #a5b4fc; }
+    .tmt-btn.active-d { border-color: #10b981; background: rgba(16,185,129,.12); color: #34d399; }
+
+    /* ── Bannière mode ── */
+    .mode-banner { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+    .mode-banner.artisan { background: rgba(99,102,241,.10); border: 1px solid rgba(99,102,241,.25); color: #a5b4fc; }
+    .mode-banner.diy     { background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.25); color: #34d399; }
+    .mode-banner.mixte   { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.25); color: #fbbf24; }
 
     /* ── Panneau pièces ── */
     .rooms-panel { display: flex; flex-direction: column; gap: 16px; }
-    .empty-state {
-      background: #1e293b;
-      border: 1px dashed #334155;
-      border-radius: 14px;
-      padding: 48px 24px;
-      text-align: center;
-      color: #475569;
-    }
+    .empty-state { background: #1e293b; border: 1px dashed #334155; border-radius: 14px; padding: 48px 24px; text-align: center; color: #475569; }
     .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
     .empty-state p { font-size: 14px; }
 
     /* ── Carte pièce ── */
-    .room-card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .room-card-header {
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #1e293b;
-      background: #1a2744;
-    }
-    .room-card-header.milieu { background: #0f2a1f; }
-    .room-card-header.haut   { background: #2a1f0a; }
+    .room-card { background: #1e293b; border: 1px solid #334155; border-radius: 14px; overflow: hidden; }
+    .room-card-header { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
+    .rch-entree-artisan { background: #1a2744; }
+    .rch-milieu-artisan { background: #0f2a1f; }
+    .rch-haut-artisan   { background: #2a1f0a; }
+    .rch-entree-diy     { background: #0f2a1f; }
+    .rch-milieu-diy     { background: #0f2a1f; }
+    .rch-haut-diy       { background: #0f2a1f; }
+    .rch-entree-mixte   { background: #1a1a2a; }
+    .rch-milieu-mixte   { background: #1a1a2a; }
+    .rch-haut-mixte     { background: #1a1a2a; }
 
     .room-title { display: flex; align-items: center; gap: 10px; }
-    .room-icon { font-size: 18px; }
-    .room-name { font-size: 15px; font-weight: 700; color: #f1f5f9; }
-    .room-sub { font-size: 12px; color: #64748b; margin-top: 1px; }
-    .room-actions { display: flex; align-items: center; gap: 8px; }
+    .room-icon  { font-size: 18px; }
+    .room-name  { font-size: 15px; font-weight: 700; color: #f1f5f9; }
+    .room-sub   { font-size: 12px; color: #64748b; margin-top: 1px; }
+    .room-actions { display: flex; align-items: center; gap: 6px; }
 
-    .gamme-tag { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; }
-    .gamme-tag.entree { background: rgba(96,165,250,.12); color: #60a5fa; border: 1px solid rgba(96,165,250,.25); }
-    .gamme-tag.milieu { background: rgba(16,185,129,.1); color: #34d399; border: 1px solid rgba(16,185,129,.25); }
-    .gamme-tag.haut   { background: rgba(245,158,11,.1); color: #fbbf24; border: 1px solid rgba(245,158,11,.25); }
+    .tag { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 5px; }
+    .tag-entree  { background: rgba(96,165,250,.12);  color: #60a5fa;  border: 1px solid rgba(96,165,250,.25); }
+    .tag-milieu  { background: rgba(16,185,129,.10);  color: #34d399;  border: 1px solid rgba(16,185,129,.25); }
+    .tag-haut    { background: rgba(245,158,11,.10);  color: #fbbf24;  border: 1px solid rgba(245,158,11,.25); }
+    .tag-artisan { background: rgba(99,102,241,.12);  color: #a5b4fc;  border: 1px solid rgba(99,102,241,.25); }
+    .tag-diy     { background: rgba(16,185,129,.10);  color: #34d399;  border: 1px solid rgba(16,185,129,.25); }
+    .tag-mixte   { background: rgba(245,158,11,.10);  color: #fbbf24;  border: 1px solid rgba(245,158,11,.25); }
 
     .room-card-body { padding: 14px 18px; }
-    .travaux-detail { display: flex; flex-direction: column; gap: 6px; }
-    .travail-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
-      padding: 4px 0;
-      border-bottom: 1px solid #1a2233;
-    }
+    .travaux-detail { display: flex; flex-direction: column; gap: 4px; }
+    .travail-line { display: flex; align-items: center; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px solid #1a2233; }
     .travail-line:last-child { border-bottom: none; }
-    .travail-line .tl-label { color: #94a3b8; flex: 1; }
-    .travail-line .tl-qty { font-size: 11px; color: #475569; margin: 0 8px; }
-    .travail-line .tl-range { font-size: 13px; font-weight: 600; color: #f1f5f9; white-space: nowrap; }
+    .tl-left  { display: flex; align-items: center; gap: 6px; flex: 1; }
+    .tl-label { color: #94a3b8; }
+    .tl-mode  { font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px; }
+    .tl-mode-a { background: rgba(99,102,241,.12); color: #a5b4fc; }
+    .tl-mode-d { background: rgba(16,185,129,.10); color: #34d399; }
+    .tl-qty   { font-size: 11px; color: #475569; margin: 0 6px; }
+    .tl-range { font-size: 13px; font-weight: 600; color: #f1f5f9; white-space: nowrap; }
+    .tl-economy { font-size: 11px; color: #34d399; margin-left: 6px; }
 
-    .room-subtotal {
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid #334155;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .room-subtotal .label { font-size: 12px; color: #64748b; }
+    .room-subtotal { margin-top: 12px; padding-top: 10px; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+    .room-subtotal .label  { font-size: 12px; color: #64748b; }
     .room-subtotal .amount { font-size: 15px; font-weight: 700; color: #60a5fa; }
 
-    /* ── Bloc résultats ── */
-    .results-panel {
-      margin-top: 24px;
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 24px 28px;
-    }
+    /* ── Résultats ── */
+    .results-panel { margin-top: 24px; background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 24px 28px; }
     .results-panel h2 { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 20px; }
 
-    .results-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .result-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 14px;
-      padding: 8px 0;
-      border-bottom: 1px solid #1a2233;
-    }
+    .results-rows { display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px; }
+    .result-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding: 8px 0; border-bottom: 1px solid #1a2233; }
     .result-row:last-child { border-bottom: none; }
-    .result-row .rl { color: #94a3b8; display: flex; align-items: center; gap: 8px; }
-    .result-row .rv { font-weight: 600; color: #f1f5f9; }
+    .result-row .rl { color: #94a3b8; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .result-row .rv { font-weight: 600; color: #f1f5f9; white-space: nowrap; }
 
-    .marge-row { display: flex; align-items: center; gap: 10px; }
-    .marge-input {
-      width: 70px;
-      background: #0f172a;
-      border: 1px solid #3b82f6;
-      border-radius: 6px;
-      padding: 5px 8px;
-      color: #60a5fa;
-      font-size: 14px;
-      font-weight: 700;
-      text-align: center;
-      outline: none;
-    }
-    .marge-suffix { font-size: 13px; color: #64748b; }
+    .sep { height: 1px; background: #334155; margin: 8px 0; }
 
-    .total-bar {
-      background: linear-gradient(135deg, #1e3a5f, #1a2744);
-      border: 1px solid #2d5282;
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .total-bar .tl { font-size: 14px; font-weight: 700; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.5px; }
+    .marge-row { display: flex; align-items: center; gap: 8px; }
+    .marge-input { width: 65px; background: #0f172a; border: 1px solid #3b82f6; border-radius: 6px; padding: 5px 8px; color: #60a5fa; font-size: 14px; font-weight: 700; text-align: center; outline: none; }
+
+    .total-bar { background: linear-gradient(135deg, #1e3a5f, #1a2744); border: 1px solid #2d5282; border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .total-bar .tl { font-size: 13px; font-weight: 700; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.5px; }
     .total-bar .tv { font-size: 26px; font-weight: 800; color: #f8fafc; }
-    .total-bar .tv span { font-size: 14px; color: #64748b; font-weight: 400; margin-left: 6px; }
+    .total-bar .tv span { font-size: 13px; color: #64748b; font-weight: 400; margin-left: 6px; }
 
-    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+    .economy-bar { background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2); border-radius: 10px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+    .economy-bar .el { font-size: 13px; color: #34d399; display: flex; align-items: center; gap: 8px; }
+    .economy-bar .ev { font-size: 16px; font-weight: 700; color: #34d399; }
+
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
     .mini-stat { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 14px 16px; }
     .mini-stat .ms-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
     .mini-stat .ms-value { font-size: 18px; font-weight: 700; color: #f1f5f9; }
-    .mini-stat .ms-range { font-size: 11px; color: #475569; margin-top: 2px; }
 
-    /* ── Loader ── */
     .loader { text-align: center; padding: 60px; color: #475569; font-size: 14px; }
-
-    /* ── Séparateur ── */
-    .sep { height: 1px; background: #334155; margin: 16px 0; }
-
-    /* ── Tooltip unite ── */
-    .unite-hint { font-size: 11px; color: #475569; margin-top: 4px; font-style: italic; }
   </style>
 </head>
 <body>
@@ -255,10 +184,7 @@
     <h1>Estimation Rénovation</h1>
     <p>Calculez le coût estimatif de vos travaux pièce par pièce</p>
   </div>
-
-  <div id="app">
-    <div class="loader">Chargement de la base de prix…</div>
-  </div>
+  <div id="app"><div class="loader">Chargement de la base de prix…</div></div>
 </div>
 
 <script>
@@ -268,17 +194,16 @@ let rooms  = [];
 let marge  = 10;
 let nextId = 1;
 
-// ── Chargement initial ───────────────────────────────────────
+// ── Chargement ───────────────────────────────────────────────
 fetch('/api/renovation/prices')
   .then(r => r.json())
   .then(data => {
-    prices = data;
-    marge  = data.margeImprevus || 10;
+    prices = data; marge = data.margeImprevus || 10;
     render();
   })
   .catch(() => {
     document.getElementById('app').innerHTML =
-      '<div class="loader">❌ Impossible de charger la base de prix. Vérifiez que le serveur est démarré.</div>';
+      '<div class="loader">❌ Impossible de charger la base de prix.</div>';
   });
 
 // ── Rendu principal ──────────────────────────────────────────
@@ -290,12 +215,12 @@ function render() {
         ${rooms.length === 0 ? renderEmpty() : rooms.map(renderRoomCard).join('')}
       </div>
     </div>
-    ${renderResults()}
+    ${rooms.length > 0 ? renderResults() : ''}
   `;
   bindFormEvents();
 }
 
-// ── Formulaire d'ajout ───────────────────────────────────────
+// ── Formulaire ───────────────────────────────────────────────
 function renderForm() {
   const options = prices.pieces.map(p =>
     `<option value="${p.id}">${p.icon} ${p.label}</option>`
@@ -322,38 +247,57 @@ function renderForm() {
 
       <div class="field">
         <label>Niveau de gamme</label>
-        <div class="gamme-selector">
-          <button class="gamme-btn entree active" data-gamme="entree">Entrée</button>
-          <button class="gamme-btn milieu"         data-gamme="milieu">Milieu</button>
-          <button class="gamme-btn haut"           data-gamme="haut">Haut</button>
+        <div class="tri-selector" id="gamme-selector">
+          <button class="tri-btn active-entree" data-gamme="entree">Entrée</button>
+          <button class="tri-btn"               data-gamme="milieu">Milieu</button>
+          <button class="tri-btn"               data-gamme="haut">Haut</button>
         </div>
         <input type="hidden" id="f-gamme" value="entree">
       </div>
 
       <div class="field">
+        <label>Mode de réalisation</label>
+        <div class="tri-selector" id="mode-selector">
+          <button class="tri-btn active-artisan" data-mode="artisan">👷 Artisan</button>
+          <button class="tri-btn"                data-mode="diy">🔨 DIY</button>
+          <button class="tri-btn"                data-mode="mixte">🔀 Mixte</button>
+        </div>
+        <input type="hidden" id="f-mode" value="artisan">
+      </div>
+
+      <div class="field">
         <label>Types de travaux</label>
         <div class="travaux-list" id="f-travaux-list">
-          ${renderTravauxCheckboxes(prices.pieces[0])}
+          ${renderTravauxCheckboxes(prices.pieces[0], 'artisan')}
         </div>
       </div>
 
-      <button class="btn btn-primary" id="btn-ajouter" style="width:100%;margin-top:8px" onclick="ajouterPiece()">
+      <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="ajouterPiece()">
         + Ajouter la pièce
       </button>
     </div>
   `;
 }
 
-function renderTravauxCheckboxes(piece) {
+// ── Checkboxes travaux ───────────────────────────────────────
+function renderTravauxCheckboxes(piece, mode) {
   return piece.travaux.map(t => {
     const uniteLabel = prices.uniteLabels[t.unite]?.court || t.unite;
     const needsQty   = t.unite === 'unite' || t.unite === 'ml';
     const qtyLabel   = t.unite === 'unite' ? 'Qté' : 'Ml';
+    const warning    = t.diyWarning ? `<span class="trav-warning" title="Pro recommandé">⚠️</span>` : '';
+    const mixteToggle = mode === 'mixte' ? `
+      <div class="trav-mode-toggle" id="toggle-${t.id}">
+        <button class="tmt-btn active-a" data-travid="${t.id}" data-m="artisan" onclick="setTravMode(event,'${t.id}','artisan')">A</button>
+        <button class="tmt-btn"          data-travid="${t.id}" data-m="diy"     onclick="setTravMode(event,'${t.id}','diy')">D</button>
+      </div>` : '';
     return `
       <div class="travail-row" onclick="toggleTravail(this)">
-        <input type="checkbox" data-id="${t.id}" data-unite="${t.unite}" onclick="event.stopPropagation(); toggleTravail(this.closest('.travail-row'))">
+        <input type="checkbox" data-id="${t.id}" data-unite="${t.unite}" onclick="event.stopPropagation(); toggleTravail(this.closest('.travail-row'), true)">
         <span class="trav-label">${t.label}</span>
+        ${warning}
         ${needsQty ? `<span class="trav-qty-label" id="lbl-${t.id}">${qtyLabel}</span><input class="trav-qty" id="qty-${t.id}" type="number" min="1" step="1" value="1" onclick="event.stopPropagation()">` : ''}
+        ${mixteToggle}
         <span class="trav-unite">${uniteLabel}</span>
       </div>
     `;
@@ -362,30 +306,53 @@ function renderTravauxCheckboxes(piece) {
 
 // ── Événements formulaire ────────────────────────────────────
 function bindFormEvents() {
-  // Changement de type de pièce → recharger les travaux
   document.getElementById('f-type')?.addEventListener('change', e => {
     const piece = prices.pieces.find(p => p.id === e.target.value);
-    if (piece) document.getElementById('f-travaux-list').innerHTML = renderTravauxCheckboxes(piece);
+    const mode  = document.getElementById('f-mode')?.value || 'artisan';
+    if (piece) document.getElementById('f-travaux-list').innerHTML = renderTravauxCheckboxes(piece, mode);
   });
 
-  // Sélection de gamme
-  document.querySelectorAll('.gamme-btn').forEach(btn => {
+  // Gamme
+  document.querySelectorAll('#gamme-selector .tri-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.gamme-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      document.querySelectorAll('#gamme-selector .tri-btn').forEach(b =>
+        b.className = 'tri-btn');
+      btn.classList.add(`active-${btn.dataset.gamme}`);
       document.getElementById('f-gamme').value = btn.dataset.gamme;
+    });
+  });
+
+  // Mode
+  document.querySelectorAll('#mode-selector .tri-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mode-selector .tri-btn').forEach(b =>
+        b.className = 'tri-btn');
+      btn.classList.add(`active-${btn.dataset.mode}`);
+      document.getElementById('f-mode').value = btn.dataset.mode;
+      // Recharger les checkboxes avec le nouveau mode
+      const piece = prices.pieces.find(p => p.id === document.getElementById('f-type').value);
+      if (piece) document.getElementById('f-travaux-list').innerHTML = renderTravauxCheckboxes(piece, btn.dataset.mode);
     });
   });
 }
 
-function toggleTravail(row) {
-  const cb = row.querySelector('input[type="checkbox"]');
-  cb.checked = !cb.checked;
-  const id = cb.dataset.id;
+function toggleTravail(row, fromCheckbox) {
+  const cb     = row.querySelector('input[type="checkbox"]');
+  if (!fromCheckbox) cb.checked = !cb.checked;
+  const id     = cb.dataset.id;
   const qtyEl  = document.getElementById(`qty-${id}`);
   const lblEl  = document.getElementById(`lbl-${id}`);
+  const togEl  = document.getElementById(`toggle-${id}`);
   if (qtyEl)  qtyEl.classList.toggle('visible', cb.checked);
   if (lblEl)  lblEl.classList.toggle('visible', cb.checked);
+  if (togEl)  togEl.classList.toggle('visible', cb.checked);
+}
+
+function setTravMode(event, travId, mode) {
+  event.stopPropagation();
+  const toggle = document.getElementById(`toggle-${travId}`);
+  toggle.querySelectorAll('.tmt-btn').forEach(b => b.className = 'tmt-btn');
+  toggle.querySelector(`[data-m="${mode}"]`).classList.add(`active-${mode === 'artisan' ? 'a' : 'd'}`);
 }
 
 // ── Ajout d'une pièce ────────────────────────────────────────
@@ -394,115 +361,142 @@ function ajouterPiece() {
   const nom     = document.getElementById('f-nom').value.trim();
   const surface = parseFloat(document.getElementById('f-surface').value);
   const gamme   = document.getElementById('f-gamme').value;
+  const mode    = document.getElementById('f-mode').value;
 
-  if (!surface || surface <= 0) {
-    alert('Veuillez indiquer une surface valide.');
-    return;
-  }
+  if (!surface || surface <= 0) { alert('Veuillez indiquer une surface valide.'); return; }
 
   const piece = prices.pieces.find(p => p.id === typeId);
   const checkedBoxes = document.querySelectorAll('#f-travaux-list input[type="checkbox"]:checked');
-
-  if (checkedBoxes.length === 0) {
-    alert('Sélectionnez au moins un type de travaux.');
-    return;
-  }
+  if (checkedBoxes.length === 0) { alert('Sélectionnez au moins un type de travaux.'); return; }
 
   const travaux = [];
   checkedBoxes.forEach(cb => {
     const tDef  = piece.travaux.find(t => t.id === cb.dataset.id);
     const qtyEl = document.getElementById(`qty-${cb.dataset.id}`);
     const qty   = qtyEl ? parseFloat(qtyEl.value) || 1 : null;
-    travaux.push({ id: tDef.id, label: tDef.label, unite: tDef.unite, qty });
+
+    // En mode mixte : lire le toggle A/D de ce travail
+    let travMode = mode;
+    if (mode === 'mixte') {
+      const toggle  = document.getElementById(`toggle-${cb.dataset.id}`);
+      const activeD = toggle?.querySelector('.tmt-btn.active-d');
+      travMode = activeD ? 'diy' : 'artisan';
+    }
+    travaux.push({ id: tDef.id, label: tDef.label, unite: tDef.unite, qty, travMode, diyCoef: tDef.diyCoef || 1, diyWarning: tDef.diyWarning || false });
   });
 
-  rooms.push({ id: nextId++, pieceId: typeId, piece, nom, surface, gamme, travaux });
-
-  // Reset nom et surface
+  rooms.push({ id: nextId++, pieceId: typeId, piece, nom, surface, gamme, mode, travaux });
   document.getElementById('f-nom').value = '';
   document.getElementById('f-surface').value = '';
-
   render();
 }
 
 // ── Suppression ──────────────────────────────────────────────
-function supprimerPiece(id) {
-  rooms = rooms.filter(r => r.id !== id);
-  render();
+function supprimerPiece(id) { rooms = rooms.filter(r => r.id !== id); render(); }
+
+// ── Calcul coût d'un travail ─────────────────────────────────
+function calcTravail(trav, gamme, surface, piece) {
+  const tDef   = piece.travaux.find(t => t.id === trav.id);
+  if (!tDef) return { min: 0, max: 0 };
+  const g      = tDef.gammes[gamme];
+  const isDiy  = trav.travMode === 'diy';
+  const coef   = isDiy ? (trav.diyCoef || 1) : 1;
+  let min = g.min * coef, max = g.max * coef;
+
+  if (trav.unite === 'm2')                              { min *= surface; max *= surface; }
+  else if (trav.unite === 'unite' || trav.unite === 'ml') { const q = trav.qty || 1; min *= q; max *= q; }
+  return { min: Math.round(min), max: Math.round(max) };
 }
 
-// ── Calcul du coût d'un travail ──────────────────────────────
-function calcTravail(trav, gamme, surface, piece) {
+// Calcul artisan pur (pour comparer en mode DIY/Mixte)
+function calcTravailArtisan(trav, gamme, surface, piece) {
   const tDef = piece.travaux.find(t => t.id === trav.id);
   if (!tDef) return { min: 0, max: 0 };
   const g = tDef.gammes[gamme];
   let min = g.min, max = g.max;
-
-  if (trav.unite === 'm2')     { min *= surface; max *= surface; }
-  else if (trav.unite === 'unite' || trav.unite === 'ml') {
-    const qty = trav.qty || 1;
-    min *= qty; max *= qty;
-  }
-  // forfait : min/max tels quels
+  if (trav.unite === 'm2')                              { min *= surface; max *= surface; }
+  else if (trav.unite === 'unite' || trav.unite === 'ml') { const q = trav.qty || 1; min *= q; max *= q; }
   return { min: Math.round(min), max: Math.round(max) };
 }
 
-// ── Calcul total d'une pièce ─────────────────────────────────
 function calcRoom(room) {
   let min = 0, max = 0;
-  room.travaux.forEach(t => {
-    const c = calcTravail(t, room.gamme, room.surface, room.piece);
-    min += c.min; max += c.max;
-  });
+  room.travaux.forEach(t => { const c = calcTravail(t, room.gamme, room.surface, room.piece); min += c.min; max += c.max; });
+  return { min, max };
+}
+
+function calcRoomArtisan(room) {
+  let min = 0, max = 0;
+  room.travaux.forEach(t => { const c = calcTravailArtisan(t, room.gamme, room.surface, room.piece); min += c.min; max += c.max; });
   return { min, max };
 }
 
 // ── Formatage ────────────────────────────────────────────────
-function fmt(n) { return n.toLocaleString('fr-FR') + ' €'; }
-function fmtRange(min, max) { return `${fmt(min)} – ${fmt(max)}`; }
+function fmt(n)           { return n.toLocaleString('fr-FR') + ' €'; }
+function fmtRange(mn, mx) { return `${fmt(mn)} – ${fmt(mx)}`; }
 
-// ── Carte d'une pièce ────────────────────────────────────────
+// ── Carte pièce ──────────────────────────────────────────────
 function renderRoomCard(room) {
-  const { min, max } = calcRoom(room);
-  const displayName  = room.nom || room.piece.label;
-  const gammeLabels  = { entree: 'Entrée de gamme', milieu: 'Milieu de gamme', haut: 'Haut de gamme' };
+  const { min, max }   = calcRoom(room);
+  const displayName    = room.nom || room.piece.label;
+  const gammeLabels    = { entree: 'Entrée', milieu: 'Milieu', haut: 'Haut de gamme' };
+  const modeLabels     = { artisan: '👷 Artisan', diy: '🔨 DIY', mixte: '🔀 Mixte' };
+  const hasDiy         = room.mode !== 'artisan';
 
   const lignes = room.travaux.map(t => {
-    const c = calcTravail(t, room.gamme, room.surface, room.piece);
-    const uniteLabel = prices.uniteLabels[t.unite]?.court || '';
+    const c   = calcTravail(t, room.gamme, room.surface, room.piece);
+    const isDiy = t.travMode === 'diy';
     let qtyTxt = '';
     if (t.unite === 'm2')     qtyTxt = `${room.surface} m²`;
     else if (t.unite === 'unite') qtyTxt = `× ${t.qty || 1} u`;
     else if (t.unite === 'ml')    qtyTxt = `× ${t.qty || 1} ml`;
     else qtyTxt = 'forfait';
+
+    const modeBadge = room.mode === 'mixte'
+      ? `<span class="tl-mode ${isDiy ? 'tl-mode-d' : 'tl-mode-a'}">${isDiy ? 'D' : 'A'}</span>`
+      : '';
+
+    // Économie DIY vs artisan
+    let econTxt = '';
+    if (isDiy) {
+      const art = calcTravailArtisan(t, room.gamme, room.surface, room.piece);
+      const saved = Math.round((art.min + art.max) / 2) - Math.round((c.min + c.max) / 2);
+      if (saved > 0) econTxt = `<span class="tl-economy">-${fmt(saved)}</span>`;
+    }
+
     return `
       <div class="travail-line">
-        <span class="tl-label">${t.label}</span>
+        <div class="tl-left">
+          ${modeBadge}
+          <span class="tl-label">${t.label}${t.diyWarning && isDiy ? ' ⚠️' : ''}</span>
+        </div>
         <span class="tl-qty">${qtyTxt}</span>
         <span class="tl-range">${fmtRange(c.min, c.max)}</span>
+        ${econTxt}
       </div>
     `;
   }).join('');
 
   return `
     <div class="room-card">
-      <div class="room-card-header ${room.gamme}">
+      <div class="room-card-header rch-${room.gamme}-${room.mode === 'mixte' ? 'mixte' : room.mode}">
         <div class="room-title">
           <span class="room-icon">${room.piece.icon}</span>
           <div>
             <div class="room-name">${displayName}</div>
-            <div class="room-sub">${room.surface} m² · ${gammeLabels[room.gamme]}</div>
+            <div class="room-sub">${room.surface} m²</div>
           </div>
         </div>
         <div class="room-actions">
-          <span class="gamme-tag ${room.gamme}">${gammeLabels[room.gamme]}</span>
-          <button class="btn-danger-sm" onclick="supprimerPiece(${room.id})" title="Supprimer">✕</button>
+          <span class="tag tag-${room.gamme}">${gammeLabels[room.gamme]}</span>
+          <span class="tag tag-${room.mode === 'mixte' ? 'mixte' : room.mode}">${modeLabels[room.mode]}</span>
+          <button class="btn-danger-sm" onclick="supprimerPiece(${room.id})">✕</button>
         </div>
       </div>
       <div class="room-card-body">
         <div class="travaux-detail">${lignes}</div>
         <div class="room-subtotal">
-          <span class="label">Sous-total pièce</span>
+          <span class="label">Sous-total pièce${hasDiy ? ' (avec économies DIY)' : ''}</span>
           <span class="amount">${fmtRange(min, max)}</span>
         </div>
       </div>
@@ -512,45 +506,57 @@ function renderRoomCard(room) {
 
 // ── État vide ────────────────────────────────────────────────
 function renderEmpty() {
-  return `
-    <div class="empty-state">
-      <div class="icon">🏗️</div>
-      <p>Aucune pièce ajoutée.<br>Remplissez le formulaire et cliquez sur <strong>Ajouter la pièce</strong>.</p>
-    </div>
-  `;
+  return `<div class="empty-state"><div class="icon">🏗️</div>
+    <p>Aucune pièce ajoutée.<br>Remplissez le formulaire et cliquez sur <strong>Ajouter la pièce</strong>.</p>
+  </div>`;
 }
 
-// ── Bloc résultats ───────────────────────────────────────────
+// ── Résultats ────────────────────────────────────────────────
 function renderResults() {
-  if (rooms.length === 0) return '';
-
   let totalMin = 0, totalMax = 0;
+  let artisanMin = 0, artisanMax = 0;
   rooms.forEach(r => {
-    const c = calcRoom(r);
-    totalMin += c.min; totalMax += c.max;
+    const c  = calcRoom(r);
+    const ca = calcRoomArtisan(r);
+    totalMin   += c.min;  totalMax   += c.max;
+    artisanMin += ca.min; artisanMax += ca.max;
   });
 
-  const margeMin = Math.round(totalMin * marge / 100);
-  const margeMax = Math.round(totalMax * marge / 100);
-  const grandMin = totalMin + margeMin;
-  const grandMax = totalMax + margeMax;
-  const midpoint = Math.round((grandMin + grandMax) / 2);
+  const economieMin = artisanMin - totalMin;
+  const economieMax = artisanMax - totalMax;
+  const hasDiy      = rooms.some(r => r.mode !== 'artisan');
+
+  const margeMin  = Math.round(totalMin  * marge / 100);
+  const margeMax  = Math.round(totalMax  * marge / 100);
+  const grandMin  = totalMin  + margeMin;
+  const grandMax  = totalMax  + margeMax;
+  const midpoint  = Math.round((grandMin + grandMax) / 2);
+  const totalSurf = rooms.reduce((s, r) => s + r.surface, 0);
 
   const lignesPieces = rooms.map(r => {
-    const c = calcRoom(r);
+    const c    = calcRoom(r);
     const name = r.nom || r.piece.label;
     return `
       <div class="result-row">
-        <span class="rl">${r.piece.icon} ${name} <span style="color:#475569;font-size:12px">(${r.surface} m²)</span></span>
+        <span class="rl">${r.piece.icon} ${name}
+          <span style="color:#475569;font-size:11px">${r.surface} m²</span>
+          <span class="tag tag-${r.mode === 'mixte' ? 'mixte' : r.mode}" style="font-size:10px;padding:2px 5px">${r.mode === 'artisan' ? '👷' : r.mode === 'diy' ? '🔨' : '🔀'}</span>
+        </span>
         <span class="rv">${fmtRange(c.min, c.max)}</span>
       </div>
     `;
   }).join('');
 
+  const econBar = hasDiy && (economieMin > 0 || economieMax > 0) ? `
+    <div class="economy-bar">
+      <span class="el">💰 Économie réalisée grâce au DIY</span>
+      <span class="ev">- ${fmtRange(economieMin, economieMax)}</span>
+    </div>
+  ` : '';
+
   return `
     <div class="results-panel">
       <h2>📊 Récapitulatif</h2>
-
       <div class="results-rows">
         ${lignesPieces}
         <div class="sep"></div>
@@ -563,7 +569,7 @@ function renderResults() {
             Marge imprévus
             <div class="marge-row">
               <input class="marge-input" id="marge-input" type="number" min="0" max="50" value="${marge}" oninput="updateMarge(this.value)">
-              <span class="marge-suffix">%</span>
+              <span style="font-size:13px;color:#64748b">%</span>
             </div>
           </span>
           <span class="rv" id="marge-montant">${fmtRange(margeMin, margeMax)}</span>
@@ -573,49 +579,46 @@ function renderResults() {
       <div class="total-bar">
         <div>
           <div class="tl">Total estimé</div>
-          <div style="font-size:12px;color:#60a5fa;margin-top:4px">${fmtRange(grandMin, grandMax)}</div>
+          <div id="total-range" style="font-size:12px;color:#60a5fa;margin-top:4px">${fmtRange(grandMin, grandMax)}</div>
         </div>
         <div style="text-align:right">
-          <div class="tv">${fmt(midpoint)} <span>valeur médiane</span></div>
+          <div class="tv" id="total-mid">${fmt(midpoint)} <span>valeur médiane</span></div>
         </div>
       </div>
 
-      <div class="results-grid" style="margin-top:16px">
+      ${econBar}
+
+      <div class="results-grid">
         <div class="mini-stat">
-          <div class="ms-label">Nombre de pièces</div>
+          <div class="ms-label">Pièces</div>
           <div class="ms-value">${rooms.length}</div>
         </div>
         <div class="mini-stat">
           <div class="ms-label">Surface totale</div>
-          <div class="ms-value">${rooms.reduce((s,r) => s + r.surface, 0)} m²</div>
+          <div class="ms-value">${totalSurf} m²</div>
         </div>
         <div class="mini-stat">
           <div class="ms-label">Coût moyen /m²</div>
-          <div class="ms-value">${Math.round(midpoint / rooms.reduce((s,r) => s + r.surface, 0))} €/m²</div>
+          <div class="ms-value">${totalSurf > 0 ? Math.round(midpoint / totalSurf) : 0} €/m²</div>
         </div>
       </div>
     </div>
   `;
 }
 
-// ── Mise à jour marge en temps réel (sans re-render complet) ─
+// ── Mise à jour marge temps réel ─────────────────────────────
 function updateMarge(val) {
   marge = parseFloat(val) || 0;
-  const panel = document.querySelector('.results-panel');
-  if (!panel) return;
-
   let totalMin = 0, totalMax = 0;
   rooms.forEach(r => { const c = calcRoom(r); totalMin += c.min; totalMax += c.max; });
-
   const margeMin = Math.round(totalMin * marge / 100);
   const margeMax = Math.round(totalMax * marge / 100);
   const grandMin = totalMin + margeMin;
   const grandMax = totalMax + margeMax;
   const midpoint = Math.round((grandMin + grandMax) / 2);
-
   document.getElementById('marge-montant').textContent = fmtRange(margeMin, margeMax);
-  panel.querySelector('.total-bar .tl').nextElementSibling.textContent = fmtRange(grandMin, grandMax);
-  panel.querySelector('.total-bar .tv').innerHTML = `${fmt(midpoint)} <span>valeur médiane</span>`;
+  document.getElementById('total-range').textContent   = fmtRange(grandMin, grandMax);
+  document.getElementById('total-mid').innerHTML       = `${fmt(midpoint)} <span>valeur médiane</span>`;
 }
 </script>
 </body>
