@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loyer & Rentabilité — SCI L&A</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+
+    nav { background: #1e293b; border-bottom: 1px solid #334155; padding: 0 32px; display: flex; align-items: center; gap: 32px; height: 52px; }
+    nav .logo { font-weight: 700; font-size: 15px; color: #f8fafc; }
+    nav a { color: #94a3b8; text-decoration: none; font-size: 13px; font-weight: 500; padding: 4px 0; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+    nav a:hover { color: #f8fafc; }
+    nav a.active { color: #60a5fa; border-bottom-color: #60a5fa; }
+
+    .page { max-width: 1200px; margin: 0 auto; padding: 36px 24px; }
+    .page-header { margin-bottom: 28px; }
+    .page-header h1 { font-size: 22px; font-weight: 700; color: #f8fafc; }
+    .page-header p  { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    .main-grid { display: grid; grid-template-columns: 370px 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+
+    .panel { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 24px; }
+    .panel-sticky { position: sticky; top: 24px; }
+    .panel h2 { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 20px; }
+    .panel h3 { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; margin: 18px 0 10px; }
+
+    /* ── Fields ── */
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .field input, .field select { width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 9px 12px; color: #f1f5f9; font-size: 14px; outline: none; transition: border-color .15s; }
+    .field input:focus, .field select:focus { border-color: #3b82f6; }
+    .field select option, .field select optgroup { background: #1e293b; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field-hint { font-size: 11px; color: #475569; margin-top: 4px; }
+
+    /* ── Ring badge ── */
+    .ring-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; margin-top: 6px; }
+    .ring-badge.ring1 { background: rgba(239,68,68,.12);  color: #fca5a5; border: 1px solid rgba(239,68,68,.25); }
+    .ring-badge.ring2 { background: rgba(249,115,22,.12); color: #fdba74; border: 1px solid rgba(249,115,22,.25); }
+    .ring-badge.ring3 { background: rgba(234,179,8,.12);  color: #fde047; border: 1px solid rgba(234,179,8,.25); }
+
+    /* ── Tri-selector ── */
+    .tri-selector { display: grid; gap: 8px; }
+    .tri-selector.cols-2 { grid-template-columns: repeat(2,1fr); }
+    .tri-selector.cols-3 { grid-template-columns: repeat(3,1fr); }
+    .tri-btn { border: 1px solid #334155; border-radius: 8px; padding: 8px 6px; background: #0f172a; color: #64748b; font-size: 12px; font-weight: 600; cursor: pointer; text-align: center; transition: all .15s; line-height: 1.3; }
+    .tri-btn:hover { border-color: #64748b; color: #94a3b8; }
+    .tri-btn.active-appart { border-color: #6366f1; background: rgba(99,102,241,.12); color: #a5b4fc; }
+    .tri-btn.active-maison { border-color: #f59e0b; background: rgba(245,158,11,.10); color: #fbbf24; }
+    .tri-btn.active-t1 { border-color: #3b82f6; background: rgba(59,130,246,.12); color: #60a5fa; }
+    .tri-btn.active-t2 { border-color: #10b981; background: rgba(16,185,129,.10); color: #34d399; }
+    .tri-btn.active-t3 { border-color: #f59e0b; background: rgba(245,158,11,.10); color: #fbbf24; }
+
+    /* ── Btn ── */
+    .btn-ghost { background: transparent; color: #64748b; border: 1px solid #334155; font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all .15s; }
+    .btn-ghost:hover { color: #94a3b8; border-color: #475569; }
+
+    /* ── Sep ── */
+    .sep { height: 1px; background: #334155; margin: 16px 0; }
+
+    /* ── Résultats ── */
+    .result-empty { text-align: center; padding: 48px 24px; color: #475569; }
+    .result-empty .icon { font-size: 36px; margin-bottom: 12px; }
+    .result-empty p { font-size: 13px; }
+
+    .loyer-card { background: linear-gradient(135deg, #1e3a5f, #1a2744); border: 1px solid #2d5282; border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+    .loyer-card .lc-commune { font-size: 12px; font-weight: 700; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .loyer-card .lc-range { font-size: 26px; font-weight: 800; color: #f8fafc; }
+    .loyer-card .lc-mid  { font-size: 13px; color: #64748b; margin-top: 4px; }
+    .loyer-card .lc-m2   { font-size: 13px; color: #93c5fd; margin-top: 2px; }
+
+    .coef-detail { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
+    .coef-detail .cd-title { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 10px; }
+    .coef-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; padding: 3px 0; }
+    .coef-row .cr-label { color: #64748b; flex: 1; padding-right: 8px; }
+    .coef-row .cr-val { color: #94a3b8; font-weight: 600; font-family: monospace; white-space: nowrap; }
+    .coef-row .cr-val.hi { color: #60a5fa; }
+    .coef-row .cr-val.pos { color: #34d399; }
+    .coef-row .cr-val.neg { color: #f87171; }
+    .coef-total { border-top: 1px solid #334155; margin-top: 6px; padding-top: 8px; }
+
+    .commune-note { font-size: 11px; color: #475569; font-style: italic; margin-top: -10px; margin-bottom: 14px; padding: 0 2px; }
+
+    /* ── Renta ── */
+    .renta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
+    .renta-card { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 13px 15px; }
+    .renta-card .rc-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 5px; }
+    .renta-card .rc-val   { font-size: 19px; font-weight: 700; }
+    .renta-card .rc-sub   { font-size: 11px; color: #475569; margin-top: 2px; }
+    .rv-good { color: #34d399; }
+    .rv-ok   { color: #fbbf24; }
+    .rv-bad  { color: #f87171; }
+    .renta-note { font-size: 11px; color: #475569; padding: 8px 12px; background: #0f172a; border-radius: 6px; line-height: 1.5; }
+
+    /* ── Params ── */
+    .params-section { margin-top: 24px; }
+    .params-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .params-header h2 { font-size: 15px; font-weight: 700; color: #f8fafc; }
+
+    .params-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+    @media (max-width: 900px) { .params-grid { grid-template-columns: 1fr; } }
+
+    .param-block { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; }
+    .param-block h4 { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .param-block p.hint { font-size: 11px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
+    .param-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .param-row:last-child { margin-bottom: 0; }
+    .param-row .pr-label { font-size: 12px; color: #94a3b8; flex: 1; }
+    .badge-t1 { background: rgba(59,130,246,.12); color: #60a5fa; font-size:10px; font-weight:700; padding:2px 5px; border-radius:3px; }
+    .badge-t2 { background: rgba(16,185,129,.10); color: #34d399; font-size:10px; font-weight:700; padding:2px 5px; border-radius:3px; }
+    .badge-t3 { background: rgba(245,158,11,.10); color: #fbbf24; font-size:10px; font-weight:700; padding:2px 5px; border-radius:3px; }
+    .small-input { width: 68px; background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 4px 7px; color: #e2e8f0; font-size: 12px; text-align: center; outline: none; transition: border-color .15s; }
+    .small-input:focus { border-color: #3b82f6; }
+    .small-unit { font-size: 11px; color: #475569; }
+
+    /* ── Table loyers de base ── */
+    .loyer-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
+    .loyer-table th { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; padding: 8px 10px; text-align: left; border-bottom: 1px solid #334155; }
+    .loyer-table td { padding: 7px 10px; border-bottom: 1px solid #1a2233; vertical-align: middle; }
+    .loyer-table tr:last-child td { border-bottom: none; }
+    .loyer-table .row-label { color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+    .badge-type { font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px; }
+    .badge-appart { background: rgba(99,102,241,.12); color: #a5b4fc; }
+    .badge-maison { background: rgba(245,158,11,.10); color: #fbbf24; }
+    .price-input { width: 72px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 4px 7px; color: #60a5fa; font-size: 13px; font-weight: 700; text-align: center; outline: none; transition: border-color .15s; }
+    .price-input:focus { border-color: #3b82f6; }
+    .price-input.na { opacity: .3; cursor: not-allowed; }
+    .price-unit { font-size: 11px; color: #475569; margin-left: 3px; }
+
+    /* ── Table communes ── */
+    .communes-table-wrap { max-height: 340px; overflow-y: auto; border: 1px solid #1e293b; border-radius: 8px; }
+    .communes-table-wrap::-webkit-scrollbar { width: 4px; }
+    .communes-table-wrap::-webkit-scrollbar-track { background: #0f172a; }
+    .communes-table-wrap::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+    .communes-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .communes-table th { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; padding: 7px 10px; border-bottom: 1px solid #334155; background: #0f172a; position: sticky; top: 0; }
+    .communes-table td { padding: 6px 10px; border-bottom: 1px solid #111827; vertical-align: middle; }
+    .communes-table tr:last-child td { border-bottom: none; }
+    .communes-table .ring-sep td { background: #0f172a; padding: 5px 10px; font-size: 10px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.4px; }
+    .c-nom { color: #94a3b8; }
+    .c-note { color: #334155; font-style: italic; font-size: 10px; }
+    .c-coef-input { width: 58px; background: #1e293b; border: 1px solid #334155; border-radius: 5px; padding: 3px 6px; color: #e2e8f0; font-size: 12px; text-align: center; outline: none; transition: border-color .15s; }
+    .c-coef-input:focus { border-color: #3b82f6; }
+
+    .formula-box { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px 14px; margin-top: 10px; }
+    .formula-box .fb-title { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
+    .formula-box code { font-size: 11px; color: #7dd3fc; font-family: 'Consolas', monospace; display: block; line-height: 1.8; }
+
+    .loader { text-align: center; padding: 60px; color: #475569; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">🏠 SCI L&A</span>
+  <a href="/prospection">Prospection</a>
+  <a href="/marche">Marché</a>
+  <a href="/renovation">Rénovation</a>
+  <a href="/renta_loyer" class="active">Loyer & Renta</a>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <h1>Loyer & Rentabilité</h1>
+    <p>Estimez le loyer mensuel et le rendement par commune · Ring 1 / Ring 2 / Ring 3 · 31 communes</p>
+  </div>
+  <div id="app"><div class="loader">Chargement des paramètres…</div></div>
+</div>
+
+<script>
+// ── État global ──────────────────────────────────────────────
+let cfg      = null;
+let communesMap = {};   // { nom → { ring, coef, note, … } }
+
+let sim = {
+  commune: 'ring1_avg',  // nom de commune OU 'ring1_avg'/'ring2_avg'/'ring3_avg'
+  type:    'appart',
+  typo:    't2',
+  surface: '',
+  achat:   '',
+  travaux: '',
+};
+
+// ── Chargement ───────────────────────────────────────────────
+fetch('/api/loyer/config')
+  .then(r => r.json())
+  .then(data => {
+    cfg = data;
+    communesMap = {};
+    cfg.communesList.forEach(c => { communesMap[c.nom] = c; });
+    render();
+  })
+  .catch(() => {
+    document.getElementById('app').innerHTML =
+      '<div class="loader">❌ Impossible de charger les paramètres.</div>';
+  });
+
+// ── Helpers commune ──────────────────────────────────────────
+function getSimCommune() {
+  if (sim.commune.endsWith('_avg')) {
+    const ring = sim.commune.replace('_avg', '');
+    return { ring, coef: 1.0, nom: null, note: 'Moyenne du ring' };
+  }
+  return communesMap[sim.commune] || { ring: 'ring1', coef: 1.0, nom: sim.commune, note: '' };
+}
+
+function ringBadgeHtml(ring) {
+  const r = cfg.rings[ring];
+  const cls = ring;
+  return `<span class="ring-badge ${cls}">${r.badge} ${r.label} — ${r.description}</span>`;
+}
+
+// ── Rendu principal ──────────────────────────────────────────
+function render() {
+  document.getElementById('app').innerHTML = `
+    <div class="main-grid">
+      ${renderSimulateur()}
+      <div id="results-col">${renderResults()}</div>
+    </div>
+    ${renderParams()}
+  `;
+  bindEvents();
+}
+
+// ── Simulateur ───────────────────────────────────────────────
+function renderSimulateur() {
+  const commInfo = getSimCommune();
+
+  // Dropdown grouped by ring
+  const ringKeys = ['ring1', 'ring2', 'ring3'];
+  const optgroups = ringKeys.map(rk => {
+    const r = cfg.rings[rk];
+    const communes = cfg.communesList.filter(c => c.ring === rk);
+    const avgVal   = `${rk}_avg`;
+    const avgSel   = sim.commune === avgVal ? 'selected' : '';
+    const opts = communes.map(c => {
+      const sel = sim.commune === c.nom ? 'selected' : '';
+      const coefStr = c.coef !== 1.0 ? ` (×${c.coef.toFixed(2)})` : '';
+      return `<option value="${c.nom}" data-ring="${rk}" ${sel}>${c.nom}${coefStr}</option>`;
+    }).join('');
+    return `<optgroup label="${r.badge} ${r.label} — ${r.description}">
+      <option value="${avgVal}" data-ring="${rk}" ${avgSel}>⚡ Moyenne ${r.label}</option>
+      ${opts}
+    </optgroup>`;
+  }).join('');
+
+  return `
+    <div class="panel panel-sticky">
+      <h2>🔍 Simulateur</h2>
+
+      <div class="field">
+        <label>Commune</label>
+        <select id="f-commune" onchange="updateCommune(this)">${optgroups}</select>
+        <div id="ring-indicator">${ringBadgeHtml(commInfo.ring)}</div>
+      </div>
+
+      <div class="field">
+        <label>Type de bien</label>
+        <div class="tri-selector cols-2" id="type-selector">
+          <button class="tri-btn ${sim.type === 'appart' ? 'active-appart' : ''}" data-type="appart">🏢 Appartement</button>
+          <button class="tri-btn ${sim.type === 'maison' ? 'active-maison' : ''}" data-type="maison">🏡 Maison</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Typologie</label>
+        <div class="tri-selector cols-3" id="typo-selector">
+          <button class="tri-btn ${sim.typo === 't1' ? 'active-t1' : ''}" data-typo="t1">T1<br><span style="font-size:10px;font-weight:400">Studio</span></button>
+          <button class="tri-btn ${sim.typo === 't2' ? 'active-t2' : ''}" data-typo="t2">T2</button>
+          <button class="tri-btn ${sim.typo === 't3' ? 'active-t3' : ''}" data-typo="t3">T3</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Surface (m²)</label>
+        <input id="f-surface" type="number" min="10" max="300" step="0.5"
+               placeholder="ex : 48" value="${sim.surface}" oninput="updateSim()">
+        <div class="field-hint" id="surface-hint"></div>
+      </div>
+
+      <div class="sep"></div>
+      <h3>Rentabilité (optionnel)</h3>
+
+      <div class="field-row">
+        <div class="field" style="margin-bottom:0">
+          <label>Prix d'achat (€)</label>
+          <input id="f-achat" type="number" min="0" step="1000"
+                 placeholder="ex : 85 000" value="${sim.achat}" oninput="updateSim()">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label>Travaux (€)</label>
+          <input id="f-travaux" type="number" min="0" step="500"
+                 placeholder="ex : 20 000" value="${sim.travaux}" oninput="updateSim()">
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── Résultats ────────────────────────────────────────────────
+function renderResults() {
+  const surface = parseFloat(sim.surface);
+  if (!surface || surface <= 0) {
+    return `<div class="panel result-empty">
+      <div class="icon">📐</div>
+      <p>Renseignez la surface pour<br>obtenir une estimation.</p>
+    </div>`;
+  }
+
+  const commInfo = getSimCommune();
+  const { ring, coef: coefCommune, nom: nomCommune, note: noteCommune } = commInfo;
+  const baseVal = cfg.loyerBase[ring]?.[sim.type]?.[sim.typo];
+
+  if (baseVal === null || baseVal === undefined) {
+    return `<div class="panel result-empty">
+      <div class="icon">⚠️</div>
+      <p>Pas de données disponibles<br>pour cette combinaison.</p>
+    </div>`;
+  }
+
+  const typo     = sim.typo;
+  const surfRef  = cfg.typologies[typo].surfaceRef;
+  const elast    = cfg.elasticite[typo];
+  const coefSurf = Math.pow(surfRef / surface, elast);
+  const coefDem  = cfg.demande[ring][typo];
+
+  const prixM2   = baseVal * coefCommune * coefSurf * coefDem;
+  const loyerMid = prixM2 * surface;
+  const marge    = cfg.margeIncertitude / 100;
+  const loyerMin = Math.round(loyerMid * (1 - marge));
+  const loyerMax = Math.round(loyerMid * (1 + marge));
+
+  const achat   = parseFloat(sim.achat)   || 0;
+  const travaux = parseFloat(sim.travaux) || 0;
+  const total   = achat + travaux;
+
+  const r = cfg.rings[ring];
+  const displayName = nomCommune || `${r.badge} ${r.label} (moyenne)`;
+
+  // Coef commune: couleur selon valeur
+  const coefComClass = coefCommune > 1.05 ? 'pos' : coefCommune < 0.95 ? 'neg' : 'hi';
+
+  let rentaHtml = '';
+  if (total > 0) {
+    const loyerAnnuel = Math.round(loyerMid) * 12;
+    const rentaBrute  = (loyerAnnuel / total * 100).toFixed(1);
+    const loyerNet    = loyerAnnuel * (1 - cfg.chargesNettesPct / 100);
+    const rentaNette  = (loyerNet / total * 100).toFixed(1);
+    const classBrut   = rentaBrute >= 7 ? 'rv-good' : rentaBrute >= 5 ? 'rv-ok' : 'rv-bad';
+    const classNet    = rentaNette >= 5 ? 'rv-good' : rentaNette >= 3.5 ? 'rv-ok' : 'rv-bad';
+
+    rentaHtml = `
+      <div class="sep"></div>
+      <h3>Rentabilité estimée</h3>
+      <div class="renta-grid">
+        <div class="renta-card">
+          <div class="rc-label">Rendement brut</div>
+          <div class="rc-val ${classBrut}">${rentaBrute} %</div>
+          <div class="rc-sub">Loyer × 12 / investissement</div>
+        </div>
+        <div class="renta-card">
+          <div class="rc-label">Rendement net</div>
+          <div class="rc-val ${classNet}">${rentaNette} %</div>
+          <div class="rc-sub">Après ${cfg.chargesNettesPct}% de charges</div>
+        </div>
+      </div>
+      <div class="renta-grid">
+        <div class="renta-card">
+          <div class="rc-label">Investissement total</div>
+          <div class="rc-val" style="color:#f1f5f9;font-size:16px">${fmt(total)}</div>
+          <div class="rc-sub">Achat + travaux</div>
+        </div>
+        <div class="renta-card">
+          <div class="rc-label">Loyer annuel (médian)</div>
+          <div class="rc-val" style="color:#f1f5f9;font-size:16px">${fmt(loyerAnnuel)}</div>
+          <div class="rc-sub">× 12 mois</div>
+        </div>
+      </div>
+      <div class="renta-note">
+        ⚠️ Charges (${cfg.chargesNettesPct}%) = taxe foncière + assurance PNO + gestion + vacance + entretien.
+        Ajustez dans les paramètres selon votre situation réelle.
+      </div>
+    `;
+  }
+
+  return `
+    <div class="panel">
+      <h2>📊 ${displayName} · ${cfg.types[sim.type].label} ${cfg.typologies[typo].label}</h2>
+
+      <div class="loyer-card">
+        <div class="lc-commune">${r.badge} ${r.label} — ${r.description}</div>
+        <div class="lc-range">${fmt(loyerMin)} – ${fmt(loyerMax)} / mois</div>
+        <div class="lc-mid">Médiane : <strong>${fmt(Math.round(loyerMid))}/mois</strong></div>
+        <div class="lc-m2">Prix effectif : <strong>${prixM2.toFixed(2)} €/m²</strong> pour ${surface} m²</div>
+      </div>
+
+      ${noteCommune && nomCommune ? `<p class="commune-note">📌 ${noteCommune}</p>` : ''}
+
+      <div class="coef-detail">
+        <div class="cd-title">Décomposition du calcul</div>
+        <div class="coef-row">
+          <span class="cr-label">Base ${r.label} · ${cfg.types[sim.type].label} · ${cfg.typologies[typo].label}</span>
+          <span class="cr-val">${baseVal.toFixed(1)} €/m²</span>
+        </div>
+        ${nomCommune ? `
+        <div class="coef-row">
+          <span class="cr-label">× Coef. commune (${nomCommune})</span>
+          <span class="cr-val ${coefComClass}">${coefCommune.toFixed(2)}</span>
+        </div>` : ''}
+        <div class="coef-row">
+          <span class="cr-label">× Coef. surface (réf. ${surfRef} m², élast. ${elast})</span>
+          <span class="cr-val ${coefSurf !== 1 ? 'hi' : ''}">${coefSurf.toFixed(3)}</span>
+        </div>
+        <div class="coef-row">
+          <span class="cr-label">× Coef. demande locale (${r.label} · ${cfg.typologies[typo].label})</span>
+          <span class="cr-val ${coefDem !== 1 ? 'hi' : ''}">${coefDem.toFixed(2)}</span>
+        </div>
+        <div class="coef-row coef-total">
+          <span class="cr-label" style="color:#e2e8f0;font-weight:600">= Prix/m² effectif</span>
+          <span class="cr-val hi">${prixM2.toFixed(2)} €/m²</span>
+        </div>
+        <div class="coef-row">
+          <span class="cr-label" style="color:#e2e8f0;font-weight:600">= Loyer mensuel médian</span>
+          <span class="cr-val hi">${fmt(Math.round(loyerMid))}</span>
+        </div>
+        <div class="coef-row" style="opacity:.6">
+          <span class="cr-label">Marge ± ${cfg.margeIncertitude}%</span>
+          <span class="cr-val">${fmt(loyerMin)} – ${fmt(loyerMax)}</span>
+        </div>
+      </div>
+
+      ${rentaHtml}
+    </div>
+  `;
+}
+
+// ── Paramètres éditables ─────────────────────────────────────
+function renderParams() {
+  // Table loyers de base
+  const rows = [
+    { typeId: 'appart', typoId: 't1', badgeT: 't1' },
+    { typeId: 'appart', typoId: 't2', badgeT: 't2' },
+    { typeId: 'appart', typoId: 't3', badgeT: 't3' },
+    { typeId: 'maison', typoId: 't2', badgeT: 't2' },
+    { typeId: 'maison', typoId: 't3', badgeT: 't3' },
+  ];
+  const rings = ['ring1', 'ring2', 'ring3'];
+
+  const tableHead = `<tr><th>Type</th>${rings.map(rk => `<th>${cfg.rings[rk].badge} ${cfg.rings[rk].label}</th>`).join('')}</tr>`;
+  const tableRows = rows.map(r => {
+    const cells = rings.map(rk => {
+      const val = cfg.loyerBase[rk]?.[r.typeId]?.[r.typoId];
+      if (val === null || val === undefined) return `<td><input class="price-input na" type="number" disabled value="—"></td>`;
+      return `<td><input class="price-input" type="number" step="0.5" min="0" value="${val}"
+                data-ring="${rk}" data-type="${r.typeId}" data-typo="${r.typoId}"
+                onchange="updateBase(this)"><span class="price-unit">€/m²</span></td>`;
+    }).join('');
+    return `<tr>
+      <td><div class="row-label">
+        <span class="badge-type badge-${r.typeId}">${cfg.types[r.typeId].label}</span>
+        <span class="badge-type badge-${r.badgeT}">T${r.typoId.slice(1)}</span>
+      </div></td>
+      ${cells}
+    </tr>`;
+  }).join('');
+
+  // Bloc élasticité + demande + divers
+  const typos = ['t1', 't2', 't3'];
+  const elastRows = typos.map(t => `
+    <div class="param-row">
+      <span class="pr-label"><span class="badge-${t}">${t.toUpperCase()}</span> Élasticité</span>
+      <input class="small-input" type="number" step="0.01" min="0" max="0.5"
+             value="${cfg.elasticite[t]}" data-elast="${t}" onchange="updateElast(this)">
+    </div>
+  `).join('');
+
+  const surfRows = typos.map(t => `
+    <div class="param-row">
+      <span class="pr-label"><span class="badge-${t}">${t.toUpperCase()}</span> Réf. surface</span>
+      <input class="small-input" type="number" step="1" min="10" max="200"
+             value="${cfg.typologies[t].surfaceRef}" data-surf="${t}" onchange="updateSurfRef(this)">
+      <span class="small-unit">m²</span>
+    </div>
+  `).join('');
+
+  const demandRows = rings.flatMap(rk => typos.map(t => `
+    <div class="param-row">
+      <span class="pr-label">${cfg.rings[rk].badge} <span class="badge-${t}">${t.toUpperCase()}</span></span>
+      <input class="small-input" type="number" step="0.01" min="0.5" max="2"
+             value="${cfg.demande[rk][t]}" data-dem-ring="${rk}" data-dem-typo="${t}" onchange="updateDemande(this)">
+    </div>
+  `)).join('');
+
+  // Table des coefficients communaux
+  let communeTableRows = '';
+  let currentRing = null;
+  cfg.communesList.forEach(c => {
+    if (c.ring !== currentRing) {
+      currentRing = c.ring;
+      const r = cfg.rings[currentRing];
+      communeTableRows += `<tr class="ring-sep"><td colspan="3">${r.badge} ${r.label} — ${r.description}</td></tr>`;
+    }
+    const coefClass = c.coef > 1.05 ? 'style="color:#34d399"' : c.coef < 0.95 ? 'style="color:#f87171"' : '';
+    communeTableRows += `<tr>
+      <td class="c-nom">${c.nom}</td>
+      <td><input class="c-coef-input" type="number" step="0.01" min="0.3" max="2.5"
+                 value="${c.coef.toFixed(2)}" data-nom="${c.nom}" onchange="updateCommuneCoef(this)"
+                 ${coefClass}></td>
+      <td class="c-note">${c.note}</td>
+    </tr>`;
+  });
+
+  return `
+    <div class="params-section">
+      <div class="panel">
+        <div class="params-header">
+          <h2>⚙️ Paramètres</h2>
+          <button class="btn-ghost" onclick="resetParams()">↺ Réinitialiser</button>
+        </div>
+
+        <h3>Loyers de base par zone × type de bien (€/m²/mois)</h3>
+        <p style="font-size:12px;color:#475569;margin-bottom:10px">
+          Valeurs moyennes du ring avant application du coefficient communal.
+          Sources : SeLoger, PAP, annonces 2024-2026. Modifiables.
+        </p>
+        <table class="loyer-table">
+          <thead>${tableHead}</thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+
+        <div class="sep"></div>
+
+        <div class="params-grid">
+          <div class="param-block">
+            <h4>Dégressivité & Surface de référence</h4>
+            <p class="hint">coef = (réf / surf)^élasticité<br>0 = pas d'effet · 0.20 = forte variation</p>
+            ${elastRows}
+            <div style="height:8px"></div>
+            ${surfRows}
+            <div class="formula-box">
+              <div class="fb-title">Formule complète</div>
+              <code>
+                prix_m2 = base × coef_comm × coef_surf × coef_dem<br>
+                loyer = prix_m2 × surface<br>
+                min/max = loyer × (1 ± marge/100)
+              </code>
+            </div>
+          </div>
+
+          <div class="param-block">
+            <h4>Demande locale (par ring × typo)</h4>
+            <p class="hint">1.00 = normal · &gt;1 = forte demande<br>T2 Ring 1 élevé : frontaliers solo/couples</p>
+            ${demandRows}
+            <div class="sep" style="margin:10px 0"></div>
+            <div class="param-row">
+              <span class="pr-label">Marge incertitude</span>
+              <input class="small-input" type="number" step="1" min="0" max="30"
+                     value="${cfg.margeIncertitude}" onchange="cfg.margeIncertitude=parseFloat(this.value)||0;refreshResults()">
+              <span class="small-unit">%</span>
+            </div>
+            <div class="param-row">
+              <span class="pr-label">Charges nettes</span>
+              <input class="small-input" type="number" step="1" min="0" max="40"
+                     value="${cfg.chargesNettesPct}" onchange="cfg.chargesNettesPct=parseFloat(this.value)||0;refreshResults()">
+              <span class="small-unit">%</span>
+            </div>
+          </div>
+
+          <div class="param-block" style="grid-column:1/-1">
+            <h4>Coefficients communaux (31 communes)</h4>
+            <p class="hint" style="margin-bottom:10px">
+              Multiplicateur appliqué sur la base du ring. 1.00 = valeur moyenne.
+              <span style="color:#34d399">Vert</span> = prime · <span style="color:#f87171">Rouge</span> = décote.
+              Sources : SeLoger, PAP, annonces locales 2024-2026.
+            </p>
+            <div class="communes-table-wrap">
+              <table class="communes-table">
+                <thead><tr><th>Commune</th><th>Coef.</th><th>Note / source</th></tr></thead>
+                <tbody>${communeTableRows}</tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── Événements ───────────────────────────────────────────────
+function bindEvents() {
+  // Type
+  document.querySelectorAll('#type-selector .tri-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sim.type = btn.dataset.type;
+      document.querySelectorAll('#type-selector .tri-btn').forEach(b => b.className = 'tri-btn');
+      btn.classList.add(`active-${sim.type}`);
+      refreshResults();
+    });
+  });
+  // Typo
+  document.querySelectorAll('#typo-selector .tri-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sim.typo = btn.dataset.typo;
+      document.querySelectorAll('#typo-selector .tri-btn').forEach(b => b.className = 'tri-btn');
+      btn.classList.add(`active-${sim.typo}`);
+      updateSurfaceHint();
+      refreshResults();
+    });
+  });
+  updateSurfaceHint();
+}
+
+function updateCommune(sel) {
+  const opt = sel.options[sel.selectedIndex];
+  sim.commune = sel.value;
+  // Met à jour l'indicateur de ring
+  const ring = opt.dataset.ring;
+  document.getElementById('ring-indicator').innerHTML = ringBadgeHtml(ring);
+  refreshResults();
+}
+
+function updateSim() {
+  sim.surface = document.getElementById('f-surface')?.value || '';
+  sim.achat   = document.getElementById('f-achat')?.value   || '';
+  sim.travaux = document.getElementById('f-travaux')?.value || '';
+  refreshResults();
+}
+
+function refreshResults() {
+  document.getElementById('results-col').innerHTML = renderResults();
+}
+
+function updateSurfaceHint() {
+  const el = document.getElementById('surface-hint');
+  if (!el || !cfg) return;
+  el.textContent = `Surface de référence (dégressivité) : ${cfg.typologies[sim.typo].surfaceRef} m²`;
+}
+
+// ── Mise à jour paramètres ───────────────────────────────────
+function updateBase(el) {
+  const { ring, type, typo } = el.dataset;
+  cfg.loyerBase[ring][type][typo] = parseFloat(el.value) || 0;
+  refreshResults();
+}
+function updateElast(el)   { cfg.elasticite[el.dataset.elast] = parseFloat(el.value) || 0; refreshResults(); }
+function updateDemande(el) { cfg.demande[el.dataset.demRing][el.dataset.demTypo] = parseFloat(el.value) || 1; refreshResults(); }
+function updateSurfRef(el) { cfg.typologies[el.dataset.surf].surfaceRef = parseFloat(el.value) || 30; refreshResults(); }
+function updateCommuneCoef(el) {
+  const nom = el.dataset.nom;
+  const newCoef = parseFloat(el.value) || 1;
+  // Mise à jour dans la liste ET dans la map
+  const c = cfg.communesList.find(x => x.nom === nom);
+  if (c) { c.coef = newCoef; communesMap[nom].coef = newCoef; }
+  refreshResults();
+}
+
+function resetParams() {
+  if (!confirm('Réinitialiser tous les paramètres aux valeurs par défaut ?')) return;
+  fetch('/api/loyer/config')
+    .then(r => r.json())
+    .then(data => {
+      cfg = data;
+      communesMap = {};
+      cfg.communesList.forEach(c => { communesMap[c.nom] = c; });
+      render();
+    });
+}
+
+// ── Formatage ────────────────────────────────────────────────
+function fmt(n) { return Number(n).toLocaleString('fr-FR') + ' €'; }
+</script>
+</body>
+</html>

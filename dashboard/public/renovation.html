@@ -177,6 +177,7 @@
   <a href="/prospection">Prospection</a>
   <a href="/marche">Marché</a>
   <a href="/renovation" class="active">Rénovation</a>
+  <a href="/renta_loyer">Loyer & Renta</a>
 </nav>
 
 <div class="page">
@@ -292,8 +293,8 @@ function renderTravauxCheckboxes(piece, mode) {
         <button class="tmt-btn"          data-travid="${t.id}" data-m="diy"     onclick="setTravMode(event,'${t.id}','diy')">D</button>
       </div>` : '';
     return `
-      <div class="travail-row" onclick="toggleTravail(this)">
-        <input type="checkbox" data-id="${t.id}" data-unite="${t.unite}" onclick="event.stopPropagation(); toggleTravail(this.closest('.travail-row'), true)">
+      <div class="travail-row" onclick="toggleTravail(event, this)">
+        <input type="checkbox" data-id="${t.id}" data-unite="${t.unite}">
         <span class="trav-label">${t.label}</span>
         ${warning}
         ${needsQty ? `<span class="trav-qty-label" id="lbl-${t.id}">${qtyLabel}</span><input class="trav-qty" id="qty-${t.id}" type="number" min="1" step="1" value="1" onclick="event.stopPropagation()">` : ''}
@@ -336,8 +337,9 @@ function bindFormEvents() {
   });
 }
 
-function toggleTravail(row, fromCheckbox) {
-  const cb     = row.querySelector('input[type="checkbox"]');
+function toggleTravail(event, row) {
+  const cb          = row.querySelector('input[type="checkbox"]');
+  const fromCheckbox = event.target === cb;
   if (!fromCheckbox) cb.checked = !cb.checked;
   const id     = cb.dataset.id;
   const qtyEl  = document.getElementById(`qty-${id}`);

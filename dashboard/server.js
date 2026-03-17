@@ -6,8 +6,9 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { genererTousLesLiens, CRITERES } = require('../config/links');
+const { genererTousLesLiens, COMMUNES, CRITERES } = require('../config/links');
 const { PIECES, GAMMES, MODES, UNITE_LABELS, MARGE_IMPREVUS } = require('../config/renovation_prices');
+const { RINGS, TYPES, TYPOLOGIES, LOYER_BASE, ELASTICITE, DEMANDE, COMMUNES_COEF, MARGE_INCERTITUDE, CHARGES_NETTES_PCT } = require('../config/loyer_prices');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -80,6 +81,32 @@ app.post('/api/biens/import', (req, res) => {
 // API — base de prix rénovation
 app.get('/api/renovation/prices', (_, res) => {
   res.json({ pieces: PIECES, gammes: GAMMES, modes: MODES, uniteLabels: UNITE_LABELS, margeImprevus: MARGE_IMPREVUS });
+});
+
+// API — config loyers
+app.get('/api/loyer/config', (_, res) => {
+  // Fusion : communes de links.js + coefficients de loyer_prices.js
+  const communesList = Object.entries(COMMUNES).flatMap(([ringId, ringData]) =>
+    ringData.communes.map(c => ({
+      ring: ringId,
+      nom:  c.nom,
+      cp:   c.cp,
+      dept: c.dept,
+      coef: COMMUNES_COEF[c.nom]?.coef ?? 1.0,
+      note: COMMUNES_COEF[c.nom]?.note ?? '',
+    }))
+  );
+  res.json({
+    rings: RINGS, types: TYPES, typologies: TYPOLOGIES,
+    loyerBase: LOYER_BASE, elasticite: ELASTICITE, demande: DEMANDE,
+    margeIncertitude: MARGE_INCERTITUDE, chargesNettesPct: CHARGES_NETTES_PCT,
+    communesList,
+  });
+});
+
+// Page rentabilité loyer
+app.get('/renta_loyer', (_, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'renta_loyer.html'));
 });
 
 // Page marché
