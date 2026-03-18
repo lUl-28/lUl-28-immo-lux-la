@@ -5,3 +5,4 @@ node_modules/
 # Garder les données générées (nécessaires au dashboard)
 !data/rapport_dvf.json
 !data/rapport_dvf.md
+data/marche/cache/

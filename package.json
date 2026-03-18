@@ -7,6 +7,7 @@
     "start": "node dashboard/server.js",
     "dashboard": "node dashboard/server.js",
     "dvf": "node scripts/analyse/dvf.js",
+    "marche": "node scripts/analyse/marche.js",
     "plu": "node scripts/analyse/plu.js",
     "plu:test": "node scripts/analyse/plu.js --test",
     "bp": "node scripts/generate/business_plan.js",

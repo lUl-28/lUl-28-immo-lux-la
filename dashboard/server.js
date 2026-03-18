@@ -109,6 +109,34 @@ app.get('/renta_loyer', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'renta_loyer.html'));
 });
 
+// API — tendances marché DVF (+ données Moselle manuelles)
+const MOSELLE_FILE = path.join(__dirname, '..', 'data', 'marche', 'moselle_manual.json');
+
+app.get('/api/marche/tendances', (_, res) => {
+  const file = path.join(__dirname, '..', 'data', 'marche', 'tendances.json');
+  if (!fs.existsSync(file)) return res.status(404).json({ error: 'Données non disponibles — lancez npm run marche' });
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+
+  // Fusionner données Moselle manuelles
+  if (fs.existsSync(MOSELLE_FILE)) {
+    const moselle = JSON.parse(fs.readFileSync(MOSELLE_FILE, 'utf8'));
+    data.communes = [...data.communes, ...moselle];
+  }
+  res.json(data);
+});
+
+app.get('/api/marche/moselle', (_, res) => {
+  if (!fs.existsSync(MOSELLE_FILE)) return res.json([]);
+  res.json(JSON.parse(fs.readFileSync(MOSELLE_FILE, 'utf8')));
+});
+
+app.post('/api/marche/moselle', (req, res) => {
+  const communes = req.body;
+  if (!Array.isArray(communes)) return res.status(400).json({ error: 'Format invalide' });
+  fs.writeFileSync(MOSELLE_FILE, JSON.stringify(communes, null, 2));
+  res.json({ ok: true, nb: communes.length });
+});
+
 // Page marché
 app.get('/marche', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'marche.html'));
